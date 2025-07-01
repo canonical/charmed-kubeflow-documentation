@@ -19,9 +19,9 @@ Before committing and pushing changes, run various checks locally with the follo
 
 - Check links 
 
-.. code-block:: shell
-
+```
    make linkcheck
+```
 
 - Check spelling 
 
