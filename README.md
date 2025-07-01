@@ -7,15 +7,15 @@ See [CKF official documentation](https://charmed-kubeflow.io/docs) for the rende
 
 ## Get started
 
-### Build this documentation
+### Build it
 
-Run the following command within the `docs` folder to build the documentation: 
+Run the following command within the `docs` folder to build the documentation locally: 
 
 ```
    make run
 ```
 
-### Local checks
+### Check it
 
 Run various checks locally with the following commands:
 
