@@ -1,41 +1,44 @@
-# Canonical's Sphinx Starter Pack
+# Charmed Kubeflow documentation
 
-*A pre-configured repository to build and publish documentation with Sphinx.*
+This is the code repository for Charmed Kubeflow (CKF) documentation.
+It is based on [Canonical's Sphinx starter pack](https://github.com/canonical/sphinx-docs-starter-pack).
 
-## Description
+See [CKF official documentation](https://charmed-kubeflow.io/docs) for the rendered documentation.
 
-The Documentation starter pack includes:
+## Build the documentation
 
-* A bundled [Sphinx] theme, configuration, and extensions
-* Support for both reStructuredText (reST) and MyST Markdown
-* Build checks for links, spelling, and inclusive language
-* Customisation support layered over a core configuration
+Run the following command within the `docs` folder to build the documentation: 
 
-See the full documentation: https://canonical-starter-pack.readthedocs-hosted.com/
+.. code-block:: none
 
-## Structure
+   make run
 
-This section outlines the structure of this repository, and some key files.
+## Local checks
 
-### `docs/`
+Before committing and pushing changes, run various checks locally with the following commands:
 
-This directory contains the documentation for the starter pack itself.
+- Check links 
 
-To view it in your browser, navigate to this directory and type `make run`.
+.. code-block:: shell
 
-### `.github/workflows/`
+   make linkcheck
 
-This directory contains files used for documentation build checks via GitHub's CI.
+- Check spelling 
 
-The file `test-starter-pack.yml` tests the functionality of the starter pack project.
+.. code-block:: shell
 
-## Contributing
+   make spelling
 
-We welcome contributions to this project! If you have suggestions, bug fixes, or improvements, please open an issue or submit a pull request.
+- Check inclusive language 
 
-Please read and sign our [Contributor Licence Agreement (CLA)] before submitting any changes. The agreement grants Canonical permission to use your contributions. The author of a change remains the copyright owner of their code (no copyright assignment occurs).
+.. code-block:: shell
 
-<!--Links-->
+   make woke
 
-[Sphinx]: https://www.sphinx-doc.org/
-[Contributor Licence Agreement (CLA)]: https://ubuntu.com/legal/contributors
+- Check accessibility
+
+.. code-block:: shell
+
+   make pa11y
+
+See [Canonical's Sphinx starter pack documentation](https://canonical-starter-pack.readthedocs-hosted.com/latest/) for more details.
