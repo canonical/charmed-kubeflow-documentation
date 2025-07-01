@@ -1,5 +1,5 @@
-Documentation starter pack
-==========================
+Charmed Kubeflow documentation
+==============================
 
 The documentation starter pack helps you to quickly set up, build, and publish documentation with Sphinx.
 
@@ -9,8 +9,8 @@ It contains common styling and configuration through the `Canonical Sphinx`_ ext
    :hidden:
    :maxdepth: 2
 
-   Tutorials </tutorial/index>
-   How-to guides </how-to/index>
+   Tutorial </tutorial/index>
+   How to </how-to/index>
    Reference </reference/index>
 
 In this documentation
