@@ -19,25 +19,25 @@ Run the following command within the `docs` folder to build the documentation:
 
 Run various checks locally with the following commands:
 
-- Check links 
+- Check links: 
 
 ```
    make linkcheck
 ```
 
-- Check spelling 
+- Check spelling: 
 
 ```
    make spelling
 ```
 
-- Check inclusive language 
+- Check inclusive language: 
 
 ```
    make woke
 ```
 
-- Check accessibility
+- Check accessibility:
 
 ```
    make pa11y
