@@ -1,3 +1,5 @@
+.. _index_how_to:
+
 How-to guides
 =============
 

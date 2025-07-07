@@ -161,7 +161,7 @@ html_context = {
 # - https://git.launchpad.net/example
 #
 html_theme_options = {
-'source_edit_link': 'https://github.com/canonical/charmed-kubeflow-documentation',
+    'source_edit_link': 'https://github.com/canonical/charmed-kubeflow-documentation'
 }
 
 # Project slug; see https://meta.discourse.org/t/what-is-category-slug/87897
@@ -196,8 +196,8 @@ sitemap_show_lastmod = True
 # Template and asset locations
 #######################
 
-#html_static_path = ["_static"]
-#templates_path = ["_templates"]
+html_static_path = ["_static"]
+templates_path = ["_templates"]
 
 
 #############
@@ -285,13 +285,15 @@ exclude_patterns = [
 
 # Adds custom CSS files, located under 'html_static_path'
 
-# html_css_files = []
-
+html_css_files = [
+    "css/cookie-banner.css",
+]
 
 # Adds custom JavaScript files, located under 'html_static_path'
 
-# html_js_files = []
-
+html_js_files = [
+    "js/bundle.js"
+]
 
 # Specifies a reST snippet to be appended to each .rst file
 
