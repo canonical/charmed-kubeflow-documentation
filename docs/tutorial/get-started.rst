@@ -253,4 +253,4 @@ Next steps
 
 * Once deployed, :ref:`build your first ML model on Kubeflow <build_your_first_ml_model>`.
 * To learn about common tasks and use cases, see :ref:`how-to guides <index_how_to>`.
-* To learn about the advantages of using CKF over upstream Kubeflow, see :ref:`Upstream vs Charmed Kubeflow <charmed_vs_upstream>`.
+* To learn about the advantages of using CKF over upstream Kubeflow, see :ref:`Charmed vs upstream Kubeflow <charmed_vs_upstream>`.
