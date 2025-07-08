@@ -56,7 +56,7 @@ Project and community
 Charmed Kubeflow is a member of the Ubuntu family. 
 It's an open-source project that welcomes community contributions, suggestions, fixes and constructive feedback.
 
-* `Read our Code of Conduct <https://ubuntu.com/community/code-of-conduct>`_.
+* `Read our Code of Conduct <https://ubuntu.com/community/ethos/code-of-conduct>`_.
 * `Contribute and report bugs <https://github.com/canonical/bundle-kubeflow>`_.
 * `Contribute to this documentation <https://charmed-kubeflow.io/docs/contributing-docs>`_.
 * `Join the Discourse forum <https://discourse.charmhub.io/tag/kubeflow>`_.

@@ -19,7 +19,6 @@
 .. _list tables: https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table
 .. _manual import: https://readthedocs.com/dashboard/import/manual/
 .. _MicroK8s: https://microk8s.io/
-.. _MinIO: https://min.io/
 .. _MLflow: https://mlflow.org/
 .. _Markdown: https://commonmark.org/
 .. _MyST: https://myst-parser.readthedocs.io/

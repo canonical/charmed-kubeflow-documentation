@@ -3,7 +3,7 @@
 Charmed vs. upstream Kubeflow
 =============================
 
-This guide provides an overview about the differences between Charmed Kubeflow (CKF) and upstream `Kubeflow <https://kubeflow.org/>`_.
+This guide provides an overview about the differences between Charmed Kubeflow (CKF) and upstream `Kubeflow <https://www.kubeflow.org/>`_.
 
 Kubeflow is a collection of loosely-coupled Kubernetes components. 
 Their deployment, maintenance and customisation requires both knowledge and effort. CKF is packaged as a set of charms, running on top of `Juju`_, 
@@ -20,7 +20,7 @@ User maintenance is simplified in CKF.
 In upstream Kubeflow, updating the default user credentials involves a number of steps, such as creating a hash of the user password and editing the `Dex config map <https://github.com/kubeflow/manifests/blob/abc72bea09259eeea96646d0414a14539e18d02a/common/dex/base/config-map.yaml#L21C1-L26C31>`_ among others.
 
 In CKF, ``juju config`` provides a simpler interface for updating the default user credentials. 
-The Dex charm provides two `configurations <https://charmhub.io/dex-auth/configure>`_: ``static-username`` and ``static-password`` and the `charm code <https://github.com/canonical/dex-auth-operator/blob/track/2.31/src/charm.py#L218-L231>`_ handles the complexity of applying the change to the underlying Kubernetes cluster.
+The Dex charm provides two `configurations <https://charmhub.io/dex-auth/configurations>`_: ``static-username`` and ``static-password`` and the `charm code <https://github.com/canonical/dex-auth-operator/blob/track/2.31/src/charm.py#L218-L231>`_ handles the complexity of applying the change to the underlying Kubernetes cluster.
 
 Updating the username and password is as simple as setting these two options:
 

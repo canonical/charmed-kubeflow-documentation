@@ -19,13 +19,13 @@ such as TensorFlow, MXNet, PyTorch, XGBoost, and others.
 Kubeflow Pipelines
 ------------------
 
-`Kubeflow Pipelines (KFP) <https://www.kubeflow.org/docs/components/pipelines/v1/introduction/>`_ is a workflow engine that allows specifying tasks and their configuration, environment variables and secrets. 
+`Kubeflow Pipelines (KFP) <https://www.kubeflow.org/docs/components/pipelines/legacy-v1/introduction/>`_ is a workflow engine that allows specifying tasks and their configuration, environment variables and secrets. 
 Additionally, KFP provides task execution scheduling. 
 
 MinIO
 -----
 
-`MinIO`_ is a secured object storage system. 
+`MinIO <https://min.io/>`_ is a secured object storage system. 
 It can be used as a standalone product or as a cloud storage gateway. 
 For cloud use, it provides an AWS S3-compatible API.  
 

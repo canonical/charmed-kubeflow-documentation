@@ -17,7 +17,7 @@ Requirements
 ------------
 
 * Charmed Kubeflow (CKF) has been deployed on your machine. See :ref:`Get started <get_started>` for more details.
-* MLflow has been deployed and connected with Kubeflow. See `this tutorial <https://documentation.ubuntu.com/charmed-mlflow/en/latest/tutorial/mlflow-kubeflow/>`_ for more details.
+* MLflow has been deployed and connected with Kubeflow. See `this tutorial <https://documentation.ubuntu.com/charmed-mlflow/tutorial/mlflow-kubeflow/>`_ for more details.
 
 Kubeflow notebooks
 ------------------
@@ -26,7 +26,7 @@ From the sidebar of the Kubeflow central dashboard, go to `Notebooks` and click 
 
 .. image:: https://assets.ubuntu.com/v1/fdef0086-kubeflow-central-dashboard.png
 
-From ``Advanced Options``, go to ``Configurations`` and allow access to Kubeflow Pipelines, `MinIO`_, and MLflow from the dropdown menu:
+From ``Advanced Options``, go to ``Configurations`` and allow access to Kubeflow Pipelines, `MinIO <https://min.io/>`_, and MLflow from the dropdown menu:
 
 .. image:: https://assets.ubuntu.com/v1/44319046-allow-access.png
 
@@ -296,7 +296,7 @@ MLflow
 ------
 
 The pipeline compiled in the previous section registers an MLflow experiment, used for tracking parameters, metrics, artifacts, data and environment configuration. 
-Additionally, the ElasticNet regression model is also stored in the MLflow `model registry <https://mlflow.org/docs/latest/model-registry.html>`_, 
+Additionally, the ElasticNet regression model is also stored in the MLflow `model registry <https://mlflow.org/docs/latest/ml/model-registry/>`_, 
 which enables model versioning, aliasing, tracking and annotations.
 
 To view the MLflow tracking User Interface (UI), select ``MLflow`` from the Kubeflow central dashboard sidebar. Within ``Experiments``, 
