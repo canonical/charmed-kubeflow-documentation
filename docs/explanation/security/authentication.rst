@@ -33,11 +33,11 @@ Some important aspects to highlight:
 .. image:: https://assets.ubuntu.com/v1/223b4c41-auth_ckf2.png
     :align: center
 
-2. The ``EnvoyFilter`` `template <https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/auth_filter.yaml.j2>`_ is rendered and applied by ``istio-pilot`` when integrated with ``oidc-gatekeeper`` via the ``ingress-auth`` interface where the latter provides the following data:
+2. The `EnvoyFilter template <https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/auth_filter.yaml.j2>`_ is rendered and applied by ``istio-pilot`` when integrated with ``oidc-gatekeeper`` via the ``ingress-auth`` interface where the latter provides the following data:
    
 * ``service-oidc-gatekeeper``: service name to forward all ingress traffic to.
 * ``port``: port of the ``service-oidc-gatekeeper``.
-* ``allowed-request-headers``: a list of allowed headers to configure the ``EnvoyFilter authorisation_request`` value, which is always `set to <https://github.com/canonical/oidc-gatekeeper-operator/blob/c420d71465557fbe3419a7ef3b658552b39d9793/src/charm.py#L196C1-L199C23>`_:
+* ``allowed-request-headers``: a list of allowed headers to configure the ``EnvoyFilter authorisation_request`` value, which is always set to: 
 
 .. code-block:: bash
 
@@ -46,7 +46,7 @@ Some important aspects to highlight:
         "X-Auth-Token",
     ]
 
-* ``allowed-response-headers``: a list of allowed headers to configure the ``EnvoyFilter`` ``authorisation_response`` value, which is always `set to <https://github.com/canonical/oidc-gatekeeper-operator/blob/c420d71465557fbe3419a7ef3b658552b39d9793/src/charm.py#L200C1-L200C69>`_:
+* ``allowed-response-headers``: a list of allowed headers to configure the ``EnvoyFilter`` ``authorisation_response`` value, which is always set to: 
 
 .. code-block:: bash
 
@@ -63,16 +63,16 @@ CKF ingress
 
 The following diagram showcases the CKF ingress flow:
 
+.. note::
+    This flow does not consider authentication and `authorisation <authorisation>`.
+
 .. image:: https://assets.ubuntu.com/v1/2a3c01a6-auth_ckf3.png
  
 1. A user request from outside the cluster is sent, targeting ``component-a``.
-2. The request is first intercepted by a ``LoadBalancer``, only if set up, or the ``Service`` that is right at the edge of the `Istio Service Mesh <https://istio.io/latest/about/service-mesh/>`_.
-4. The request is forwarded to the ``Istio Ingress Gateway``, this is the ``istio-ingressgateway Service``.
-5. The request reaches the ``istio-ingressgateway`` Pod at the listening port, which is configured by the ``Gateway`` resource. See `Gateway <https://istio.io/latest/docs/reference/config/networking/gateway/>`_ for more details.
-6. The route from the ``istio-ingressgateway`` Pod to the desired component is configured by a ``VirtualService``. See `VirtualService <https://istio.io/latest/docs/reference/config/networking/virtual-service/>`_ for more details.
-
-.. note::
-    This flow does not consider authentication and `authorisation <authorisation>`.
+2. The request is first intercepted by a ``LoadBalancer``, only if set up, or the ``Service`` that is right at the edge of the `Istio Service Mesh <https://istio.io/latest/about/service-mesh/>`_
+3. The request is forwarded to the ``Istio Ingress Gateway``, this is the ``istio-ingressgateway Service``.
+4. The request reaches the ``istio-ingressgateway`` Pod at the listening port, which is configured by the ``Gateway`` resource. See `Gateway <https://istio.io/latest/docs/reference/config/networking/gateway/>`_ for more details.
+5. The route from the ``istio-ingressgateway`` Pod to the desired component is configured by a ``VirtualService``. See `VirtualService <https://istio.io/latest/docs/reference/config/networking/virtual-service/>`_ for more details.
 
 Some important aspects to highlight:
 
@@ -97,7 +97,7 @@ The requirer charm shares the following data:
 * ``service``: the ``Service`` used as the destination of the request.
 * ``port``: the port of the ``Service`` used as the destination.
 
-The ``VirtualService`` `template <https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/virtual_service.yaml.j2>`_ is rendered and applied by the ``istio-pilot`` charm in the namespace where Istio is deployed. The ``VirtualService`` always uses the ``kubeflow-gateway`` as the ``spec.gateways`` value. This is not configurable.
+The `VirtualService template <https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/virtual_service.yaml.j2>`_ is rendered and applied by the ``istio-pilot`` charm in the namespace where Istio is deployed. The ``VirtualService`` always uses the ``kubeflow-gateway`` as the ``spec.gateways`` value. This is not configurable.
 
 3. Kubeflow utilises path-based routing for reaching inside each components APIs, so most components expect the requests to have the format ``/<rewrite>/<some>/<route>``, meaning that the request should be forwarded to the component without being prefixed with anything different than what's defined in the ``VirtualService``. For example:
 

@@ -13,7 +13,7 @@ Check the details of each CKF release:
 .. toctree::
    :maxdepth: 1
 
-   Release notes <supported-versions>
+   Release notes <release-notes/index>
 
 Learn about supported Kubeflow versions and compatibility with dependencies:
 
