@@ -1,3 +1,5 @@
+:tocdepth: 2
+
 .. _build_your_first_ml_model:
 
 Build your first ML model

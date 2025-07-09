@@ -5,6 +5,14 @@ Security
 
 This guide presents an overview of security features and guidance for hardening the security of Charmed Kubeflow (CKF) deployments.
 
+.. toctree::
+    :maxdepth: 1
+    :hidden:
+
+    Authentication <authentication>
+    Authorisation <authorisation>
+    Cryptography <cryptography>
+
 Environment
 -----------
 
@@ -23,7 +31,7 @@ The following table provides references to the security documentation for the ma
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Cloud              | Security guide                                                                                                                                                                                                                                                                                                                           | 
 +====================+==========================================================================================================================================================================================================================================================================================================================================+
-| Charmed Kubernetes | `Security in Charmed Kubernetes <https://ubuntu.com/kubernetes/docs/security>`_                                                                                                                                                                                                                                                          |
+| Charmed Kubernetes | `Security in Charmed Kubernetes <https://ubuntu.com/kubernetes/charmed-k8s/docs/security>`_                                                                                                                                                                                                                                                          |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | AWS EKS            | `AWS best practices <https://aws.amazon.com/architecture/security-identity-compliance>`_, `AWS security credentials <https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html>`_, `Security in EKS <https://docs.aws.amazon.com/eks/latest/userguide/security.html>`_                                                        | 
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

@@ -1,3 +1,5 @@
+:tocdepth: 2
+
 .. _get_started:
 
 Get started
