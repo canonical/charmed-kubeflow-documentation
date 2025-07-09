@@ -90,7 +90,7 @@ A charm that requires a ``VirtualService``, for instance, ``jupyter-ui`` or ``kf
 .. note::
     The ingress interface is not the same as `this ingress interface <https://github.com/canonical/charm-relation-interfaces/tree/main/interfaces/ingress>`_.
 
-The requirer charm shares the following data:
+The requester charm shares the following data:
 
 * ``prefix``: prefix-based URI to match.
 * ``rewrite``: used to rewrite the prefix portion of the URI.
