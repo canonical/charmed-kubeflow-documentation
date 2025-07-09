@@ -27,4 +27,4 @@ Find out how CKF leverages `Canonical Observability Stack (COS) <https://charmhu
 .. toctree::
    :maxdepth: 1
 
-   Monitoring <supported-versions>
+   Monitoring <monitoring/index>
