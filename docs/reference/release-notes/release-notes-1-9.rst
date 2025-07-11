@@ -38,7 +38,7 @@ Bug fixes
 Enhancements
 ------------
 
-* Istio ingress can be configured with TLS using either a TLS certificate provider or by passing the TLS key and cert directly to the ``istio-pilot`` charm as a Juju seceret. 
+* Istio ingress can be configured with TLS using either a TLS certificate provider or by passing the TLS key and cert directly to the ``istio-pilot`` charm as a Juju secret. 
 * Set ``meshConfig.accessLogFile`` configuration for exposing logs in istio-pilot. `#371 <https://github.com/canonical/istio-operators/pull/371>`_
 * Added ``csr-domain-name`` config option for istio-pilot. `#381 <https://github.com/canonical/istio-operators/pull/381>`_
 * Added config for queue sidecar image to knative-serving charm. `#186 <https://github.com/canonical/knative-operators/pull/186>`_
