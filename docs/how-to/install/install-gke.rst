@@ -5,7 +5,7 @@ Install on GKE
 
 This guide describes how to install Charmed Kubeflow (CKF) on `Google Kubernetes Engine (GKE) <https://cloud.google.com/kubernetes-engine>`_. 
 
-You will spin up a GKE cluster on Google Gloud, and then deploy CKF using the Kubernetes (K8s) Command Line Interface (CLI), `kubectl <https://kubernetes.io/docs/reference/kubectl/>`_ , and `Juju`_. 
+You will spin up a GKE cluster on Google Cloud, and then deploy CKF using the Kubernetes (K8s) Command Line Interface (CLI), `kubectl <https://kubernetes.io/docs/reference/kubectl/>`_ , and `Juju`_. 
 
 ---------------------
 Requirements

@@ -217,7 +217,7 @@ In this example, the air-gapped setup is as follows:
 * MicroK8s runs inside a single node VM.
 * The VM has cut-off internet connection (default Gateway has been removed).
 * The Docker daemon is running on the VM, alongside MicroK8s, and the Docker CLI is available to those logged into the VM.
-* A Docker registry is deployed as a container inside that VM (not inside Microk8s cluster). See `Deploying a Registry Server <https://docs.docker.com/registry/deploying/>`_ for more details.
+* A Docker registry is deployed as a container inside that VM (not inside MicroK8s cluster). See `Deploying a Registry Server <https://docs.docker.com/registry/deploying/>`_ for more details.
 * The Docker registry has HTTPS enabled, using a TLS cert that we created, with domain ``air-gapped.registry.com``.
 * The VM has been configured to trust our TLS cert for HTTPS traffic and recognise the domain name for our registry.
 * The MicroK8s cluster can reach the Docker registry container via its domain name ``air-gapped.registry.com``, to fetch images.
@@ -239,7 +239,7 @@ The extraction process might look like this:
 4. A new name is given to the image to specify its new home in our air-gapped registry: ``docker tag docker.io/kubeflownotebookswg/jupyter-web-app:v1.8.0 air-gapped.registry.com/kubeflownotebookswg/jupyter-web-app:v1.8.0``. 
 
 .. note::
-   At this point there should be two names for the same image, in the docker cache, as can be seen with ``docker image ls``.
+   At this point there should be two names for the same image, in the Docker cache, as can be seen with ``docker image ls``.
 
 5. The image is pushed to the air-gapped registry with ``docker push air-gapped.registry.com/kubeflownotebookswg/jupyter-web-app:v1.8.0``.
 
