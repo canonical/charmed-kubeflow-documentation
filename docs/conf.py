@@ -229,7 +229,9 @@ linkcheck_ignore = [
     "https://github.com/canonical/ACME/*",
     "https://matrix.to/#/#charmhub-mlops-kubeflow:ubuntu.com",
     "https://ubuntu.com/ai#get-in-touch",
-    "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/"
+    "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
+    "https://charmhub.io/grafana-agent-k8s/integrations#*",
+    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility"
     ]
 
 

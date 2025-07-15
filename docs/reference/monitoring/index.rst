@@ -6,7 +6,7 @@ Monitoring
 Integrating Charmed Kubeflow (CKF) with the `Canonical Observability Stack (COS) <https://charmhub.io/topics/canonical-observability-stack>`_ enables monitoring resources for CKF charms.
 
 This integration includes `Prometheus <https://prometheus.io/>`_, `Grafana <https://grafana.com/>`_ and `Loki <https://grafana.com/oss/loki/>`_. 
-See :ref:`Integrate with COS <integrate-with-cos>` for more details.
+See :ref:`Integrate with COS <integrate_cos>` for more details.
 
 Learn about Prometheus metrics and alerts:
 

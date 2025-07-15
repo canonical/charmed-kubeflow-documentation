@@ -14,20 +14,25 @@ Learn basic operations to interact with CKF after installation:
     :maxdepth: 1
 
     Upgrade <upgrade/index> 
-
-
-- [Upgrade](/t/9644) 
-- [Uninstall](/t/4198)
-- [Troubleshoot](/t/4268)    
+    Uninstall <uninstall>
+    Troubleshoot <troubleshoot>    
 
 Learn how to manage CKF control plane:
-- [Back up control plane](/t/13999) 
-- [Restore control plane](/t/14114) 
+
+.. toctree::
+    :maxdepth: 1
+
+    Back up control plane <back-up-control-plane>
+    Restore control plane <restore-control-plane>
 
 Find out how to integrate CKF with other charms:
-- [Integrate with COS](/t/11927)
-- [Integrate with MinIO](/t/8570)  
-- [Integrate with MLFlow](/t/7252)                                                                
+
+.. toctree::
+    :maxdepth: 1
+
+    Integrate with COS <integrate-cos>
+    Integrate with MinIO <integrate-minio>  
+    Integrate with MLflow <integrate-mlflow>                                                                
                                    
 Learn how to manage profiles:
 - [Manage profiles](/t/8724)

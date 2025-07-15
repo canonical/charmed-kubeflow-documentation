@@ -97,7 +97,7 @@ This provides reproducible and secure environments.
 New versions of these Rocks and Charms may be released to provide patching of vulnerabilities (CVEs).
 
 It is important to refresh charms regularly to make sure the workload is as secure as possible.
-See :ref:`Upgrade <upgrade>` for details on how to upgrade CKF.
+See :ref:`Upgrade <index_upgrade>` for details on how to upgrade CKF.
 
 Encryption
 ~~~~~~~~~~
@@ -130,4 +130,4 @@ CKF provides integration with the `Canonical Observability Stack (COS) <https://
 To reduce the blast radius of infrastructure disruptions, it is generally recommended to deploy COS and the observed application in separate, isolated environments. 
 See `COS production deployments best practices <https://charmhub.io/topics/canonical-observability-stack/reference/best-practices>`_ for more details.
 
-See :ref:`Integrate with COS <integrate-with-cos>` to learn how CKF and COS can be integrated using Juju.
+See :ref:`Integrate with COS <integrate_cos>` to learn how CKF and COS can be integrated using Juju.

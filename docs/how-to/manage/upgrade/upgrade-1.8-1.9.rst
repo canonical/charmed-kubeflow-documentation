@@ -11,7 +11,7 @@ Most charms can be upgraded simply with ``juju refresh``, however certain compon
 
 .. warning::
     
-    CKF 1.9 is compatible with Charmed MLflow 2.15. If you have Charmed MLflow 2.1 deployed, you should upgrade it to 2.15 by following `this upgrade guide <https://documentation.ubuntu.com/charmed-mlflow/en/latest/how-to/migrate-v21-v215/>`_ before upgrading Charmed Kubeflow.
+    CKF 1.9 is compatible with Charmed MLflow 2.15. If you have Charmed MLflow 2.1 deployed, you should upgrade it to 2.15 by following `this upgrade guide <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v21-v215/>`_ before upgrading Charmed Kubeflow.
 
 ---------------------
 Before the upgrade
@@ -24,7 +24,7 @@ Before upgrading CKF, you should do the following:
   * All pipeline runs are completed and there are no recurring runs enabled.
   * Katib experiments, training jobs and notebooks are not in progress or pending.
 
-* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide <back_up>` for further details. For restoring that data, refer to the :ref:`restore guide <restore>`.
+* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide <back_up>` for further details. For restoring that data, refer to the :ref:`restore guide <restore_control_plane>`.
 
 .. warning::
     The backup guide above does not guarantee the backup of all Kubeflow resources, such as notebooks and profiles. 
@@ -43,7 +43,7 @@ Juju
 As with the `1.8 latest update <https://discourse.charmhub.io/t/charmed-kubeflow-support-for-juju-3/14734>`_, 
 Charmed Kubeflow 1.9 is supported on Juju 3.4 (>= 3.4.3). 
 Make sure to use a compatible version. 
-If needed, follow these `instructions <https://juju.is/docs/juju/upgrade-your-juju-deployment>`_ in order to upgrade the deployment.
+If needed, follow these `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-deployment/#upgrade-your-deployment>`_ in order to upgrade the deployment.
 
 ~~~~~~~~~~~~~~~~~~~
 Kubernetes
@@ -141,7 +141,7 @@ Mlmd
 
     juju deploy mlmd --channel ckf-1.9/stable --trust
 
-5. `Restore ML metadata <https://charmed-kubeflow.io/docs/restore#heading--restore-mlmd-sqlite>`_ for MLMD > 1.14 and CKF 1.9.
+5. :ref:`Restore ML metadata <restore_mlmd_sqlite>` for MLMD > 1.14 and CKF 1.9.
 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Rest of PodSpec charms

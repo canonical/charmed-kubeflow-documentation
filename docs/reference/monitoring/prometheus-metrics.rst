@@ -6,7 +6,7 @@ Prometheus metrics
 This guide presents an overview of the Charmed Kubeflow (CKF) charms that provide `Prometheus <https://prometheus.io/>`_ monitoring metrics.
 
 All metrics can be accessed using the Prometheus or `Grafana <https://grafana.com/>`_ User Interface (UI). 
-See :ref:`Integrate with COS <integrate-with-cos>` for more information.
+See :ref:`Integrate with COS <integrate_cos>` for more information.
 
 ----------------
 Argo controller

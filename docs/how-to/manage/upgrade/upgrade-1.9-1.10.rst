@@ -3,17 +3,13 @@
 Upgrade from 1.9 to 1.10
 ========================
 
-This guide describes how to upgrade Charmed Kubeflow (CKF) one minor version at a time. 
+This guide describes how to upgrade Charmed Kubeflow (CKF) from 1.9 to 1.10.
 Upgrading the solution by more than one minor version to another is not supported, nor is it recommended.
-
-.. important::
-
-   **Current stable version: 1.10**
 
 .. warning::
     
-    The latest version of CKF is compatible with Charmed MLflow 2.15.
-    If you have Charmed MLflow 2.1 deployed, you should upgrade it to 2.15 by following `this upgrade guide <https://documentation.ubuntu.com/charmed-mlflow/en/latest/how-to/migrate-v21-v215/>`_ before upgrading Charmed Kubeflow.
+    CKF 1.10 is compatible with Charmed MLflow 2.15.
+    If you have Charmed MLflow 2.1 deployed, `upgrade it to 2.15 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v21-v215/>`_ before upgrading CKF.
 
 ---------------------
 Before the upgrade
@@ -26,7 +22,7 @@ Before upgrading CKF, you should do the following:
   * All pipeline runs are completed and there are no recurring runs enabled.
   * Katib experiments, training jobs and notebooks are not in progress or pending.
 
-* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide for further details <back_up>`. For restoring that data, refer to the :ref:`restore guide <restore>`.
+* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide for further details <back_up>`. For restoring that data, refer to the :ref:`restore guide <restore_control_plane>`.
 
 .. warning::
     
@@ -44,7 +40,7 @@ Juju
 ~~~~~~~~~~~~~~~~~~~
 
 The current stable version of CKF is supported on Juju 3.6. 
-If needed, follow the `instructions <https://juju.is/docs/juju/upgrade-your-juju-deployment>`_ in order to upgrade the deployment. 
+If needed, follow the `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-deployment/#upgrade-your-deployment>`_ in order to upgrade the deployment. 
 See :ref:`Supported versions <supported_kubeflow_versions>` for more information.
 
 ~~~~~~~~~~~~~~~~~~~
