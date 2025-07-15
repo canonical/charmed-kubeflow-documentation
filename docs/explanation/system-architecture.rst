@@ -26,7 +26,7 @@ CKF also works in GPU-accelerated environments.
 There are no minimum requirements regarding the number of needed GPUs as this depends on the use case. 
 Refer to the following guides for more details:
 
-* :ref:`Install on NVIDIA DGX <install-on-nvidia-dgx>`.
+* :ref:`Install on NVIDIA DGX <install_nvidia_dgx>`.
 * :ref:`Launch NVIDIA NGC notebooks <launch-nvidia-ngc-notebooks>`.
 
 System architecture overview

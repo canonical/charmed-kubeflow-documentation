@@ -86,7 +86,7 @@ To configure Dex's built-in connector, set credentials by configuring ``dex-auth
    juju config dex-auth static-password=<new password>
 
 .. note::
-   To use an external Identity Provider, see :ref:`Integrate with identity providers <integrate_with_identity_providers>` for more details.
+   To use an external Identity Provider, see :ref:`Integrate with identity providers <integrate_identity_providers>` for more details.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Find the dashboard IP address
