@@ -1,7 +1,7 @@
 # Charmed Kubeflow documentation
 
 This is the code repository for Charmed Kubeflow (CKF) documentation.
-See [CKF official documentation](https://charmed-kubeflow.io/docs) for the rendered documentation.
+See [CKF official documentation](https://documentation.ubuntu.com/charmed-kubeflow/) for the rendered documentation.
 
 ## Get started
 

@@ -47,7 +47,7 @@ Deploy GKE cluster
 
 .. note::
 
-   `CKF <https://charmed-kubeflow.io/docs/get-started-with-charmed-kubeflow>`_ suggests at least 4 cores, 32G RAM and 50G of disk for the cluster machines.
+   CKF suggests at least 4 cores, 32G RAM and 50G of disk for the cluster machines.
    Therefore, you can use the *n1-standard-16* machine type for your cluster. 
    The *n1-standard-8* might be enough for testing purposes.
 

@@ -32,6 +32,8 @@ In case they are not set, create a new username and password:
 
    Both username and password need to be at least eight characters long.
 
+.. _configure_access_minio:
+
 ---------------------
 Configure access
 ---------------------

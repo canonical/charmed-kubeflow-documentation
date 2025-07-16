@@ -44,7 +44,7 @@ Create a PodDefault to inject environment variables into a Pod as follows:
 
 This PodDefault adds ``ENV1`` and ``ENV2`` with values ``value1`` and ``value2`` respectively to all containers of the Pod with the label ``env-poddefault``.
 
-For example, `the PodDefault for integrating MinIO <https://charmed-kubeflow.io/docs/integrate-with-minio#configure-access>`_ adds the environment variables with S3 credentials.
+For example, :ref:`the PodDefault for integrating MinIO <configure_access_minio>` adds the environment variables with S3 credentials.
 
 .. _add_tolerations:
 
