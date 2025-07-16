@@ -231,9 +231,9 @@ linkcheck_ignore = [
     "https://ubuntu.com/ai#get-in-touch",
     "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
     "https://charmhub.io/grafana-agent-k8s/integrations#*",
-    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility"
+    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility",
+    "https://www.envoyproxy.io/docs/envoy/v1.27.5/configuration/http/http_conn_man/stats"
     ]
-
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
 
