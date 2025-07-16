@@ -13,9 +13,13 @@
 .. _How to connect your Read the Docs account to your Git provider: https://docs.readthedocs.com/platform/stable/guides/connecting-git-account.html
 .. _How to manually configure a Git repository integration: https://docs.readthedocs.io/en/stable/guides/setup/git-repo-manual.html
 .. _How to publish documentation on Read the Docs: https://library.canonical.com/documentation/publish-on-read-the-docs
+.. _Juju: https://juju.is/
+.. _Kubernetes: https://kubernetes.io/
 .. _Level AA conformance: https://www.w3.org/WAI/WCAG2AA-Conformance
 .. _list tables: https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table
 .. _manual import: https://readthedocs.com/dashboard/import/manual/
+.. _MicroK8s: https://microk8s.io/
+.. _MLflow: https://mlflow.org/
 .. _Markdown: https://commonmark.org/
 .. _MyST: https://myst-parser.readthedocs.io/
 .. _Open Graph: https://ogp.me/
@@ -24,6 +28,7 @@
 .. _Pygments documentation: https://pygments.org/languages/
 .. _Read the Docs at Canonical: https://library.canonical.com/documentation/read-the-docs-at-canonical
 .. _reStructuredText: https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
+.. _snap: https://snapcraft.io/docs
 .. _`Sphinx`: https://www.sphinx-doc.org/
 .. _`Sphinx configuration`: https://www.sphinx-doc.org/en/master/usage/configuration.html
 .. _Sphinx design: https://sphinx-design.readthedocs.io/en/latest/

@@ -161,7 +161,7 @@ html_context = {
 # - https://git.launchpad.net/example
 #
 html_theme_options = {
-'source_edit_link': 'https://github.com/canonical/charmed-kubeflow-documentation',
+    'source_edit_link': 'https://github.com/canonical/charmed-kubeflow-documentation'
 }
 
 # Project slug; see https://meta.discourse.org/t/what-is-category-slug/87897
@@ -177,7 +177,7 @@ html_theme_options = {
 
 # Base URL of RTD hosted project
 
-html_baseurl = 'https://canonical-charmed-kubeflow.readthedocs-hosted.com/'
+html_baseurl = 'https://documentation.ubuntu.com/charmed-kubeflow/'
 
 # URL scheme. Add language and version scheme elements.
 # When configured with RTD variables, check for RTD environment so manual runs succeed:
@@ -196,8 +196,8 @@ sitemap_show_lastmod = True
 # Template and asset locations
 #######################
 
-#html_static_path = ["_static"]
-#templates_path = ["_templates"]
+html_static_path = ["_static"]
+templates_path = ["_templates"]
 
 
 #############
@@ -226,7 +226,12 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
-    "https://github.com/canonical/ACME/*"
+    "https://github.com/canonical/ACME/*",
+    "https://matrix.to/#/#charmhub-mlops-kubeflow:ubuntu.com",
+    "https://ubuntu.com/ai#get-in-touch",
+    "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
+    "https://charmhub.io/grafana-agent-k8s/integrations#*",
+    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility"
     ]
 
 
@@ -285,13 +290,15 @@ exclude_patterns = [
 
 # Adds custom CSS files, located under 'html_static_path'
 
-# html_css_files = []
-
+html_css_files = [
+    "css/cookie-banner.css",
+]
 
 # Adds custom JavaScript files, located under 'html_static_path'
 
-# html_js_files = []
-
+html_js_files = [
+    "js/bundle.js"
+]
 
 # Specifies a reST snippet to be appended to each .rst file
 
