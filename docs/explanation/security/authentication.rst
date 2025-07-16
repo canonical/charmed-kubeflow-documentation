@@ -6,7 +6,7 @@ Authentication
 This guide describes how authentication works in Charmed Kubeflow (CKF).
 
 All CKF applications and services, including the Kubeflow central dashboard, are centrally exposed through a single ingress, 
-which can also be configured for :ref:`TLS <enable-https>`. 
+which can also be configured for :ref:`TLS <enable_https>`. 
 Since these applications can modify resources in the underlying Kubernetes (K8s) cluster, they require users to be logged in and authenticated to enable proper authorization checks.
 
 Authentication is handled by configuring the central ingress to enforce request authentication via the `OIDC flow <https://openid.net/developers/how-connect-works/>`_. 

@@ -21,7 +21,7 @@ What's new
 Highlights
 ~~~~~~~~~~
 
-* Implemented automatic `profiles <https://www.kubeflow.org/docs/components/central-dash/profiles/#what-is-a-kubeflow-profile>`_ management using the new `GitHub Profiles Automator <https://charmhub.io/github-profiles-automator>`_ charm. This is an optional feature. See :ref:`Manage profiles <manage-profiles>` for more information.
+* Implemented automatic `profiles <https://www.kubeflow.org/docs/components/central-dash/profiles/#what-is-a-kubeflow-profile>`_ management using the new `GitHub Profiles Automator <https://charmhub.io/github-profiles-automator>`_ charm. This is an optional feature. See :ref:`Manage profiles <manage_profiles>` for more information.
 * Enabled the configuration of High Availability for Istio gateway (`#553 <https://github.com/canonical/istio-operators/pull/553>`_).
 * Improved application-health monitoring by exposing new metrics and providing new alert rules and Grafana dashboards for KServe, Istio and various other components.
 
@@ -98,7 +98,7 @@ Deprecated
 ----------
 
 * The use of Kubeflow Pipelines SDK v1 is deprecated. Please migrate your existing v1 pipelines to v2 following the `migration instructions <https://www.kubeflow.org/docs/components/pipelines/user-guides/migration/>`_. SDK v1 can still be used but Canonical does not provide support, patches or fixes related to its use.
-* Removed ``create-profile`` and ``initialise-profile`` actions from ``kubeflow-profiles`` (`#210 <https://github.com/canonical/kubeflow-profiles-operator/pull/210>`_). For managing profiles in CKF 1.10, see :ref:`Manage profiles <manage-profiles>`.
+* Removed ``create-profile`` and ``initialise-profile`` actions from ``kubeflow-profiles`` (`#210 <https://github.com/canonical/kubeflow-profiles-operator/pull/210>`_). For managing profiles in CKF 1.10, see :ref:`Manage profiles <manage_profiles>`.
 
 
 .. Customized links

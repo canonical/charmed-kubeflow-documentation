@@ -33,7 +33,7 @@ When a new profile is created, each resource gets the following:
 * Istio ``AuthorizationPolicies`` for the profile owner and for the contributor(s).
 
 See `Profile resources <https://www.kubeflow.org/docs/components/central-dash/profiles/#profile-resources>`_ for more details. 
-Refer to :ref:`Manage profiles <manage-profiles>` to learn how to administer profiles in CKF.
+Refer to :ref:`Manage profiles <manage_profiles>` to learn how to administer profiles in CKF.
 
 Authorisation flows
 -------------------

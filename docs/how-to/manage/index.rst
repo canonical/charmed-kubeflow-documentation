@@ -35,10 +35,18 @@ Find out how to integrate CKF with other charms:
     Integrate with MLflow <integrate-mlflow>                                                                
                                    
 Learn how to manage profiles:
-- [Manage profiles](/t/8724)
+
+.. toctree::
+    :maxdepth: 1
+
+    Manage profiles <manage-profiles>
 
 Explore other CKF configuration tasks:
-- [Configure High Availability for Istio IngressGateway](/t/15627)  
-- [Configure Kubeflow Notebook creation page](/t/13901)              
-- [Enable HTTPS](/t/13569)           
-- [Enable Istio CNI plugin](/t/12941)
+
+.. toctree::
+    :maxdepth: 1
+
+    Configure High Availability for Istio Gateway <configure-ha>
+    Configure Kubeflow Notebook creation page <configure-notebook-page>
+    Enable HTTPS <enable-https>   
+    Enable Istio CNI plugin <enable-istio-cni>

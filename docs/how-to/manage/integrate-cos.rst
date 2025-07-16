@@ -16,7 +16,7 @@ Requirements
 ---------------------
 
 - A CKF deployment and access to the Kubeflow dashboard. See the :ref:`CKF getting started guide <get_started>` for more details.
-- A COS deployment. See the `COS getting started on Microk8s guide <https://charmhub.io/topics/canonical-observability-stack/tutorials/install-microk8s>`_ for more details. If Kubeflow has been already deployed, skip the ``Configure Microk8s`` section of the guide.
+- A COS deployment. See the `COS getting started on MicroK8s guide <https://charmhub.io/topics/canonical-observability-stack/tutorials/install-microk8s>`_ for more details. If Kubeflow has been already deployed, skip the ``Configure MicroK8s`` section of the guide.
 - Minimum system requirements are at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
 - `MicroK8s`_, Juju, `yq <https://snapcraft.io/yq>`_, `jq <https://snapcraft.io/jq>`_ and ``curl``. See :ref:`CKF supported versions <supported_kubeflow_versions>` for more details about compatible versions of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
 

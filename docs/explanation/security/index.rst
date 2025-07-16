@@ -103,7 +103,7 @@ Encryption
 ~~~~~~~~~~
 
 Encryption for CKF is enabled via HTTPs, through a Transport Layer Security (TLS) certificate.
-See :ref:`Enable HTTPS <enable-https>` for more details.
+See :ref:`Enable HTTPS <enable_https>` for more details.
 
 CKF uses `Istio Gateway <https://charmhub.io/istio-gateway>`_ as the ingress, 
 and this gateway is configured via `Istio Pilot <https://charmhub.io/istio-pilot>`_ with the `TLS secret <https://charmhub.io/istio-pilot/configurations#tls-secret-id>`_.
