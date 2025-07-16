@@ -45,7 +45,7 @@ Below is an overview of all cryptographic processes handled by the charms integr
 ``admission-webhook``
 ~~~~~~~~~~~~~~~~~~~~~
 
-The `admission-webhook charm <https://charmhub.io/admission-webhook>`_ is responsible for applying :ref:`Kubeflow PodDefaults <leverage-poddefaults>` to newly created `Pods <https://kubernetes.io/docs/concepts/workloads/pods/>`_, and thus creates a `MutatingWebhookConfiguration <https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration>`_ object for registering a webhook.
+The `admission-webhook charm <https://charmhub.io/admission-webhook>`_ is responsible for applying :ref:`Kubeflow PodDefaults <leverage_poddefaults>` to newly created `Pods <https://kubernetes.io/docs/concepts/workloads/pods/>`_, and thus creates a `MutatingWebhookConfiguration <https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration>`_ object for registering a webhook.
 
 The charm code generates a self-signed `X.509 <https://en.wikipedia.org/wiki/X.509>`_ certificate, 
 so that the Kubernetes API server can confirm the workload container identity.

@@ -34,7 +34,7 @@ In this documentation
       :link: /how-to/index
       :link-type: doc
 
-      Step-by-step guides covering key operations and common tasks with CKF.
+      Key operations and common tasks with CKF.
 
 .. grid:: 1 1 2 2
 
@@ -42,13 +42,13 @@ In this documentation
       :link: /reference/index
       :link-type: doc
 
-      Technical information, including specifications, APIs, settings and configuration.
+      Technical information, including release notes.
 
    .. grid-item-card:: Explanation
       :link: /explanation/index
       :link-type: doc
       
-      Discussion and clarification of key topics.
+      Discussion of CKF concepts and features.
 
 Project and community
 ----------------------
@@ -58,7 +58,6 @@ It's an open-source project that welcomes community contributions, suggestions, 
 
 * `Read our Code of Conduct <https://ubuntu.com/community/ethos/code-of-conduct>`_.
 * `Contribute and report bugs <https://github.com/canonical/bundle-kubeflow>`_.
-* `Contribute to this documentation <https://charmed-kubeflow.io/docs/contributing-docs>`_.
 * `Join the Discourse forum <https://discourse.charmhub.io/tag/kubeflow>`_.
 * `Talk to us on Matrix <https://matrix.to/#/#charmhub-mlops-kubeflow:ubuntu.com>`_.
 * `Try out some projects <https://github.com/canonical/kubeflow-examples>`_.

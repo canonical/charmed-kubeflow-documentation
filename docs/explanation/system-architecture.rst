@@ -27,7 +27,7 @@ There are no minimum requirements regarding the number of needed GPUs as this de
 Refer to the following guides for more details:
 
 * :ref:`Install on NVIDIA DGX <install_nvidia_dgx>`.
-* :ref:`Launch NVIDIA NGC notebooks <launch-nvidia-ngc-notebooks>`.
+* :ref:`Launch NVIDIA NGC notebooks <launch_nvidia_ngc>`.
 
 System architecture overview
 ----------------------------

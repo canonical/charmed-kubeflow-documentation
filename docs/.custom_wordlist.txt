@@ -332,5 +332,31 @@ CNI's
 conflist
 CA
 CAs
+InferenceServices
+InferenceService
+PodSpecs
+PodDefault's
+arg
+args
+CustomResourceDefinition
+ResourceRequirements
+www
+ISVC's
+SDK's
+nodeSelector
+CUDA
+Tensorflow
+cuda
+tensorflow
+LLama
+nim
+runtime 
+runtimes
+LLMs
+containerized
+microservice
+GH
+ServiceAccount
+
 
 

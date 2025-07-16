@@ -109,7 +109,7 @@ See `Istio Gateway configurations <https://charmhub.io/istio-gateway/configurati
 
 .. tip::
    To access the dashboard remotely, you can obtain the IP over SSH and a SOCKS proxy. 
-   See :ref:`How to set up SSH <how_to_set_up_ssh>` for more details.
+   See `How to set up SSH <https://discourse.charmhub.io/t/how-to-setup-ssh-vm-access-with-port-forwarding/10872>`_ for more details.
 
 ~~~~~~~~
 Log in

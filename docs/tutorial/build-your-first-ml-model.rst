@@ -21,6 +21,9 @@ Requirements
 * Charmed Kubeflow (CKF) has been deployed on your machine. See :ref:`Get started <get_started>` for more details.
 * MLflow has been deployed and connected with Kubeflow. See `this tutorial <https://documentation.ubuntu.com/charmed-mlflow/tutorial/mlflow-kubeflow/>`_ for more details.
 
+
+.. _kubeflow_notebooks:
+
 Kubeflow notebooks
 ------------------
 

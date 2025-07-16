@@ -15,10 +15,18 @@ Set up scheduling depending on your use case:
     Configure advanced scheduling <configure-advanced-scheduling>
 
 Learn how to customize the link configuration of the Kubeflow Central Dashboard:
-- [Customise link configuration](/t/11171)
+
+.. toctree::
+    :maxdepth: 1
+    
+    Customise link configuration <customise-link-configuration>
 
 Use PodDefaults to configure Kubernetes Pods:
-- [Leverage PodDefaults](/t/16138)
+
+.. toctree::
+    :maxdepth: 1
+    
+    Leverage PodDefaults <leverage-poddefaults>
 
 Leverage NVIDIA with CKF:
 
@@ -26,13 +34,20 @@ Leverage NVIDIA with CKF:
     :maxdepth: 1
 
     Use NVIDIA GPUs <use-nvidia-gpus>
-
-- [Deploy NVIDIA NIMs](/t/15854)
-- [Launch NVIDIA NGC notebooks](/t/13010) 
-- [Serve a model using Triton Inference Server](/t/13448)
+    Deploy NVIDIA NIMs <deploy-nvidia-nims>
+    Launch NVIDIA NGC notebooks <launch-nvidia-ngc>
+    Serve a model using Triton Inference Server <serve-triton>
 
 Deploy KServe, Knative, and Istio charms on their own using the Autoscaling model serving: 
--  [Deploy Autoscaling model serving](/t/17246)
+
+.. toctree::
+    :maxdepth: 1
+
+    Deploy Autoscaling model serving <deploy-autoscaling-model>
 
 Find out how to perform inference using programmatic access tokens:
-- [Perform inference on ISVCs using access tokens](/t/17402)
+
+.. toctree::
+    :maxdepth: 1
+
+    Perform inference on ISVCs using access tokens <perform-inference-isvc-tokens>

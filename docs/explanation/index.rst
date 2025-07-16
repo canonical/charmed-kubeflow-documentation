@@ -1,7 +1,7 @@
 Explanation
 ===========
 
-The following guides cover key concepts and features of Charmed Kubeflow (CKF).
+The following guides discuss concepts and features of Charmed Kubeflow (CKF).
 
 Learn about CKF system architecture:
 
