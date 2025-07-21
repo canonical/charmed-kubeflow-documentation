@@ -14,12 +14,20 @@ This solution provides supported operation management, deployment, and dedicated
 
    Get started with Managed Kubeflow <get-started>
 
-Learn how to configure your Canonical managed application:
-- [Set up Azure quotas](/t/16128)
-- [Enable Microsoft providers](/t/16129)
+Learn how to set up your Canonical managed application:
+
+.. toctree::
+   :maxdepth: 1
+
+   Configure Azure quotas <configure-quotas>
+   Enable Microsoft providers <enable-microsoft-providers>
 
 Read about the node pool configuration in Managed Kubeflow deployments: 
-- [Node scheduling architecture](/t/17736)
+
+.. toctree::
+   :maxdepth: 1
+
+   Node scheduling architecture <node-scheduling-architecture>
  
 Get answers to the most common asked questions:
 - [FAQ](/t/16761)

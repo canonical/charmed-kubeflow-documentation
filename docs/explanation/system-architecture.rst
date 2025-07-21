@@ -217,7 +217,7 @@ CKF integrates with various solutions of the `Juju`_ ecosystem.
 
 Charmed MLflow
 ~~~~~~~~~~~~~~
-CKF integrates with the `Charmed MLflow bundle <https://charmhub.io/mlflow>`_ for experiment tracking and as a model registry.
+CKF integrates with `Charmed MLflow <https://charmhub.io/mlflow>`_ for experiment tracking and as a model registry.
 
 .. image:: https://assets.ubuntu.com/v1/7ad21148-cmlflow.png
 
@@ -238,7 +238,7 @@ See `Charmed MLflow documentation <https://documentation.ubuntu.com/charmed-mlfl
 Charmed Feast
 ~~~~~~~~~~~~~
 
-CKF integrates with the `Charmed Feast bundle <https://github.com/canonical/charmed-kubeflow-solutions/tree/track/1.10/modules/kubeflow-feast>`_ to provide a feature store for managing and serving machine learning features across training and inference workflows.
+CKF integrates with `Charmed Feast <https://documentation.ubuntu.com/charmed-feast/>`_ to provide a feature store for managing and serving machine learning features across training and inference workflows.
 
 .. image:: https://assets.ubuntu.com/v1/424d1fb0-cfeast_integration.png
 
