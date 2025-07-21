@@ -30,4 +30,8 @@ Read about the node pool configuration in Managed Kubeflow deployments:
    Node scheduling architecture <node-scheduling-architecture>
  
 Get answers to the most common asked questions:
-- [FAQ](/t/16761)
+
+.. toctree::
+   :maxdepth: 1
+
+   FAQ <faq>

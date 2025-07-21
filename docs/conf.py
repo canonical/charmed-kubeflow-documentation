@@ -234,7 +234,9 @@ linkcheck_ignore = [
     "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility",
     "https://www.envoyproxy.io/docs/envoy/v1.27.5/configuration/http/http_conn_man/stats",
     "https://portal.azure.com/*",
-    "https://portal.support.canonical.com/"
+    "https://portal.support.canonical.com/",
+    "https://support-portal.canonical.com/",
+    "https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45:"
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
