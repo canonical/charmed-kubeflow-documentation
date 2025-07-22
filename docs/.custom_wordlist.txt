@@ -369,5 +369,7 @@ recognized
 walkthrough
 preconfigured
 integrations
+flavor
+flavors
 
 

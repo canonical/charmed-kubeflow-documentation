@@ -126,7 +126,7 @@ See `Azure documentation <https://learn.microsoft.com/en-us/marketplace/create-m
 Can you use spot instances with Managed Kubeflow?
 -------------------------------------------------
 
-Yes, you can. See `this guide <https://charmed-kubeflow.io/docs/integrate-with-azure-spot-virtual-machines>`_ to use Charmed Kubeflow with spot instances.
+Yes, you can. See :ref:`this guide <integrate_azure_spot_vms>` to use Charmed Kubeflow with spot instances.
 
 ----------------------------------
 How can you scale in or scale out?
@@ -157,7 +157,9 @@ Who can you contact?
 ----------------------
 
 If you encounter an issue with Azure marketplace listing and offer, or would like to know more details of the offered services, please `reach out to our sales department <https://ubuntu.com/managed>`_.
-If you encounter an issue while deploying the service, please refer to `Managed Kubeflow on Azure documentation <https://charmed-kubeflow.io/docs/managed-kubeflow-on-azure>`_. If your question or problem is not addressed there, get in touch with `support@canonical.com <mailto:support@canonical.com>`_.
+
+If you encounter an issue while deploying the service, please refer to :ref:`Managed Kubeflow on Azure documentation <index_managed_kubeflow>`. If your question or problem is not addressed there, get in touch with `support@canonical.com <mailto:support@canonical.com>`_.
+
 If you have already deployed your managed cluster on Azure, please raise any concern or issue by opening a ticket using `Canonical Support Portal <https://support-portal.canonical.com/>`_.
 
 ----------------
