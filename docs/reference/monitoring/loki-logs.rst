@@ -88,7 +88,7 @@ Katib-controller
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="katib-controller", charm="katib-controller"}``.
 
-See `Katib-controller logs source <https://github.com/kubeflow/katib/blob/master/cmd/katib-controller>`_ for more details.
+See `Katib-controller logs source <https://github.com/kubeflow/katib/tree/master/cmd/katib-controller/v1beta1>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Katib-db-manager
@@ -98,7 +98,7 @@ Katib-db-manager
 
 You can check its logs  through the Grafana UI using the query ``{pebble_service="katib-db-manager", charm="katib-db-manager"}``.
 
-See `Katib-db-manager logs source <https://github.com/kubeflow/katib/blob/master/cmd/db-manager>`_ for more details.
+See `Katib-db-manager logs source <https://github.com/kubeflow/katib/tree/master/cmd/db-manager/v1beta1>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Katib-ui
