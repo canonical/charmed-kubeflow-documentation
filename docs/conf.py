@@ -244,7 +244,11 @@ linkcheck_ignore = [
     "https://kserve.github.io/website/master/get_started/first_isvc/",
     "https://developer.hashicorp.com/terraform/language/modules",
     "https://kubernetes.io/docs/reference/access-authn-authz/authorization/#request-attributes-used-in-authorization",
-    "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/"
+    "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
+    "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
+    "https://opentelemetry.io/docs/collector/",
+    "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice"
+
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
