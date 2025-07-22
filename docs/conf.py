@@ -232,11 +232,12 @@ linkcheck_ignore = [
     "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
     "https://charmhub.io/grafana-agent-k8s/integrations#*",
     "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility",
-    "https://www.envoyproxy.io/docs/envoy/v1.27.5/configuration/http/http_conn_man/stats",
+    "https://www.envoyproxy.io/docs/envoy/v1.27.5/*",
     "https://portal.azure.com/*",
     "https://portal.support.canonical.com/",
     "https://support-portal.canonical.com/",
-    "https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45:"
+    "https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45:",
+    "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector"
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'

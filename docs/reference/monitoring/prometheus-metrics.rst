@@ -215,7 +215,7 @@ Training operator
 
 The ``training-operator`` provides the following metrics:
 
-* Custom job-related metrics. See `Training operator source code <https://github.com/kubeflow/training-operator/blob/f8f7363eb905757e7c05321ec8df81aed61cf6c6/pkg/common/metrics.go#L24-L60>`_ for more details.
+* Custom job-related metrics. See `Training operator source code <https://github.com/kubeflow/trainer>`_ for more details.
 * `Go runtime and process metrics <https://pkg.go.dev/runtime/metrics#hdr-Supported_metrics>`_ for monitoring the controller.
 * `Controller runtime <https://book.kubebuilder.io/reference/metrics-reference>`_ metrics.
 

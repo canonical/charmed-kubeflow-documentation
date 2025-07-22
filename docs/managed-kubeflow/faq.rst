@@ -3,8 +3,8 @@
 
 .. _faq_managed_kf:
 
-FAQ for Managed Kubeflow on Azure
-=================================
+Support and FAQ
+===========================
 
 This guide answers some of the most common asked questions about Managed Kubeflow on Azure.
 

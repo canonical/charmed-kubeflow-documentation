@@ -128,7 +128,7 @@ Kfp-metadata-writer
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kfp-metadata-writer", charm="kfp-metadata-writer"}``.
 
-See `Kfp-metadata-writer logs source <https://github.com/kubeflow/pipelines/blob/master/backend/metadata_writer>`_ for more details.
+See `Kfp-metadata-writer logs source <https://github.com/kubeflow/pipelines/tree/master/backend/metadata_writer>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Kfp-persistence
