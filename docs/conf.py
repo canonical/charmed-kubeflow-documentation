@@ -242,7 +242,9 @@ linkcheck_ignore = [
     "https://ubuntu.com/community/ethos/code-of-conduct",
     "https://kserve.github.io/website/0.13/",
     "https://kserve.github.io/website/master/get_started/first_isvc/",
-    "https://developer.hashicorp.com/terraform/language/modules"
+    "https://developer.hashicorp.com/terraform/language/modules",
+    "https://kubernetes.io/docs/reference/access-authn-authz/authorization/#request-attributes-used-in-authorization",
+    "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/"
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
