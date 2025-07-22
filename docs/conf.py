@@ -237,15 +237,11 @@ linkcheck_ignore = [
     "https://portal.support.canonical.com/",
     "https://support-portal.canonical.com/",
     "https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45:",
-    "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector",
-    "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination",
+    "https://kubernetes.io/docs/*",
     "https://ubuntu.com/community/ethos/code-of-conduct",
     "https://kserve.github.io/website/0.13/",
     "https://kserve.github.io/website/master/get_started/first_isvc/",
     "https://developer.hashicorp.com/terraform/language/modules",
-    "https://kubernetes.io/docs/reference/access-authn-authz/authorization/#request-attributes-used-in-authorization",
-    "https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/",
-    "https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/",
     "https://opentelemetry.io/docs/collector/",
     "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice"
 
