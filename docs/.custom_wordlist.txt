@@ -371,5 +371,14 @@ preconfigured
 integrations
 flavor
 flavors
+subnet
+subnets
+balancers
+declaratively
+rollouts
+NSG
+customizations
+VNet
+allowlists
 
 
