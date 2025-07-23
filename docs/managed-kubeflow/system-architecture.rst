@@ -65,7 +65,7 @@ All other workloads and services within the Kubernetes cluster are internal-only
 IP restrictions
 ---------------
 
-If you require restricted access to the public endpoints, our team can help you configure IP whitelisting for Kubeflow through a post-deployment request. 
+If you require restricted access to the public endpoints, our team can help you configure IP allowlists for Kubeflow through a post-deployment request. 
 
 To do so, `open a support case <https://support-portal.canonical.com/>`_.
 

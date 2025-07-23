@@ -245,7 +245,8 @@ linkcheck_ignore = [
     "https://developer.hashicorp.com/terraform/language/modules",
     "https://opentelemetry.io/docs/collector/",
     "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice",
-    "https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/virtual_service.yaml.j2"
+    "https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/virtual_service.yaml.j2",
+    "https://dexidp.io/docs/connectors/"
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'

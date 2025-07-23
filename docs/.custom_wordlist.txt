@@ -379,5 +379,6 @@ rollouts
 NSG
 customizations
 VNet
+allowlists
 
 
