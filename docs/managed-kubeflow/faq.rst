@@ -92,7 +92,8 @@ You receive a direct link to the support portal in the welcome email, after your
 How do you raise a support ticket?
 ----------------------------------
 
-Go to the `Canonical Support Portal <https://support-portal.canonical.com/>`_. Once you're signed in with your Ubuntu One account, click on the ``New Ticket`` button on the portal's homepage:
+Go to the `Canonical Support Portal <https://support-portal.canonical.com/>`_. 
+Once you're signed in with your Ubuntu One account, click on the ``New Ticket`` button on the portal's homepage:
 
 .. image:: https://lh7-rt.googleusercontent.com/docsz/AD_4nXdZlS-g1fzcqmp-Isw0Mn6W7jPjngjOoseLCNazWqPSCJ1FZiBMTV3ylWsRKb_iPv7Dq1nItNP5HmcNpeP2xmLmqI4oSprAdr9Ou2dwau-Nisc13fnBV6ymcLDmE_z55wYVL-14ri8tljG7kgeHLZ1W7XEs?key=BHCZxQMTEo6n6w4x2fqyLQ
 

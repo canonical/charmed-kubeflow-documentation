@@ -230,6 +230,7 @@ linkcheck_ignore = [
     "https://matrix.to/#/#charmhub-mlops-kubeflow:ubuntu.com",
     "https://ubuntu.com/ai#get-in-touch",
     "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
+    "https://charmhub.io/*",
     "https://charmhub.io/grafana-agent-k8s/integrations#*",
     "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility",
     "https://www.envoyproxy.io/docs/envoy/v1.27.5/*",
@@ -243,8 +244,8 @@ linkcheck_ignore = [
     "https://kserve.github.io/website/master/get_started/first_isvc/",
     "https://developer.hashicorp.com/terraform/language/modules",
     "https://opentelemetry.io/docs/collector/",
-    "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice"
-
+    "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice",
+    "https://github.com/canonical/istio-operators/blob/main/charms/istio-pilot/src/manifests/virtual_service.yaml.j2"
     ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'

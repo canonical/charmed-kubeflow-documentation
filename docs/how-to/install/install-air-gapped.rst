@@ -193,7 +193,7 @@ Once you meet the requirements above, you can add the ``kubeflow`` model and run
 Gateway service type
 ~~~~~~~~~~~~~~~~~~~~~
 
-In ``deploy-1.8.sh`` script, the ``gateway_service_type`` for the `Istio Gateway configuration <https://charmhub.io/istio-gateway/configure?channel=latest/edge>`_ is set to ``LoadBalancer``. 
+In ``deploy-1.8.sh`` script, the ``gateway_service_type`` for the `Istio Gateway configuration <https://charmhub.io/istio-gateway>`_ is set to ``LoadBalancer``. 
 However, if you don't have a load balancer within your cluster, you can configure the service to ``NodePort`` by adding ``--config gateway_service_type="NodePort"`` to the ``istio-ingressgateway`` deploy command. 
 The changes in the ``deploy-1.8.sh`` script are as follows:
 

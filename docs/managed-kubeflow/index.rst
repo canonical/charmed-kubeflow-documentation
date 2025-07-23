@@ -22,11 +22,12 @@ Learn how to set up your Canonical managed application:
    Configure Azure quotas <configure-quotas>
    Enable Microsoft providers <enable-microsoft-providers>
 
-Read about the node pool configuration in Managed Kubeflow deployments: 
+Read about its system architecture and other configurations: 
 
 .. toctree::
    :maxdepth: 1
 
+   System architecture <system-architecture>
    Node scheduling architecture <node-scheduling-architecture>
  
 Get answers to the most common asked questions:
