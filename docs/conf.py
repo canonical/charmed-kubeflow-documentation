@@ -231,9 +231,21 @@ linkcheck_ignore = [
     "https://ubuntu.com/ai#get-in-touch",
     "https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/",
     "https://charmhub.io/grafana-agent-k8s/integrations#*",
-    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility"
-    ]
+    "https://charmhub.io/topics/canonical-observability-stack/reference/best-practices#juju-compatibility",
+    "https://www.envoyproxy.io/docs/envoy/v1.27.5/*",
+    "https://portal.azure.com/*",
+    "https://portal.support.canonical.com/",
+    "https://support-portal.canonical.com/",
+    "https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45:",
+    "https://kubernetes.io/docs/*",
+    "https://ubuntu.com/community/ethos/code-of-conduct",
+    "https://kserve.github.io/website/0.13/",
+    "https://kserve.github.io/website/master/get_started/first_isvc/",
+    "https://developer.hashicorp.com/terraform/language/modules",
+    "https://opentelemetry.io/docs/collector/",
+    "https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice"
 
+    ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'
 

@@ -117,12 +117,12 @@ Kfp api
 The ``kfp-api`` provides the following metrics:
 
 * Custom metrics related to its several components. See its source code for more details:
-* `Resource manager <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/resource/resource_manager.go#L51-L77>`_.
-* `Experiment server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/experiment_server.go#L34-L73>`_.
-* `Job server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/job_server.go#L34-L72>`_.
-* `Pipeline server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/pipeline_server.go#L37-L94>`_.
-* `Pipeline upload <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/pipeline_upload_server.go#L48-L60>`_.
-* `Run server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/run_server.go#L36-L92>`_.
+* `Resource manager <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/resource/resource_manager.go>`_.
+* `Experiment server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/experiment_server.go>`_.
+* `Job server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/job_server.go>`_.
+* `Pipeline server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/pipeline_server.go>`_.
+* `Pipeline upload <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/pipeline_upload_server.go>`_.
+* `Run server <https://github.com/kubeflow/pipelines/blob/33db1284f57b5b277c95d4a44b35b1fdd830bd18/backend/src/apiserver/server/run_server.go>`_.
 * `Go runtime and process metrics <https://pkg.go.dev/runtime/metrics#hdr-Supported_metrics>`_ for monitoring the controller.
 
 You can check its metrics through the Prometheus or Grafana UI using the following query:
@@ -215,7 +215,7 @@ Training operator
 
 The ``training-operator`` provides the following metrics:
 
-* Custom job-related metrics. See `Training operator source code <https://github.com/kubeflow/training-operator/blob/f8f7363eb905757e7c05321ec8df81aed61cf6c6/pkg/common/metrics.go#L24-L60>`_ for more details.
+* Custom job-related metrics. See `Training operator source code <https://github.com/kubeflow/trainer>`_ for more details.
 * `Go runtime and process metrics <https://pkg.go.dev/runtime/metrics#hdr-Supported_metrics>`_ for monitoring the controller.
 * `Controller runtime <https://book.kubebuilder.io/reference/metrics-reference>`_ metrics.
 
@@ -270,7 +270,7 @@ Profile controller
 
 The ``profile-controller`` provides the following metrics:
 
-* Custom job-related metrics. See `Profile controller source code <https://github.com/kubeflow/kubeflow/blob/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller/controllers/monitoring.go#L25-L45>`_ for more details.
+* Custom job-related metrics. See `Profile controller source code <https://github.com/kubeflow/kubeflow/tree/48b8643bee14b8c85c3de9f6d129752bb55b44d3/components/profile-controller>`_ for more details.
 * `Go runtime and process metrics <https://pkg.go.dev/runtime/metrics#hdr-Supported_metrics>`_ for monitoring the controller.
 
 You can check its metrics through the Prometheus or Grafana UI using the following query:

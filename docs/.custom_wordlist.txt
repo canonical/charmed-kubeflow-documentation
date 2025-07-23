@@ -357,6 +357,19 @@ containerized
 microservice
 GH
 ServiceAccount
-
+vCPUs
+vGPUs
+customized
+PoC
+CPUs
+CPU
+EntraID
+organization
+recognized
+walkthrough
+preconfigured
+integrations
+flavor
+flavors
 
 
