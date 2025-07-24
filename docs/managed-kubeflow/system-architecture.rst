@@ -105,5 +105,5 @@ Here's an overview of the default networking configuration:
 See also
 --------
 
-- Read about :ref:`node scheduling architecture <node_scheduling_architecture>` in Managed Kubeflow deployments.
+Read about :ref:`node scheduling architecture <node_scheduling_architecture>` in Managed Kubeflow deployments.
 

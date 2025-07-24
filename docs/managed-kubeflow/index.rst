@@ -22,7 +22,7 @@ Learn how to set up your Canonical managed application:
    Configure Azure quotas <configure-quotas>
    Enable Microsoft providers <enable-microsoft-providers>
 
-Read about its system architecture and other configurations: 
+Read about its system design: 
 
 .. toctree::
    :maxdepth: 1
