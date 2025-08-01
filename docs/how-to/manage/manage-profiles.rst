@@ -3,11 +3,11 @@
 Manage profiles
 ===============
 
-This guide describes how you can manage profiles in Charmed Kubeflow (CKF). 
-In Kubeflow, a profile denotes a collection of resources, roles, and credentials. 
+This guide describes how you can manage profiles in Charmed Kubeflow (CKF).
+In Kubeflow, a profile denotes a collection of resources, roles, and credentials.
 Each profile is owned by one user but can have multiple contributors with specified access.
 
-For each profile, Kubeflow creates a namespace of the same name that encapsulates the resources specific to that profile. 
+For each profile, Kubeflow creates a namespace of the same name that encapsulates the resources specific to that profile.
 See the `upstream documentation <https://www.kubeflow.org/docs/components/central-dash/profiles/>`_ for more details.
 
 ---------------------
@@ -23,8 +23,8 @@ Requirements
 Manage profiles automatically
 -----------------------------
 
-CKF supports the automatic creation of profiles within a cluster based on a single source of truth. 
-This can be done by deploying and configuring an operator charm. 
+CKF supports the automatic creation of profiles within a cluster based on a single source of truth.
+This can be done by deploying and configuring an operator charm.
 This charm is responsible for periodically polling the reference source, and updating the cluster profiles and contributors accordingly:
 
 - When a profile is defined in the source of truth but does not exist in the cluster, the operator creates the profile in the cluster.
@@ -45,39 +45,39 @@ Profiles that already exist in the cluster but have been removed from the source
 Configure profiles automatically from GitHub
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can define profiles and contributors from a specified file in a GitHub repository, and have CKF automatically sync the cluster with that specification. 
+You can define profiles and contributors from a specified file in a GitHub repository, and have CKF automatically sync the cluster with that specification.
 This can be done by deploying and configuring the ``github-profiles-automator`` charm.
 
-This charm uses a YAML file to configure the cluster profiles. 
+This charm uses a YAML file to configure the cluster profiles.
 If the YAML file is updated, for instance, adding new profiles, the charm automatically creates those profiles in the cluster.
 
 The YAML file must follow the following format:
 
-.. code-block:: bash
+.. code-block:: yaml
 
     profiles:
     - name: ml-engineers
-        owner:
-        kind: user
+      owner:
+        kind: User
         name: admin@canonical.com
-        resources:
+      resources:
         hard:
-            limits.cpu: "1"
-        contributors:
-        - name: kimonas@canonical.com
+          limits.cpu: "1"
+      contributors:
+      - name: kimonas@canonical.com
         role: admin
-        - name: michal@canonical.com
+      - name: michal@canonical.com
         role: edit
-        - name: andreea@canonical.com
+      - name: noha@canonical.com
         role: view
     - name: data-engineers
-        owner:
-        kind: user
+      owner:
+        kind: User
         name: admin@canonical.com
-        contributors:
-        - name: daniela@canonical.com
+      contributors:
+      - name: daniela@canonical.com
         role: edit
-        - name: manos@canonical.com
+      - name: manos@canonical.com
         role: view
 
 ~~~~~~~~~~~~~~~~~~~
@@ -118,8 +118,8 @@ To confirm the profiles have been added, list the existing profiles with the fol
 Set an SSH key to access private repositories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SSH URLs require passing a private SSH key to the charm's configuration. 
-This guide assumes that a public SSH key has been added to your GitHub account. 
+SSH URLs require passing a private SSH key to the charm's configuration.
+This guide assumes that a public SSH key has been added to your GitHub account.
 See `GitHub documentation <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account>`_ on how to add SSH keys.
 
 Find the path to the private key that corresponds to the public SSH you added, and create a Juju user secret by running:
@@ -146,14 +146,14 @@ The charm is now able to sync with private repositories that you have access to.
 Run Juju actions
 ~~~~~~~~~~~~~~~~~~~
 
-The cluster profiles are synced with the provided YAML file each time the charm's configuration is changed, and periodically when its status is updated. 
+The cluster profiles are synced with the provided YAML file each time the charm's configuration is changed, and periodically when its status is updated.
 To manually sync the charm’s profile, run the ``sync-now`` action:
 
 .. code-block:: bash
 
    juju run github-profiles-automator/0 sync-now
 
-If a profile currently exists in the cluster, but isn't described in the YAML file, it is considered stale. 
+If a profile currently exists in the cluster, but isn't described in the YAML file, it is considered stale.
 To list all stale profiles, run the ``list-stale-profiles`` action:
 
 .. code-block:: bash
@@ -184,12 +184,12 @@ In CKF, profiles can be created manually using `kubectl <https://kubernetes.io/d
 Create profiles with ``kubectl``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First, create a YAML file that describes the profile you want to create, and then apply it to your Kubernetes cluster using ``kubectl apply``. 
+First, create a YAML file that describes the profile you want to create, and then apply it to your Kubernetes cluster using ``kubectl apply``.
 See `Create a profile <https://www.kubeflow.org/docs/components/central-dash/profiles/#create-a-profile>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Delete profiles
 ~~~~~~~~~~~~~~~~~~~
 
-You can delete a profile as described in the upstream project. 
+You can delete a profile as described in the upstream project.
 See `Delete a profile <https://www.kubeflow.org/docs/components/central-dash/profiles/#delete-a-profile>`_ for more details.
