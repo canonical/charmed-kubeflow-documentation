@@ -254,7 +254,7 @@ linkcheck_ignore = [
 linkcheck_anchors_ignore_for_url = [r"https://github\.com/.*"]
 
 # give linkcheck multiple tries on failure
-linkcheck_timeout = 30
+linkcheck_timeout = 300
 linkcheck_retries = 3
 
 ########################
