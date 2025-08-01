@@ -114,7 +114,7 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
 .. code-block:: bash
 
    juju refresh admission-webhook --channel 1.10/stable
-   juju refresh argo-controller --channel 3.5/edge --base ubuntu@24.04
+   juju refresh argo-controller --channel 3.5/stable --base ubuntu@24.04
    juju refresh dex-auth --channel 2.41/stable
    juju refresh envoy --channel 2.4/stable
    juju refresh jupyter-controller --channel 1.10/stable
@@ -122,14 +122,14 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
    juju refresh katib-controller --channel 0.18/stable
    juju refresh katib-db-manager --channel 0.18/stable
    juju refresh katib-ui --channel 0.18/stable
-   juju refresh kfp-api --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-metadata-writer --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-persistence --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-profile-controller --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-schedwf --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-ui --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-viewer --channel 2.5/edge --base ubuntu@24.04
-   juju refresh kfp-viz --channel 2.5/edge --base ubuntu@24.04
+   juju refresh kfp-api --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-metadata-writer --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-persistence --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-profile-controller --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-schedwf --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-ui --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-viewer --channel 2.5/stable --base ubuntu@24.04
+   juju refresh kfp-viz --channel 2.5/stable --base ubuntu@24.04
    juju refresh knative-eventing --channel 1.16/stable
    juju refresh knative-operator --channel 1.16/stable
    juju refresh knative-serving --channel 1.16/stable
