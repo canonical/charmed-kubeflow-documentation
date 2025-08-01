@@ -144,7 +144,7 @@ The charm is now able to sync with private repositories that you have access to.
 
 .. note::
 
-   For using an SSH key you'll also need to ensure the repo URL is in the form of `git@github.com:...` or `ssh://git@github.com/...`. Else, if it starts with `https://github.com/...` then the charm will fail to pull the repo.
+   For using an SSH key you'll also need to ensure the repo URL is in the form of `git@github.com:...` or `ssh://git@github.com/...`. Else, if it starts with `https://github.com/...` then the charm will fail to pull the repository.
 
 ~~~~~~~~~~~~~~~~~~~
 Run Juju actions
