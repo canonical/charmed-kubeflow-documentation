@@ -33,7 +33,6 @@ Obtain a TLS certificate
 * `AWS Certificate Manager <https://aws.amazon.com/certificate-manager/>`_.
 * `Azure Key Vault Certificates <https://docs.microsoft.com/en-us/azure/key-vault/certificates/>`_.
 * `Google Cloud Certificate Manager <https://cloud.google.com/certificate-manager/docs/overview>`_.
-* `Let's Encrypt (for free certificates) <https://letsencrypt.org/getting-started/>`_.
 * `Self-Signed Certificates <https://www.openssl.org/>`_.
 
 -----------------------------------
