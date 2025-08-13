@@ -17,7 +17,7 @@ The components involved are the following:
 
 * Kubeflow Profiles: a `K8s Custom Resource Definition (CRD) <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions>`_ that provides namespace isolation based on K8s RBAC. Profiles are owned by single users, but can have multiple contributors with view and/or edit access.
   * Profiles are managed by the Kubeflow profiles controller, implemented by the `kubeflow-profiles charm <https://charmhub.io/kubeflow-profiles>`_.
-  * Contributors are managed by the `Kubeflow Access Management API (KFAM) <https://github.com/kubeflow/kubeflow/tree/master/components/access-management>`_, also implemented by the ``kubeflow-profiles`` charm.
+  * Contributors are managed by the Kubeflow Access Management API (KFAM), also implemented by the ``kubeflow-profiles`` charm.
 * K8s RBAC.
 * K8s ``SubjectAccessReview`` API, see `Authorization <https://kubernetes.io/docs/reference/access-authn-authz/authorization/#request-attributes-used-in-authorization>`_ for more information.
 * `Istio Authorization Policies <https://istio.io/latest/docs/reference/config/security/authorization-policy/>`_.
