@@ -223,8 +223,6 @@ Kubeflow-profiles
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kubeflow-kfam", charm="kubeflow-profiles"}``.
 
-See `Kubeflow-profiles logs source <https://github.com/kubeflow/kubeflow/tree/master/components/profile-controller>`_ for more details.
-
 ~~~~~~~~~~~~~~~~~~~
 Kubeflow-volumes
 ~~~~~~~~~~~~~~~~~~~
