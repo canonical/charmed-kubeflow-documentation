@@ -4,7 +4,7 @@ Leverage PodDefaults
 ====================
 
 This guide explains how to apply some common configurations to `Pods <https://kubernetes.io/docs/concepts/workloads/pods/>`_ 
-with the use of `PodDefaults <https://github.com/kubeflow/kubeflow/blob/master/components/admission-webhook/README.md>`_.
+with the use of `PodDefaults <https://www.deploykf.org/guides/tools/kubeflow-poddefaults/>`_.
 
 PodDefaults in Charmed Kubeflow (CKF) automate the modification of PodSpecs requested by Kubeflow components at creation time. 
 The PodDefault API resource is defined by a `CustomResourceDefinition <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions>`_ (CRD) created by the ``admission-webhook`` charm.

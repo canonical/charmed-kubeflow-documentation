@@ -233,7 +233,7 @@ Use ``juju config`` to set the configuration for the toleration:
 Create default configurations with PodDefaults
 ----------------------------------------------
 
-You can use `PodDefaults <https://github.com/kubeflow/kubeflow/blob/master/components/admission-webhook/README.md>`_ to inject common data and/or configuration to several notebooks at the same time. 
+You can use PodDefaults to inject common data and/or configuration to several notebooks at the same time. 
 PodDefaults is a namespaced custom resource that defines the configuration to be overlaid on a Pod. 
 Each user has access only to the PodDefaults defined in their own namespace. Users can create their own PodDefaults. 
 Administrators can provide PodDefaults to users by adding them to the user's namespaces.

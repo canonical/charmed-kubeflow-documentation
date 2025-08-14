@@ -27,8 +27,6 @@ Admission-webhook
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="admission-webhook", charm="admission-webhook"}``.
 
-See `Admission-webhook logs source <https://github.com/kubeflow/kubeflow/tree/master/components/admission-webhook>`_ for more details.
-
 ~~~~~~~~~~~~~~~~~~~
 Argo-controller
 ~~~~~~~~~~~~~~~~~~~
@@ -148,8 +146,6 @@ Kfp-profile-controller
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kfp-profile-controller", charm="kfp-profile-controller"}``.
 
-See `Kfp-profile-controller logs source <https://github.com/kubeflow/kubeflow/tree/master/components/profile-controller>`_ for more details.
-
 ~~~~~~~~~~~~~~~~~~~
 Kfp-schedwf
 ~~~~~~~~~~~~~~~~~~~
@@ -219,8 +215,6 @@ Kubeflow-dashboard
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kubeflow-dashboard", charm="kubeflow-dashboard"}``.
 
-See `Kubeflow-dashboard logs source <https://github.com/kubeflow/kubeflow/blob/master/components/centraldashboard>`_ for more details.
-
 ~~~~~~~~~~~~~~~~~~~
 Kubeflow-profiles
 ~~~~~~~~~~~~~~~~~~~
@@ -228,8 +222,6 @@ Kubeflow-profiles
 ``Kubeflow-profiles`` is a GO application that uses `logrus <https://github.com/sirupsen/logrus>`_ for logging.
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kubeflow-kfam", charm="kubeflow-profiles"}``.
-
-See `Kubeflow-profiles logs source <https://github.com/kubeflow/kubeflow/tree/master/components/profile-controller>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Kubeflow-volumes
