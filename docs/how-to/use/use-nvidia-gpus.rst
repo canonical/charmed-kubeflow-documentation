@@ -83,7 +83,8 @@ Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ 
 
    !pip install "kfp>=2.4,<3.0"
 
-2. Ensure the step of the Pipeline's component ``gpu_check`` runs on a GPU by creating a function ``add_gpu_request(task)`` that uses the SDK's `add_node_selector_constraint() <https://kubeflow-pipelines.readthedocs.io/en/master/source/dsl.html#kfp.dsl.PipelineTask.add_node_selector_constraint>`_ and `set_accelerator_limit() <https://kubeflow-pipelines.readthedocs.io/en/master/source/dsl.html#kfp.dsl.PipelineTask.set_accelerator_limit>`_. This sets the required `step's Pod limit <https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/#using-device-plugins>`_:
+2. Ensure the step of the Pipeline's component ``gpu_check`` runs on a GPU by creating a function ``add_gpu_request(task)`` that uses the SDK's `add_node_selector_constraint() <https://kubeflow-pipelines.readthedocs.io/en/stable/source/dsl.html?h=add+node+selector#kfp.dsl.PipelineTask.add_node_selector_constraint>`_ and `set_accelerator_limit() <https://kubeflow-pipelines.readthedocs.io/en/stable/source/dsl.html#kfp.dsl.PipelineTask.set_accelerator_limit>`_. 
+This sets the required `step's Pod limit <https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/#using-device-plugins>`_:
 
 .. code-block:: python
 
@@ -166,7 +167,7 @@ Within a notebook
 
 1. Open a notebook with your ``InferenceService``. If you don't have one, use `this notebook <https://github.com/canonical/charmed-kubeflow-uats/blob/main/tests/notebooks/cpu/kserve/kserve-integration.ipynb>`_.
 
-Make sure the `Kserve SDK <https://kserve.github.io/website/master/sdk_docs/sdk_doc/>`_ is installed in the Notebook's environment:
+Make sure the `Kserve SDK <https://kserve.github.io/website/docs/reference/python-runtime-sdk>`_ is installed in the Notebook's environment:
 
 .. code-block:: bash
 

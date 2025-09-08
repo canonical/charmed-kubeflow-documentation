@@ -40,7 +40,7 @@ Juju
 ~~~~~~~~~~~~~~~~~~~
 
 The current stable version of CKF is supported on Juju 3.6. 
-If needed, follow the `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-deployment/#upgrade-your-deployment>`_ in order to upgrade the deployment. 
+If needed, follow the `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-juju-deployment/upgrade-your-juju-deployment/>`_ in order to upgrade the deployment. 
 See :ref:`Supported versions <supported_kubeflow_versions>` for more information.
 
 ~~~~~~~~~~~~~~~~~~~

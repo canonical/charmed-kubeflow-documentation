@@ -6,7 +6,7 @@ Build your first ML model
 =========================
 
 This tutorial walks you through some of the main components of Charmed Kubeflow (CKF). 
-By the end of it, you will have created a complete end-to-end Machine Learning (ML) pipeline using `Kubeflow Pipelines <https://www.kubeflow.org/docs/components/pipelines/overview/>`_, `MLflow`_ and `KServe <https://kserve.github.io/website/latest/>`_.
+By the end of it, you will have created a complete end-to-end Machine Learning (ML) pipeline using `Kubeflow Pipelines <https://www.kubeflow.org/docs/components/pipelines/overview/>`_, `MLflow`_ and `KServe <https://kserve.github.io/website/>`_.
 
 First, you will use Kubeflow Notebooks to create and connect to a `JupyterLab <https://jupyter.org/>`_ environment. 
 Then, you will create a Kubeflow Pipeline to process a wine dataset, train it on an ML model and predict its quality. 

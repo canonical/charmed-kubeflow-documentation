@@ -16,7 +16,7 @@ Any issues detected by the applications is picked up by Juju. You can check thei
 
    juju status
 
-See `Troubleshoot your Juju deployment <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-deployment/#troubleshoot-your-deployment>`_ for more details.
+See `Troubleshoot your Juju deployment <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-juju-deployment/troubleshoot-your-juju-deployment/#troubleshoot-your-deployment>`_ for more details.
 
 -------------------------
 Troubleshoot with kubectl
