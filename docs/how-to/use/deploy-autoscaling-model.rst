@@ -68,7 +68,7 @@ Perform inference
 
 .. note::
 
-   Kserve offers a simple example in steps `1 <https://kserve.github.io/website/latest/get_started/first_isvc/#1-create-a-namespace>`_, `2 <https://kserve.github.io/website/latest/get_started/first_isvc/#2-create-an-inferenceservice>`_, and `3 <https://kserve.github.io/website/latest/get_started/first_isvc/#3-check-inferenceservice-status>`_.
+   Kserve offers a simple example in steps `1 <https://kserve.github.io/website/docs/getting-started/predictive-first-isvc#1-create-a-namespace>`_, `2 <https://kserve.github.io/website/docs/getting-started/predictive-first-isvc#2-create-an-inferenceservice>`_, and `3 <https://kserve.github.io/website/docs/getting-started/predictive-first-isvc#3-check-inferenceservice-status>`_.
 
 2. Perform inference by making a request using the URL from the recently created ``InferenceService``.
 

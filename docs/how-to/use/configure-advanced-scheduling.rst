@@ -135,7 +135,7 @@ Below is an example of a ``TFJob`` that can be used in a Trial definition and sa
 KServe InferenceServices
 ------------------------
 
-KServe ``InferenceServices`` expose `PodSpec attributes <https://kserve.github.io/website/master/reference/api/#serving.kserve.io/v1beta1.PodSpec>`_ 
+KServe ``InferenceServices`` expose PodSpec attributes.
 that can be used for configuring advanced scheduling scenarios. 
 See the example below for more details:
 

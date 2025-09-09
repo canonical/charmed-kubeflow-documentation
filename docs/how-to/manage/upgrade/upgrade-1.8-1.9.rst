@@ -43,7 +43,7 @@ Juju
 As with the `1.8 latest update <https://discourse.charmhub.io/t/charmed-kubeflow-support-for-juju-3/14734>`_, 
 Charmed Kubeflow 1.9 is supported on Juju 3.4 (>= 3.4.3). 
 Make sure to use a compatible version. 
-If needed, follow these `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-deployment/#upgrade-your-deployment>`_ in order to upgrade the deployment.
+If needed, follow these `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-juju-deployment/upgrade-your-juju-deployment/>`_ in order to upgrade the deployment.
 
 ~~~~~~~~~~~~~~~~~~~
 Kubernetes

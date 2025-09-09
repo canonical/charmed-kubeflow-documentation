@@ -13,6 +13,7 @@ Requirements
 ---------------------
 
 Charmed Kubeflow requires a running K8s cluster with the following:
+
 * Kubernetes version depending on the CKF version you are deploying. See :ref:`Supported versions <supported_kubeflow_versions>` for more details.
 * A default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
 
