@@ -50,3 +50,4 @@ Explore other CKF configuration tasks:
     Configure Kubeflow Notebook creation page <configure-notebook-page>
     Enable HTTPS <enable-https>   
     Enable Istio CNI plugin <enable-istio-cni>
+    Update Object Storage Bucket for Pipelines <update-object-storage-bucket-for-pipelines>
