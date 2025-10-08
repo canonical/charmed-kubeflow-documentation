@@ -1,6 +1,6 @@
-.. _update_object_storage_bucket_for_pipelines:
+.. _update_bucket_for_pipelines:
 
-Update Object Storage Bucket for Pipelines
+Update the Object Storage Bucket for Pipelines
 ==========================================
 
 This guide describes how to update the object storage bucket employed by Pipelines.
