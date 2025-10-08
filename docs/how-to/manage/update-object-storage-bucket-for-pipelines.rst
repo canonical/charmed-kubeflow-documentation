@@ -1,19 +1,19 @@
 .. _update_object_storage_bucket_for_pipelines:
 
 Update Object Storage Bucket for Pipelines
-=======================
+==========================================
 
 This guide describes how to update the object storage bucket employed by Pipelines.
 
----------------------
+------------
 Requirements
----------------------
+------------
 
 - An object storage bucket, for Pipelines to store its artifacts, to replace the default/current bucket with.
 
----------------------
+------------------------------------------------------
 Update the Object Storage Bucket Employed by Pipelines
----------------------
+------------------------------------------------------
 
 The following charms need to have their respective bucket configurations updated:
 
