@@ -23,10 +23,10 @@ Configure Pipelines' Charms with a Custom Bucket
 
 After defining environment variables for your bucket name and path, for your convenience:
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    bucket_name="your-bucket-name"
-    bucket_path="your/bucket/path"
+  BUCKET_NAME="your-bucket-name"
+  BUCKET_PATH="your/bucket/path"
 
 The following charms need to have their respective bucket configurations updated:
 
@@ -38,7 +38,7 @@ Update the name of the bucket via its ``bucket`` `configuration option <https://
 
 .. code-block:: bash
 
-  juju config argo-controller bucket=${bucket_name}
+  juju config argo-controller bucket=${BUCKET_NAME}
 
 ~~~~~~~~~
 KFP API
@@ -48,7 +48,7 @@ Update the name of the bucket via its ``object-store-bucket-name`` `configuratio
 
 .. code-block:: bash
 
-  juju config kfp-api object-store-bucket-name=${bucket_name}
+  juju config kfp-api object-store-bucket-name=${BUCKET_NAME}
 
 ~~~~~~~~~~~~~~~~~~~~~~~~
 KFP Profile Controller
@@ -58,7 +58,7 @@ Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipe
 
 .. code-block:: bash
 
-  juju config kfp-profile-controller default_pipeline_root=minio://${bucket_name}/${bucket_path}
+  juju config kfp-profile-controller default_pipeline_root=minio://${BUCKET_NAME}/${BUCKET_PATH}
 
 .. note::
 
