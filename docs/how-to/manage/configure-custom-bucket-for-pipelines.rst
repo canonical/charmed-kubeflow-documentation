@@ -34,7 +34,7 @@ The following charms need to have their respective bucket configurations updated
 Argo Controller
 ~~~~~~~~~~~~~~~
 
-Update the name of the bucket via its ``bucket`` `configuration option <https://charmhub.io/argo-controller/configurations>`_, e.g.:
+Update the name of the bucket via its ``bucket`` `configuration <https://charmhub.io/argo-controller/configurations>`_, e.g.:
 
 .. code-block:: bash
 
@@ -44,7 +44,7 @@ Update the name of the bucket via its ``bucket`` `configuration option <https://
 KFP API
 ~~~~~~~~~
 
-Update the name of the bucket via its ``object-store-bucket-name`` `configuration option <https://charmhub.io/kfp-api/configurations>`_, e.g.:
+Update the name of the bucket via its ``object-store-bucket-name`` `configuration <https://charmhub.io/kfp-api/configurations>`_, e.g.:
 
 .. code-block:: bash
 
@@ -54,7 +54,7 @@ Update the name of the bucket via its ``object-store-bucket-name`` `configuratio
 KFP Profile Controller
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline-root>`_ for pipeline Runs across all Profiles, which includes the schema for, the name of and the path to the bucket, via its ``default_pipeline_root`` `configuration option <https://charmhub.io/kfp-profile-controller/configurations>`_, e.g.:
+Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline-root>`_ for pipeline Runs across all Profiles, which includes the schema for, the name of and the path to the bucket, via its ``default_pipeline_root`` `configuration <https://charmhub.io/kfp-profile-controller/configurations>`_, e.g.:
 
 .. code-block:: bash
 
