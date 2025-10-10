@@ -38,7 +38,7 @@ To create a Juju model for CKF, run:
 .. note::
    The model name must be ``kubeflow``.
 
-See `Juju OLM | add-model <https://juju.is/docs/olm/juju-add-model>`_ for more details.
+See `Juju OLM | add-model <https://documentation.ubuntu.com/juju/3.6/howto/manage-models/#add-a-model>`_ for more details.
 
 ---------------------
 Deploy CKF
