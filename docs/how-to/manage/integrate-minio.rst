@@ -102,5 +102,56 @@ You can check if it is added to the model as follows:
 You should see ``allow-minio``.
 
 Another option is to access the MinIO dashboard. 
-You can do so by running ``juju status`` and accessing the provided MinIO IP address. 
+You can do so by running ``juju status`` and accessing the provided MinIO IP address.
 To login, use the credentials you previously set up.
+
+------------------------
+Configure Operation Mode
+------------------------
+
+~~~~~~~~~~~
+Server Mode
+~~~~~~~~~~~
+
+By default, MinIO is run in server mode, where it directly provides the object storage backend.
+
+To verify so, run:
+
+.. code-block:: bash
+
+   juju config minio mode
+
+If the output differs from ``server`` and you want to restore server mode, run:
+
+.. code-block:: bash
+
+   juju config minio mode=server
+
+This is the recommended setup and no further configuration changes are requried.
+
+~~~~~~~~~~~~
+Gateway Mode
+~~~~~~~~~~~~
+
+Nevertlheless, running MinIO in gateway mode, despite being deprecated, is still a popular request to run it as a stateless proxy to add an S3-compatible API around an actual storage backend that would not otherwise support it.
+
+To configure MinIO to run in gateway mode, run:
+
+.. code-block:: bash
+
+   juju config minio gateway-storage-service=<your-storage-service-type>
+   juju config minio mode=gateway
+
+where ``<your-storage-service-type>`` can be either ``s3`` or ``azure``.
+
+Additionally, you may need to run:
+
+.. code-block:: bash
+
+   juju config minio storage-service-endpoint=<your-storage-service-endpoint>
+
+where ``<your-storage-service-endpoint>`` represents the endpoint of your storage service. This is only necessary for some endpoints and is specific to the strorage service provider.
+
+.. note::
+
+   With S3 storage, in some cases it may be required to prepend the bucket name to the service endpoint, e.g.: ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` vs ``http://s3.eu-west-1.amazonaws.com``.
