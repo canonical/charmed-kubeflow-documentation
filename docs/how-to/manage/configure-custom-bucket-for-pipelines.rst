@@ -64,7 +64,7 @@ Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipe
 
   In Charmed Kubeflow, Pipelines can only be configured with the MinIO schema.
 
-This automatically creates (or updates) a ``ConfigMaps`` named ``kfp-launcher`` in each Profile
+This automatically creates a ``ConfigMaps`` named ``kfp-launcher`` in each Profile
 
 .. note::
 
