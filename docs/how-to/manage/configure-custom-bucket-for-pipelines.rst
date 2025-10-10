@@ -21,12 +21,11 @@ Requirements
 Configure Pipelines' Charms with a Custom Bucket
 ------------------------------------------------
 
-After defining environment variables for your bucket name and path, for your convenience:
+After defining an environment variable for your bucket name, for your convenience:
 
 .. code-block:: bash
 
   BUCKET_NAME="your-bucket-name"
-  BUCKET_PATH="your/bucket/path"
 
 The following charms need to have their respective bucket configurations updated:
 
@@ -58,7 +57,7 @@ Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipe
 
 .. code-block:: bash
 
-  juju config kfp-profile-controller default_pipeline_root=minio://${BUCKET_NAME}/${BUCKET_PATH}
+  juju config kfp-profile-controller default_pipeline_root=minio://${BUCKET_NAME}/v2/artifacts
 
 .. note::
 
