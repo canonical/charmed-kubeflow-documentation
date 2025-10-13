@@ -154,4 +154,8 @@ where ``<your-storage-service-endpoint>`` represents the endpoint of your storag
 
 .. note::
 
-   With S3 storage, avoid prepending the bucket name to the service endpoint, e.g.: ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` vs ``http://s3.eu-west-1.amazonaws.com``.
+   With S3 storage by AWS, this URI should be in the form ``http://s3.<your-region>.amazonaws.com``, e.g.: ``http://s3.eu-west-1.amazonaws.com``.
+
+.. note::
+
+   With S3 storage by AWS, avoid prepending the bucket name to the service endpoint, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``.
