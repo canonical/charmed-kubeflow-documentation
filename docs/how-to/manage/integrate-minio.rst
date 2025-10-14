@@ -158,4 +158,4 @@ where ``<your-storage-service-endpoint>`` represents the endpoint of your storag
 
 .. note::
 
-   With S3 storage by AWS, avoid prepending the bucket name to the service endpoint, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``.
+   With S3 storage by AWS, avoid prepending the bucket name to the service endpoint, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``. Find :ref:`here <_configure_custom_bucket_for_pipelines>` details for configuring custom buckets.
