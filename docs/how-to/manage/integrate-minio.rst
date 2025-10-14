@@ -154,8 +154,8 @@ where ``<your-storage-service-endpoint>`` represents the endpoint of your storag
 
 .. note::
 
-   With S3 storage by AWS, this URI should be in the form ``http://s3.<your-region>.amazonaws.com``, e.g.: ``http://s3.eu-west-1.amazonaws.com``.
+   With S3 storage by AWS, this URI should be in the form ``https://s3.<your-region>.amazonaws.com``, e.g.: ``https://s3.eu-west-1.amazonaws.com``.
 
 .. note::
 
-   With S3 storage by AWS, avoid prefixing the service endpoint with the bucket name, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``. Find :ref:`here <configure_custom_bucket_for_pipelines>` details for configuring custom buckets.
+   With S3 storage by AWS, avoid prefixing the service endpoint with the bucket name, e.g.: not ``https://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``https://s3.eu-west-1.amazonaws.com``. Find :ref:`here <configure_custom_bucket_for_pipelines>` details for configuring custom buckets.
