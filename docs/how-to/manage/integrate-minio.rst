@@ -127,13 +127,13 @@ If the output differs from ``server`` and you want to restore server mode, run:
 
    juju config minio mode=server
 
-This is the recommended setup and no further configuration changes are requried.
+This is the recommended setup and no further configuration changes are required.
 
 ~~~~~~~~~~~~
 Gateway Mode
 ~~~~~~~~~~~~
 
-Nevertlheless, running MinIO in gateway mode, despite being deprecated, is still a popular request to run it as a stateless proxy to add an S3-compatible API around an actual storage backend that would not otherwise support it.
+Nevertheless, running MinIO in gateway mode, despite being deprecated, is still a popular request to run it as a stateless proxy to add an S3-compatible API around an actual storage backend that would not otherwise support it.
 
 To configure MinIO to run in gateway mode, run:
 
@@ -150,7 +150,7 @@ Additionally, you may need to run:
 
    juju config minio storage-service-endpoint=<your-storage-service-endpoint>
 
-where ``<your-storage-service-endpoint>`` represents the endpoint of your storage service. This is only necessary for some endpoints and is specific to the strorage service provider.
+where ``<your-storage-service-endpoint>`` represents the endpoint of your storage service. This is only necessary for some endpoints and is specific to the storage service provider.
 
 .. note::
 
@@ -158,4 +158,4 @@ where ``<your-storage-service-endpoint>`` represents the endpoint of your storag
 
 .. note::
 
-   With S3 storage by AWS, avoid prepending the bucket name to the service endpoint, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``. Find :ref:`here <configure_custom_bucket_for_pipelines>` details for configuring custom buckets.
+   With S3 storage by AWS, avoid prefixing the service endpoint with the bucket name, e.g.: not ``http://<your-bucket-name>.s3.eu-west-1.amazonaws.com`` but ``http://s3.eu-west-1.amazonaws.com``. Find :ref:`here <configure_custom_bucket_for_pipelines>` details for configuring custom buckets.
