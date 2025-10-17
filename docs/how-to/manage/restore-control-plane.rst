@@ -21,19 +21,29 @@ Requirements
 - Admin access to the Kubernetes cluster where CKF is deployed.
 - Juju admin access to the ``kubeflow`` model.
 - Charmed Velero was deployed and configured with the object storage where the backups were stored.
+- ``katib-db`` and ``kfp-db`` applications were backed up to S3-compatible storage.
 
 ---------------------
-Check backups
+List backups
 ---------------------
 
 In the Charmed Velero model, run the ``list-backups`` action to get the backups:
 
 .. code-block:: bash
 
+    juju switch velero
     juju run velero-operator/0 list-backups
 
 The action returns a YAML list of backups. Please note the application name, endpoint, and backup UID. You will use the UID to make a restore.
- 
+
+In the Kubeflow model, run the following commands to list the database backups:
+
+.. code-block:: bash
+
+    juju switch kubeflow
+    juju run katib-db/leader list-backups
+    juju run kfp-db/leader list-backups
+
 ----------------------------
 Prepare for restore
 ----------------------------
@@ -81,16 +91,10 @@ The restore is now complete. Open the dashboard to see the backed-up data.
 Please refer to the `Charmed Velero documentation <https://charmhub.io/velero-operator>` for more details.
 
 -----------------------------------
-Restore CKF databases to S3 storage
+Restore CKF databases
 -----------------------------------
 
-CKF uses ``katib-db`` and ``kfp-db`` as databases for Katib and Kubeflow pipelines respectively.
-
-1. Deploy and configure the `s3-integrator <https://charmhub.io/s3-integrator>`_ to connect to the shared S3 storage.
-
-Follow the `S3 AWS <https://charmhub.io/mysql-k8s/docs/h-configure-s3-aws>`_ and `S3 Radowsg <https://charmhub.io/mysql-k8s/docs/h-configure-s3-radosgw>`_ configuration guides for this step.
-
-2. Scale up ``kfp-db`` and ``katib-db``.
+1. Scale up ``kfp-db`` and ``katib-db``.
 
 This step avoids the ``Primary`` database from becoming unavailable during backup:
 
@@ -99,6 +103,11 @@ This step avoids the ``Primary`` database from becoming unavailable during backu
    juju scale-application kfp-db 2
    juju scale-application katib-db 2
 
-3. `Restore <https://charmhub.io/mysql-k8s/docs/h-restore-backup>`_ ``kfp-db`` and ``katib-db``.
+2. Restore each database.
 
-Replace ``mysql-k8s`` with the name of the database you intend to restore, e.g., ``katib-db`` instead of ``mysql-k8s``.
+.. code-block:: bash
+
+   juju run kfp-db/leader restore restore-to-time=latest
+   juju run katib-db/leader restore restore-to-time=latest
+
+Please refer to the `Charmed MySQL K8s documentation <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/how-to/back-up-and-restore/>`_ for more details.
