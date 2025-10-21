@@ -24,7 +24,7 @@ Before upgrading CKF, you should do the following:
   * All pipeline runs are completed and there are no recurring runs enabled.
   * Katib experiments, training jobs and notebooks are not in progress or pending.
 
-* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide <back_up>` for further details. For restoring that data, refer to the :ref:`restore guide <restore_control_plane>`.
+* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide <back_up>` for further details. For restoring that data, refer to the :ref:`restore guide <restore>`.
 
 .. warning::
     The backup guide above does not guarantee the backup of all Kubeflow resources, such as notebooks and profiles. 
@@ -141,7 +141,7 @@ Mlmd
 
     juju deploy mlmd --channel ckf-1.9/stable --trust
 
-5. :ref:`Restore ML metadata <restore_mlmd_sqlite>` for MLMD > 1.14 and CKF 1.9.
+5. `Restore ML metadata <https://github.com/canonical/mlmd-operator/tree/track/ckf-1.9?tab=readme-ov-file#upgrade>` for MLMD > 1.14 and CKF 1.9.
 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Rest of PodSpec charms

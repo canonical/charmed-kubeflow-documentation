@@ -1,6 +1,6 @@
 .. _back_up:
 
-Back Up
+Back up
 =====================
 
 This guide describes how to back up Charmed Kubeflow (CKF) control plane data and user workloads to object storage using the `Charmed Velero <https://charmhub.io/velero-operator>`_.
