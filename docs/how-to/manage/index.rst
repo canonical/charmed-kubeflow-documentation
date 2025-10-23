@@ -22,8 +22,8 @@ Learn how to manage CKF control plane:
 .. toctree::
     :maxdepth: 1
 
-    Back up control plane <back-up-control-plane>
-    Restore control plane <restore-control-plane>
+    Back up <back-up-control-plane>
+    Restore <restore-control-plane>
 
 Find out how to integrate CKF with other charms:
 

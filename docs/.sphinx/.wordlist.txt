@@ -6,6 +6,7 @@ API
 APIs
 balancer
 Charmhub
+charmhub
 CLI
 DCO
 Diátaxis
@@ -329,3 +330,9 @@ snapcrafting
 subcluster
 swrast
 zSystems
+Velero
+velero
+snapshotting
+UID
+UIDs
+PVs

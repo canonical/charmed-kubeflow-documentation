@@ -22,7 +22,7 @@ Before upgrading CKF, you should do the following:
   * All pipeline runs are completed and there are no recurring runs enabled.
   * Katib experiments, training jobs and notebooks are not in progress or pending.
 
-* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide for further details <back_up>`. For restoring that data, refer to the :ref:`restore guide <restore_control_plane>`.
+* Back up any important data according to your organisation's policies. For databases, MinIO bucket pipelines and ML metadata, refer to the :ref:`backup guide for further details <back_up>`. For restoring that data, refer to the :ref:`restore guide <restore>`.
 
 .. warning::
     
