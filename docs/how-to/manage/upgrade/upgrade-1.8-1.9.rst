@@ -141,7 +141,7 @@ Mlmd
 
     juju deploy mlmd --channel ckf-1.9/stable --trust
 
-5. `Restore ML metadata <https://github.com/canonical/mlmd-operator/tree/track/ckf-1.9?tab=readme-ov-file#upgrade>` for MLMD > 1.14 and CKF 1.9.
+5. `Restore ML metadata <https://github.com/canonical/mlmd-operator/blob/track/ckf-1.9/README.md#upgrade>` for MLMD > 1.14 and CKF 1.9.
 
 ^^^^^^^^^^^^^^^^^^^^^^^
 Rest of PodSpec charms
