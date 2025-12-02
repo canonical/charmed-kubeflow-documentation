@@ -29,7 +29,7 @@ Configure MicroK8s GPU add-on
 Install NVIDIA GPU drivers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See `MicroK8s Add-on: gpu documentation <https://microk8s.io/docs/addon-gpu#p-20002-use-host-drivers-and-runtime>`_ to install the NVIDIA drivers and verify that drivers are loaded.
+See `MicroK8s Add-on: gpu documentation <https://canonical.com/microk8s/docs/addon-gpu#p-20002-use-host-nvidia-container-runtime>`_ to install the NVIDIA drivers and verify that drivers are loaded.
 
 .. important::
    This step is necessary due to `this MicroK8s issue <https://github.com/canonical/microk8s-core-addons/issues/303>`_.
@@ -38,7 +38,7 @@ See `MicroK8s Add-on: gpu documentation <https://microk8s.io/docs/addon-gpu#p-20
 Enable MicroK8s GPU add-on
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Enable `MicroK8s GPU add-on <https://microk8s.io/docs/addon-gpu>`_ to enable running NVIDIA GPU workloads.
+Enable `MicroK8s GPU add-on <https://canonical.com/microk8s/docs/addon-gpu>`_ to enable running NVIDIA GPU workloads.
 
 .. code-block:: bash
 
