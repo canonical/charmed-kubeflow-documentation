@@ -66,7 +66,7 @@ Jupyter-controller
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="jupyter-controller", charm="jupyter-controller"}``.
 
-See `Jupyter-controller logs source <https://github.com/kubeflow/kubeflow/tree/master/components/notebook-controller>`_ for more details.
+See `Jupyter-controller logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/notebook-controller>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Jupyter-ui
@@ -76,7 +76,7 @@ Jupyter-ui
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="jupyter-ui", charm="jupyter-ui"}``.
 
-See `Jupyter-ui logs source <https://github.com/kubeflow/kubeflow/tree/master/components/crud-web-apps/common/backend>`_ for more details. 
+See `Jupyter-ui logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/crud-web-apps/common>`_ for more details. 
 
 ~~~~~~~~~~~~~~~~~~~
 Katib-controller
@@ -231,7 +231,7 @@ Kubeflow-volumes
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kubeflow-volumes", charm="kubeflow-volumes"}``.
 
-See `Kubeflow-volumes logs source <https://github.com/kubeflow/kubeflow/tree/master/components/crud-web-apps/volumes>`_ for more details.
+See `Kubeflow-volumes logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/crud-web-apps/volumes>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Mlmd
@@ -261,7 +261,7 @@ Pvcviewer-operator
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="pvcviewer-operator", charm="pvcviewer-operator"}``.
 
-See `Pvcviewer-operator logs source <https://github.com/kubeflow/kubeflow/tree/master/components/pvcviewer-controller>`_ for more details.
+See `Pvcviewer-operator logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/pvcviewer-controller>`_ for more details.
 
 ~~~~~~~~~~~~~~~~
 Seldon-core
@@ -281,7 +281,7 @@ Tensorboard-controller
 
 You can check its logs through the Grafana UI using the query  ``{pebble_service="pvcviewer-operator", charm="pvcviewer-operator"}``.
 
-See `Tensorboard-controller logs source <https://github.com/kubeflow/kubeflow/tree/master/components/tensorboard-controller>`_ for more details.
+See `Tensorboard-controller logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/tensorboard-controller>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Tensorboards-web-app
@@ -291,7 +291,7 @@ Tensorboards-web-app
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="tensorboards-web-app", charm="tensorboards-web-app"}``.
 
-See `Tensorboards-web-app logs source <https://github.com/kubeflow/kubeflow/tree/master/components/crud-web-apps/tensorboards>`_ for more details. 
+See `Tensorboards-web-app logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/crud-web-apps/tensorboards>`_ for more details. 
 
 --------------------------
 Non sidecar pattern charms
