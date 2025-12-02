@@ -82,7 +82,7 @@ This section outlines methods to enhance the security of your CKF applications.
 Base images
 ~~~~~~~~~~~
 
-CKF runs on top of `Rock <https://documentation.ubuntu.com/rockcraft/en/latest/explanation/rocks/#rocks-explanation>`_ images, 
+CKF runs on top of `Rock <https://documentation.ubuntu.com/rockcraft/en/latest/explanation/rocks>`_ images, 
 available in `these Github repositories <https://github.com/search?q=org%3Acanonical+topic%3Arocks+topic%3Akubeflow&type=repositories>`_, 
 on top of Ubuntu 22.04.
 
