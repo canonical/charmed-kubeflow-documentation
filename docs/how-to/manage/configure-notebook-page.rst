@@ -85,7 +85,7 @@ You can configure the type and number of GPU resources available to users.
 
 Charmed Kubeflow (CKF) exposes this configuration to administrators through the following items:
 
-* ``gpu-vendors``: The GPU vendors that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be in JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/kubeflow/blob/master/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
+* ``gpu-vendors``: The GPU vendors that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be in JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/notebooks/blob/notebooks-v1/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
   
   * ``limitsKey``: the key that corresponds to the GPU vendor resource in Kubernetes.
   * ``uiName``: the name to be shown in the UI for this GPU.
@@ -127,7 +127,7 @@ For instance, this can be used to assign notebooks to a specific node type, avoi
 
 CKF exposes this configuration to administrators through the following items:
 
-* ``affinity-options``: The Node Affinity configurations that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be in JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/kubeflow/blob/master/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
+* ``affinity-options``: The Node Affinity configurations that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be in JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/notebooks/blob/notebooks-v1/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
   
   * ``configKey``: an arbitrary key for the configuration.
   * ``displayName``: the name shown in the ``New Notebook`` UI.
@@ -185,7 +185,7 @@ For instance, this can be used to allow a notebook to be scheduled to a specific
 
 CKF exposes this configuration to administrators through the following items:
 
-* ``tolerations-options``: The tolerations configurations that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/kubeflow/blob/master/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
+* ``tolerations-options``: The tolerations configurations that are selectable by users in the ``New Notebook`` UI when creating a notebook. The input can be JSON or YAML format with key values. See the `upstream configuration file <https://github.com/kubeflow/notebooks/blob/notebooks-v1/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details:
   
   * ``groupKey``: an arbitrary key for the configuration.
   * ``displayName``: the name shown in the ``New Notebook`` UI.
@@ -244,7 +244,7 @@ These configurations can be chosen by the user during the notebook creation.
 
 CKF exposes this configuration to administrators through the following items:
 
-* ``default-poddefaults``: The PodDefaults that are selected for the user by default in the ``New Notebook`` UI when creating a notebook. The input can be in ``JSON`` or ``YAML`` format as a list of PodDefaults names. See `upstream configuration file <https://github.com/kubeflow/kubeflow/blob/master/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details.
+* ``default-poddefaults``: The PodDefaults that are selected for the user by default in the ``New Notebook`` UI when creating a notebook. The input can be in ``JSON`` or ``YAML`` format as a list of PodDefaults names. See `upstream configuration file <https://github.com/kubeflow/notebooks/blob/notebooks-v1/components/crud-web-apps/jupyter/manifests/base/configs/spawner_ui_config.yaml>`_ for more details.
 
 Users see these options in the dropdown menu:
 
