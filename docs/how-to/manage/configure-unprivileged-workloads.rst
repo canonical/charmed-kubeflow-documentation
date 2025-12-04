@@ -10,19 +10,24 @@ Requirements
 ---------------------
 
 * A Charmed Kubeflow deployment with version 1.10 or later.
-
------------------------
-Enable Istio CNI Plugin
------------------------
-
-First, follow :ref:`enable Istio CNI<enable_istio_cni>` to enable the Istio CNI plugin in your CKF deployment. This will ensure that all Istio init containers follow the stricter security standards that are enforced later in this guide.
+* The Istio CNI plugin has been enabled. See :ref:`enable Istio CNI plugin<enable_istio_cni>` for more details.
 
 
--------------------------------------------
-Configure Kubeflow Profiles security policy
--------------------------------------------
+-----------------------------------------------------
+Configure Pod Security Standards in Kubeflow Profiles
+-----------------------------------------------------
 
-CKF security policies are based on the `Pod Security Standards <https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline>`_. Configure the security policy in `kubeflow-profiles` to `baseline` by running:
+CKF security policies are based on the `Kubernetes Pod Security Standards <https://kubernetes.io/docs/concepts/security/pod-security-standards/>`_, which use control plane mechanisms to enforce security settings. The default security policy in Charmed Kubeflow is `privileged`.
+
+.. note::
+
+   The `restricted` policy is currently not supported in Charmed Kubeflow.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure `baseline` policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Configure the security policy in `kubeflow-profiles` to `baseline` by running:
 
 .. code-block:: bash
 
@@ -31,11 +36,11 @@ CKF security policies are based on the `Pod Security Standards <https://kubernet
 The deployment should now be configured to enforce the `baseline` pod security standards policy in all user-generated workloads. To learn more about the allowed permissions in the `baseline` policy, refer to the `Kubernetes documentation <https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline>`_.
 
 
--------------------------------------------
-Revert changes
--------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configure `privileged` policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you don't want to enforce a more restricted policy, you can set the security policy in `kubeflow-profiles` back to `privileged`:
+If you don't want to enforce a more restrictive policy, you can set the security policy in `kubeflow-profiles` to `privileged`:
 
 .. code-block:: bash
 
