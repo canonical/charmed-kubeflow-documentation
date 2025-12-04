@@ -3,7 +3,7 @@
 Configure user workloads to run unprivileged
 ============================================
 
-This guide describes how to configure Charmed Kubeflow (CKF) to run all user-generated workloads without elevated permissions.
+This guide describes how to configure Charmed Kubeflow (CKF) to run all user-generated workloads without elevated permissions. This is accomplished by configuring the [Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) for different levels of privileges for workloads running on namespaces associated with Kubeflow Profiles.
 
 ---------------------
 Requirements
