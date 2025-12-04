@@ -18,7 +18,7 @@ METRICSDIR      = $(SOURCEDIR)/.sphinx/metrics
 REQPDFPACKS     = latexmk fonts-freefont-otf texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-font-utils texlive-lang-cjk texlive-xetex plantuml xindy tex-gyre dvipng
 CONFIRM_SUDO    ?= N
 VALE_CONFIG     = $(SPHINXDIR)/vale.ini
-SPHINX_HOST     ?= 127.0.0.1
+SPHINX_HOST     ?= 0.0.0.0
 SPHINX_PORT     ?= 8000
 
 # Put it first so that "make" without argument is like "make help".
@@ -101,7 +101,7 @@ epub: install
 	. $(VENV); $(SPHINXBUILD) -b epub "$(SOURCEDIR)" "$(BUILDDIR)" -w $(SPHINXDIR)/warnings.txt $(SPHINXOPTS)
 
 serve: html
-	cd "$(BUILDDIR)"; python3 -m http.server --bind 127.0.0.1 8000
+	cd "$(BUILDDIR)"; python3 -m http.server --bind 0.0.0.0 8000
 
 clean: clean-doc
 	@test ! -e "$(VENVDIR)" -o -d "$(VENVDIR)" -a "$(abspath $(VENVDIR))" != "$(VENVDIR)"

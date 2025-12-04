@@ -51,4 +51,4 @@ Explore other CKF configuration tasks:
     Enable HTTPS <enable-https>   
     Enable Istio CNI plugin <enable-istio-cni>
 	Configure user workloads to run unprivileged <configure-unprivileged-workloads>
-    Configure a Custom Bucket for Pipelines <configure-custom-bucket-for-pipelines>
+    Configure a custom bucket for Pipelines <configure-custom-bucket-for-pipelines>
