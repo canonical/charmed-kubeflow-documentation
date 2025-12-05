@@ -46,7 +46,6 @@ Configure the security policy in `kubeflow-profiles` to `baseline` by running:
 
 The deployment should now be configured to enforce the `baseline` pod security standards policy in all user-generated workloads. To learn more about the allowed permissions in the `baseline` policy, refer to the `Kubernetes documentation <https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline>`_.
 
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Configure `privileged` policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
