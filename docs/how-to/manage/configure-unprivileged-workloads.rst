@@ -10,7 +10,13 @@ Requirements
 ---------------------
 
 * A Charmed Kubeflow deployment with version `1.10` or later.
-* Revision `765` or later of the `kubeflow-profiles` charm. You can view the currently used revision with `juju status kubeflow-profiles --format=json | jq '.applications["kubeflow-profiles"]["charm-rev"]'`, which uses the `jq` package.
+* Revision `765` or later of the `kubeflow-profiles` charm. You can view the currently used revision with:
+
+.. code-block:: bash
+				
+     sudo apt install -y jq
+     juju status kubeflow-profiles --format=json | jq '.applications["kubeflow-profiles"]["charm-rev"]'
+
 * The Istio CNI plugin has been enabled. See :ref:`enable Istio CNI plugin<enable_istio_cni>` for more details.
 
 
