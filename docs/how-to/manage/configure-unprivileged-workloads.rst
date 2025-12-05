@@ -9,7 +9,8 @@ This guide describes how to configure Charmed Kubeflow (CKF) to run all user-gen
 Requirements
 ---------------------
 
-* A Charmed Kubeflow deployment with version 1.10 or later.
+* A Charmed Kubeflow deployment with version `1.10` or later.
+* The `kubeflow-profiles` charm should be using the `1.10` or any later track.
 * The Istio CNI plugin has been enabled. See :ref:`enable Istio CNI plugin<enable_istio_cni>` for more details.
 
 
