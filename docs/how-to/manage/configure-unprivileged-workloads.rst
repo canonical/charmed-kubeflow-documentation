@@ -24,7 +24,7 @@ Requirements
 Configure Pod Security Standards in Kubeflow Profiles
 -----------------------------------------------------
 
-CKF security policies are based on the `Kubernetes Pod Security Standards <https://kubernetes.io/docs/concepts/security/pod-security-standards/>`_, which use control plane mechanisms to enforce security settings. You can view the currently used security policy in your deployment by running:
+CKF security policies are based on the `Kubernetes Pod Security Standards <https://kubernetess.io/docs/concepts/security/pod-security-standards/>`_, which use control plane mechanisms to enforce security settings. You can view the currently used security policy in your deployment by running:
 
 .. code-block:: bash
 
