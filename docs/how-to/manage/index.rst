@@ -50,4 +50,5 @@ Explore other CKF configuration tasks:
     Configure Kubeflow Notebook creation page <configure-notebook-page>
     Enable HTTPS <enable-https>   
     Enable Istio CNI plugin <enable-istio-cni>
-    Configure a Custom Bucket for Pipelines <configure-custom-bucket-for-pipelines>
+	Configure user workloads to run unprivileged <configure-unprivileged-workloads>
+    Configure a custom bucket for Pipelines <configure-custom-bucket-for-pipelines>
