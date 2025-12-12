@@ -133,21 +133,10 @@ You now need to create a Kubeflow model for the Juju controller as follows:
 Deploy CKF
 ----------
 
-MicroK8s uses ``inotify`` to interact with the file system. 
-Kubeflow requires increasing the ``inotify`` limits. 
-To do so, run the following commands:
-
-.. code-block:: bash
-
-    sudo sysctl fs.inotify.max_user_instances=1280
-    sudo sysctl fs.inotify.max_user_watches=655360
-
-If you want these commands to persist across machine restarts, add the following lines to ``/etc/sysctl.conf``:
-
-.. code-block:: bash
-
-    fs.inotify.max_user_instances=1280
-    fs.inotify.max_user_watches=655360
+> Older version of MicroK8s were setting low `inotify` limits, that did not comply
+> with Kubeflow needs. Please make sure that `fs.inotify.max_user_instances` is larger than `1280` and
+> `fs.inotify.max_user_watches` is larger than `655360`. To change these values use `sysctl`
+> commands, e.g. `sudo sysctl <key>=<value>`.
 
 To deploy CKF with Juju, run the following command:
 
