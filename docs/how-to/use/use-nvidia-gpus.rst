@@ -12,7 +12,7 @@ Requirements
 * A CKF deployment and access to the Kubeflow dashboard. See :ref:`Get started <get_started>` for more details.
 * An NVIDIA GPU accessible from the Kubernetes cluster that CKF is deployed on. Depending on your deployment, refer to one of the following guides for more details:
   
-  * `MicroK8s add-ons <https://microk8s.io/docs/addon-gpu>`_
+  * `MicroK8s add-ons <https://canonical.com/microk8s/docs/addon-gpu>`_
   * `AKS <https://learn.microsoft.com/en-us/azure/aks/gpu-cluster?tabs=add-ubuntu-gpu-node-pool>`_
   * `EKS <https://docs.aws.amazon.com/batch/latest/userguide/create-gpu-cluster-eks.html>`_
 
