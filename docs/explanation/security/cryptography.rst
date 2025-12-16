@@ -10,7 +10,7 @@ This document describes the cryptography used by Charmed Kubeflow (CKF).
 Resource checksums
 ------------------
 
-CKF uses pinned revisions of `Rocks <https://documentation.ubuntu.com/rockcraft/en/latest/explanation/rocks/#rocks-explanation>`_. 
+CKF uses pinned revisions of `Rocks <https://documentation.ubuntu.com/rockcraft/en/latest/explanation/rocks>`_. 
 `Charms <https://documentation.ubuntu.com/juju/3.6/reference/charm/#charm>`_ are refreshed to a newer revision periodically, but each revision is pointing to a specific `Rock hash <https://github.com/canonical/notebook-operators/blob/track/1.10/charms/jupyter-controller/metadata.yaml#L16>`_. 
 This provides reproducible and secure environments.
 

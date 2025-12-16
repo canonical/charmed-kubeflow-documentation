@@ -1,6 +1,6 @@
 .. _configure_custom_bucket_for_pipelines:
 
-Configure a Custom Bucket for Pipelines
+Configure a custom bucket for Pipelines
 ==============================================
 
 This guide describes how to update the object storage bucket employed by Pipelines.
@@ -18,7 +18,7 @@ Requirements
 - An object storage bucket, for Pipelines to store its artifacts, to replace the default/current bucket with.
 
 ------------------------------------------------
-Configure Pipelines' Charms with a Custom Bucket
+Configure Pipelines' charms with a custom bucket
 ------------------------------------------------
 
 After defining an environment variable for your bucket name, for your convenience:
