@@ -135,8 +135,8 @@ Deploy CKF
 
 .. note::
 
-    Older version of MicroK8s were setting low `inotify` limits, that did not comply
-    with Kubeflow needs. Please make sure that `fs.inotify.max_user_instances` is larger than `1280` and
+    Older versions of MicroK8s were setting low `inotify` limits, that did not comply
+    with Kubeflow needs. Please make sure that `fs.inotify.max_user_instances` is larger than `1024` and
     `fs.inotify.max_user_watches` is larger than `655360`. To change these values use `sysctl`
     commands, e.g. `sudo sysctl <key>=<value>`.
 
