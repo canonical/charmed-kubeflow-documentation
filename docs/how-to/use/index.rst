@@ -28,6 +28,13 @@ Use PodDefaults to configure Kubernetes Pods:
     
     Leverage PodDefaults <leverage-poddefaults>
 
+Run Spark Jobs in Kubeflow notebooks and Pipelines:
+
+.. toctree::
+    :maxdepth: 1
+    
+    Run Spark Jobs <run-spark-jobs>
+
 Leverage NVIDIA with CKF:
 
 .. toctree::

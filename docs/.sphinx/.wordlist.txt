@@ -340,3 +340,5 @@ fs
 inotify
 sudo
 sysctl
+UAT
+PySpark
