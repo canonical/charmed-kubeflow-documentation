@@ -6,15 +6,17 @@ Run Spark Jobs
 This guide describes how to run Spark jobs from inside Kubeflow notebooks and in Kubeflow pipeline steps.
 
 .. _run_spark_jobs_requirements:
+
 ---------------------
 Requirements
 ---------------------
 
 * An active CKF deployment with Apache Spark integration and access to the Kubeflow dashboard. See 
-:ref:`Integrate with Charmed Apache Spark <integrate_spark>` for more details.
+  :ref:`Integrate with Charmed Apache Spark <integrate_spark>` for more details.
 
 
 .. _run_spark_jobs_on_kf_notebooks:
+
 ------------------------------------------
 Run Spark workloads on Kubeflow notebooks
 ------------------------------------------
@@ -22,6 +24,7 @@ Run Spark workloads on Kubeflow notebooks
 This section describes how Spark jobs can be run from inside a Kubeflow notebook environment.
 
 .. _create_notebook_for_spark_job:
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Create a Notebook for running Spark jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +40,7 @@ When creating the notebook, make sure to:
 Connect to the notebook and start a new Python 3 notebook session from the Launcher.
 
 .. _run_spark_job_using_notebook:
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Run Spark jobs in notebook cells
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,6 +58,7 @@ To verify that Spark jobs can indeed be run from inside the notebook environment
 
 
 .. _run_spark_job_in_kf_pipeline:
+
 -------------------------------------
 Run Spark jobs in Kubeflow pipeline
 -------------------------------------
