@@ -3,6 +3,10 @@
 Integrate with Charmed Apache Spark
 ============================================
 
+.. note::
+
+   This feature is currently experimental. This guide exists here for experimental purposes.
+
 This guide describes how Charmed Kubeflow (CKF) and the Charmed Apache Spark can be integrated using `Juju`_. 
 This integration enables running Spark jobs in Kubeflow notebooks and pipelines.
 
@@ -13,19 +17,27 @@ Requirements
 ---------------------
 
 - Minimum system requirements are at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
-- `MicroK8s`_, Juju, and ``charmcraft``. See :ref:`CKF supported versions <supported_kubeflow_versions>` 
+- `MicroK8s`_ and Juju. See :ref:`CKF supported versions <supported_kubeflow_versions>` 
   for more details about compatible versions of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
-- Juju agent version either <=3.6.9 or >=3.6.13 
+- CLI tools like ``charmcraft`` and ``tox``.
+- Juju agent version ``<=3.6.9``
 
 .. _integrate_with_existing_kubeflow_deployment:
 
 -------------------------------------------------
 Integrate Spark with an existing CKF deployment
 -------------------------------------------------
+
 This section of the guide assumes that you already have a CKF deployment in a Juju model named ``kubeflow`` in your 
 Juju cloud. If not, please see :ref:`CKF getting started guide <get_started>` for more details on how to do so, or 
 refer to :ref:`Deploy Kubeflow-Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>` 
 section below.
+
+.. note::
+
+   When using an existing CKF deployment, sure that the ``metacontroller-operator`` charm is up to date with the 
+   ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
+   to the stable channel.
 
 Integrating CKF with Charmed Apache Spark involves the following:
 
@@ -52,7 +64,7 @@ Deploy the Spark Integration Hub charm in the ``kubeflow`` model by following th
    juju switch kubeflow
    juju deploy spark-integration-hub-k8s --channel=3/edge integration-hub --trust
 
-Please note that the ``--trust`` flag is essential when deploying the ``spark-integration-hub-k8s`` charm, for it 
+Note that the ``--trust`` flag is essential when deploying the ``spark-integration-hub-k8s`` charm, for it 
 to be able to create and watch resources in the Kubernetes cluster.
 
 .. _use_existing_spark_integration_hub:
@@ -148,8 +160,10 @@ Within the ``kubeflow`` model, deploy the Resource Dispatcher charm as follows:
 
 .. code-block:: bash
 
-   juju deploy resource-dispatcher --channel=latest/edge
+   juju deploy resource-dispatcher --channel=latest/edge --trust
 
+Note that the ``--trust`` flag is essential when deploying the ``resource-dispatcher`` charm, for it 
+to be able to create resources in Kubernetes.
 
 .. _integrate_resource_dispatcher_with_data_kubeflow_integrator:
 
@@ -252,6 +266,7 @@ As the first step, verify all charms are in ``active`` status by monitoring the 
 
 .. code-block:: bash
 
+   juju switch kubeflow
    juju status --watch 1s
 
 .. note::

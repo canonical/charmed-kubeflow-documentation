@@ -3,6 +3,10 @@
 Run Spark Jobs
 ================
 
+.. note::
+
+   This feature is currently experimental. This guide exists here for experimental purposes.
+
 This guide describes how to run Spark jobs from inside Kubeflow notebooks and in Kubeflow pipeline steps.
 
 .. _run_spark_jobs_requirements:
@@ -32,10 +36,10 @@ Create a Notebook for running Spark jobs
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>`. This notebook is the workspace from which you run commands. 
 When creating the notebook, make sure to:
 
-1. Use Charmed Spark Jupyterlab OCI image (``ghcr.io/canonical/charmed-spark-jupyterlab:3.5.5-22.04_edge``) as the 
+1. Use Charmed Spark Jupyterlab OCI image (``ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge``) as the 
    notebook image.
-2. Check the "Configure PySpark for Kubeflow notebooks" option under the "Advanced Options" to apply necessary 
-   PodDefaults to the notebook pod.
+2. Check the "Configure PySpark for Kubeflow notebooks" option under the "Configurations" section inside 
+   "Advanced Options" to apply necessary PodDefaults to the notebook pod.
 
 Connect to the notebook and start a new Python 3 notebook session from the Launcher.
 
@@ -65,22 +69,29 @@ Run Spark jobs in Kubeflow pipeline
 
 `Kubeflow Pipelines <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline/>`_ provide 
 `steps <https://www.kubeflow.org/docs/components/pipelines/concepts/step/>`_ inside of which you can run Spark jobs 
-by adding the ``access-pyspark-pipeline: true`` label to a step during the Pipeline's definition. 
+by adding the ``access-spark-pipeline: true`` label to a step during the Pipeline's definition. 
 See the detailed steps below.
 
-1. Create a :ref:`Kubeflow notebook <kubeflow_notebooks>` using the default notebook image. 
-   This notebook is the workspace from which you run commands.
+Create a :ref:`Kubeflow notebook <kubeflow_notebooks>` using the default notebook image. 
+This notebook is the workspace from which you run commands.
 
-2. Once you are inside the notebook, you can now define Kubeflow 
-   `components <https://www.kubeflow.org/docs/components/pipelines/concepts/component/>`_ that run Spark jobs using 
-   ``pyspark``. It is recommended to use the ``SparkSession`` context manager in the ``spark8t`` Python package that 
-   comes along with the Charmed Spark Jupyterlab image to create Spark sessions to ensure that they are correctly 
-   closed at the end of the context manager. 
+Once you are inside the notebook, you can now define Kubeflow 
+`components <https://www.kubeflow.org/docs/components/pipelines/concepts/component/>`_ that run Spark jobs using 
+``pyspark``. It is recommended to use the ``SparkSession`` context manager in the ``spark8t`` Python package that 
+comes along with the Charmed Spark Jupyterlab image to create Spark sessions to ensure that they are correctly 
+closed at the end of the context manager. 
 
 If you don't have a notebook ready, use the following code as an example. It creates a Pipeline with a single component 
-that runs a trivial Spark job. 
+that runs a trivial Spark job. Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ is 
+installed in the Notebook's environment before running the Python command.
+
+.. code-block:: bash
+
+   !pip install kfp[kubernetes]
 
 .. code-block:: python
+
+    from kfp import dsl, kubernetes
 
     CHARMED_SPARK_OCI_IMAGE = "ghcr.io/canonical/charmed-spark:3.5.5-22.04_edge"
     @dsl.component(
@@ -92,22 +103,13 @@ that runs a trivial Spark job.
         from spark8t.session import SparkSession
 
         with SparkSession(
-            app_name="count_words", 
-            namespace=os.environ["SPARK_NAMESPACE"], 
+            app_name="square_numbers`",
+            namespace=os.environ["SPARK_NAMESPACE"],
             username=os.environ["SPARK_SERVICE_ACCOUNT"]
         ) as session:
-            rdd = session.sparkContext.parallelize(
-                ["spark is fast", "spark is simple", "spark works"], 
-                numSlices=3
-            )
-            word_counts = (
-                rdd
-                .flatMap(lambda line: line.split())
-                .map(lambda word: (word, 1))
-                .reduceByKey(lambda a, b: a + b)
-                .collect()
-            )
-            logging.info(f"Word counts: {word_counts}")
+            rdd = session.sparkContext.parallelize([1, 2, 3, 4, 5], numSlices=2)
+            result = rdd.map(lambda x: x * x).collect()
+            logging.info(f"Squared numbers: {result}")
 
 
     @dsl.pipeline(name="spark-test-pipeline")
@@ -119,18 +121,11 @@ that runs a trivial Spark job.
             label_value="true",
         )
 
-
 Note that the label ``access-spark-pipeline: true`` has been added to the pipeline task pod, which is a necessary step
 for us to refer to the ``SPARK_NAMESPACE`` and ``SPARK_SERVICE_ACCOUNT`` environment variables in the component definition
 above.
 
-3. Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ is installed in the Notebook's environment:
-
-.. code-block:: bash
-
-   !pip install kfp[kubernetes]
-
-4. Submit and run the Pipeline with the following code:
+Submit and run the Pipeline with the following code:
 
 .. code-block:: python
 
@@ -142,10 +137,9 @@ above.
         enable_caching=False,
     )
 
-5. Once the pipeline starts running, navigate to the output ``Run details``. 
-In its logs, you can see the result as shown below:
+Once the pipeline starts running, navigate to the output ``Run details``. In its logs, you can see the result as shown below:
 
 
 .. code-block:: text
 
-    Word counts: [('is', 2), ('fast', 1), ('simple', 1), ('works', 1), ('spark', 3)]
+    Squared numbers: [1, 4, 9, 16, 25]
