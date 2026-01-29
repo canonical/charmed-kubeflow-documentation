@@ -1,13 +1,13 @@
 .. _run_spark_jobs:
 
-Run Spark Jobs
-================
+Run Spark jobs
+=====================
 
 .. note::
 
    This feature is currently experimental. This guide exists here for experimental purposes.
 
-This guide describes how to run Spark jobs from inside Kubeflow notebooks and in Kubeflow pipeline steps.
+This guide describes how to run Spark jobs from inside Kubeflow Notebooks and in Kubeflow Pipeline steps.
 
 .. _run_spark_jobs_requirements:
 
@@ -22,15 +22,15 @@ Requirements
 .. _run_spark_jobs_on_kf_notebooks:
 
 ------------------------------------------
-Run Spark workloads on Kubeflow notebooks
+Run Spark job on Kubeflow Notebooks
 ------------------------------------------
 
-This section describes how Spark jobs can be run from inside a Kubeflow notebook environment.
+This section describes how Spark jobs can be run from inside a Kubeflow Notebook environment.
 
 .. _create_notebook_for_spark_job:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Create a Notebook for running Spark jobs
+Create a notebook for running Spark jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>`. This notebook is the workspace from which you run commands. 
@@ -64,12 +64,12 @@ To verify that Spark jobs can indeed be run from inside the notebook environment
 .. _run_spark_job_in_kf_pipeline:
 
 -------------------------------------
-Run Spark jobs in Kubeflow pipeline
+Run Spark jobs in Kubeflow Pipeline
 -------------------------------------
 
 `Kubeflow Pipelines <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline/>`_ provide 
 `steps <https://www.kubeflow.org/docs/components/pipelines/concepts/step/>`_ inside of which you can run Spark jobs 
-by adding the ``access-spark-pipeline: true`` label to a step during the Pipeline's definition. 
+by adding the ``access-spark-pipeline: true`` label to a step during the pipeline's definition. 
 See the detailed steps below.
 
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>` using the default notebook image. 
@@ -81,13 +81,22 @@ Once you are inside the notebook, you can now define Kubeflow
 comes along with the Charmed Spark Jupyterlab image to create Spark sessions to ensure that they are correctly 
 closed at the end of the context manager. 
 
-If you don't have a notebook ready, use the following code as an example. It creates a Pipeline with a single component 
-that runs a trivial Spark job. Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ is 
-installed in the Notebook's environment before running the Python command.
+Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ is 
+installed in the Notebook's environment to be able to define and configure Kubeflow Pipelines in Python.
 
 .. code-block:: bash
 
    !pip install kfp[kubernetes]
+
+If you don't have a notebook ready, use the following code as an example. It creates a Pipeline with a single component 
+that runs a trivial Spark job. 
+
+.. note::
+
+   Please make sure to use the correct Charmed Apache Spark image for Apache Spark version of your choice. 
+   In the code below (see ``CHARMED_SPARK_OCI_IMAGE``), the image for Apache Spark 3.5 is used. 
+   OCI image corresponding to other versions of Spark can be found 
+   `here <https://github.com/canonical/charmed-spark-rock/pkgs/container/charmed-spark>`_.
 
 .. code-block:: python
 
@@ -107,9 +116,18 @@ installed in the Notebook's environment before running the Python command.
             namespace=os.environ["SPARK_NAMESPACE"],
             username=os.environ["SPARK_SERVICE_ACCOUNT"]
         ) as session:
-            rdd = session.sparkContext.parallelize([1, 2, 3, 4, 5], numSlices=2)
-            result = rdd.map(lambda x: x * x).collect()
-            logging.info(f"Squared numbers: {result}")
+            rdd = sc.parallelize(
+                ["spark is fast", "spark is simple", "spark works"],
+                numSlices=3
+            )
+            word_counts = (
+                rdd
+                .flatMap(lambda line: line.split())
+                .map(lambda word: (word, 1))
+                .reduceByKey(lambda a, b: a + b)
+                .collect()
+            )
+            logging.info(f"Word counts: {word_counts}")
 
 
     @dsl.pipeline(name="spark-test-pipeline")
@@ -142,4 +160,4 @@ Once the pipeline starts running, navigate to the output ``Run details``. In its
 
 .. code-block:: text
 
-    Squared numbers: [1, 4, 9, 16, 25]
+    Word counts: [('is', 2), ('fast', 1), ('simple', 1), ('works', 1), ('spark', 3)]

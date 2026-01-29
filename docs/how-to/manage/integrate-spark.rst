@@ -8,7 +8,7 @@ Integrate with Charmed Apache Spark
    This feature is currently experimental. This guide exists here for experimental purposes.
 
 This guide describes how Charmed Kubeflow (CKF) and the Charmed Apache Spark can be integrated using `Juju`_. 
-This integration enables running Spark jobs in Kubeflow notebooks and pipelines.
+This integration enables running Spark jobs in Kubeflow Notebooks and Kubeflow Pipelines.
 
 .. _kf_spark_requirements:
 
@@ -19,8 +19,10 @@ Requirements
 - Minimum system requirements are at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
 - `MicroK8s`_ and Juju. See :ref:`CKF supported versions <supported_kubeflow_versions>` 
   for more details about compatible versions of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
-- CLI tools like ``charmcraft`` and ``tox``.
 - Juju agent version ``<=3.6.9``
+- ``charmcraft`` and ``tox`` pre-installed.
+- ``terraform``, if you chose to 
+  :ref:`Deploy CKF + Charmed Apache Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>`.
 
 .. _integrate_with_existing_kubeflow_deployment:
 
@@ -41,9 +43,12 @@ section below.
 
 Integrating CKF with Charmed Apache Spark involves the following:
 
-1. Deploying the ``spark-integration-hub-k8s`` charm
-2. Deploying ``data-kubeflow-integrator`` charm and integrating it with the ``spark-integration-hub-k8s`` charm
-3. Deploying ``resource-dispatcher`` charm and integrating it with the ``data-kubeflow-integrator`` charm
+- Deploying the ``spark-integration-hub-k8s`` charm (or using an existing deployment)
+- Deploying ``data-kubeflow-integrator`` charm and integrating it with the ``spark-integration-hub-k8s`` charm
+- Deploying ``resource-dispatcher`` charm and integrating it with the ``data-kubeflow-integrator`` charm
+
+The following sections describe these actions in detail.
+
 
 .. _deploy_and_configure_spark_integration_hub:
 
@@ -86,18 +91,20 @@ model.
 
 .. code-block:: bash
 
-   juju switch spark
-   juju offers
+   juju switch kubeflow
+   juju find-offers
 
 If the offer doesn't exist, create one with the commands below:
 
 .. code-block:: bash
 
+   juju switch spark
    juju offer integration-hub:spark-service-account
 
 You can then verify the offer has indeed been created with the command ``juju offers``.
 
-Once the offer has been created, switch back to the ``kubeflow`` model to consume the offer as follows:
+Once you verify that the offer is available for use, switch back to the ``kubeflow`` model to consume the offer as 
+follows:
 
 .. code-block:: bash
 
@@ -187,7 +194,7 @@ Integrate the Resource Dispatcher charm with Data-Kubeflow Integrator charm over
 .. _deploy_kubeflow_spark_solution_using_terraform:
 
 ------------------------------------------------------------------
-Deploy a new CKF + Charmed Apache Spark solution using Terraform
+Deploy CKF + Charmed Apache Spark solution using Terraform
 ------------------------------------------------------------------
 
 Alternatively, you can deploy the entire Charmed Kubeflow-Spark solution from scratch on an existing Juju controller using Terraform.
@@ -285,12 +292,19 @@ To run the UAT on top of the deployment, first fetch the UAT tests from the ``ch
 
 Now run the following command to run the UAT:
 
+.. note::
+
+   Please make sure to use the correct Charmed Apache Spark Jupyterlab image for Apache Spark version of your choice. 
+   In the command below, the image for Apache Spark 3.5 is used. OCI image corresponding to other versions of Spark 
+   can be found `here <https://github.com/canonical/charmed-spark-rock/pkgs/container/charmed-spark-jupyterlab>`_.
+
 .. code-block:: bash
 
    tox -e spark-remote -- \
-       --test-image ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge
+       --test-image ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge@sha256:72a6e89985e35e0920fb40c063b3287425760ebf823b129a87143d5ec0e99af7  \
+       --bundle ''
 
-This will run the tests to verify that Spark is enabled in both Kubeflow notebooks and Kubeflow pipeline steps.
+This will run the tests to verify that Spark is enabled in both Kubeflow Notebooks and Kubeflow Pipeline steps.
 
 ---------------------
 Access CKF dashboard
@@ -300,4 +314,4 @@ Once you have Charmed Kubeflow deployment along with the Spark support by follow
 now access the CKF dashboard through an IP address. 
 
 See :ref:`Access CKF dashboard <access_ckf_dashboard>` for more details on how to access the CKF dashboard.
-See :ref:`Run Spark jobs <run_spark_jobs>` for running sample Spark jobs using Kubeflow notebook and pipelines.
+See :ref:`Run Spark jobs <run_spark_jobs>` for running sample Spark jobs using Kubeflow Notebook and Kubeflow Pipeline.
