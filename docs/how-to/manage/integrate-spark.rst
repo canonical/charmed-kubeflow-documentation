@@ -5,7 +5,7 @@ Integrate with Charmed Apache Spark
 
 .. note::
 
-   This feature is currently experimental. This guide exists here for experimental purposes.
+   This feature is experimental and is not to be used in a production environment yet.
 
 This guide describes how Charmed Kubeflow (CKF) and the Charmed Apache Spark can be integrated using `Juju`_. 
 This integration enables running Spark jobs in Kubeflow Notebooks and Kubeflow Pipelines.
