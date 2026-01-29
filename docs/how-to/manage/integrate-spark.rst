@@ -35,7 +35,7 @@ section below.
 
 .. note::
 
-   When using an existing CKF deployment, sure that the ``metacontroller-operator`` charm is up to date with the 
+   When using an existing CKF deployment, ensure that the ``metacontroller-operator`` charm is up to date with the 
    ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
    to the stable channel.
 
