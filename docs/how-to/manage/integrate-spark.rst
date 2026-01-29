@@ -24,7 +24,7 @@ Minimum requirements for this guide are:
   of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
 - ``charmcraft`` and ``tox``
 - ``terraform``, if you chose to 
-  :ref:`Deploy CKF + Charmed Apache Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>`.
+  :ref:`deploy CKF + Charmed Apache Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>`.
 
 .. _integrate_with_existing_kubeflow_deployment:
 
@@ -43,47 +43,38 @@ section below.
    ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
    to the stable channel.
 
-Integrating CKF with Charmed Apache Spark involves the following:
+To integrate Charmed Kubeflow with Charmed Apache Spark, the following steps needs to be followed:
 
-- Deploying the ``spark-integration-hub-k8s`` charm (or using an existing deployment)
-- Deploying ``data-kubeflow-integrator`` charm and integrating it with the ``spark-integration-hub-k8s`` charm
-- Deploying ``resource-dispatcher`` charm and integrating it with the ``data-kubeflow-integrator`` charm
+- :ref:`Prepare Spark Integration Hub for integration <prepare_spark_integration_hub>`
+- :ref:`Deploy and configure Data-Kubeflow Integrator <deploy_data_kubeflow_integrator>`
+- :ref:`Integrate Data-Kubeflow Integrator with Spark Integration Hub <integrate_data_kubeflow_integrator_with_integration_hub>`
+- :ref:`Deploy Resource Dispatcher <deploy_resource_dispatcher>`
+- :ref:`Integrate Resource Dispatcher with Data-Kubeflow Integrator <integrate_resource_dispatcher_with_data_kubeflow_integrator>` 
+
 
 The following sections describe these actions in detail.
 
+.. _prepare_spark_integration_hub:
 
-.. _deploy_and_configure_spark_integration_hub:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Prepare Spark Integration Hub for integration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy Spark Integration Hub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Charmed Kubeflow is integrated with the Charmed Apache Spark ecosystem with the help of the Spark Integration Hub
+charm. You can either use an existing deployment of this charm, or deploy a new instance of this charm as described
+in the subsections below.
 
-.. note::
-
-   If you have an existing deployment of Spark Integration Hub, follow the step 
-   :ref:`Use an existing Spark Integration Hub deployment <use_existing_spark_integration_hub>` in place of this
-   step.
-
-Deploy the Spark Integration Hub charm in the ``kubeflow`` model by following the commands below.
-
-.. code-block:: bash
-
-   juju switch kubeflow
-   juju deploy spark-integration-hub-k8s --channel=3/edge integration-hub --trust
-
-Note that the ``--trust`` flag is essential when deploying the ``spark-integration-hub-k8s`` charm, for it 
-to be able to create and watch resources in the Kubernetes cluster.
 
 .. _use_existing_spark_integration_hub:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Use an existing Spark Integration Hub deployment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. note::
 
    If you don't yet have a deployment of Spark Integration Hub charm, please follow the step
-   :ref:`Deploy Spark Integration Hub <deploy_and_configure_spark_integration_hub>` in place of this step.
+   :ref:`Deploy a new instance of Spark Integration Hub <deploy_and_configure_spark_integration_hub>` in place of this step.
 
 This step assumes that there is an existing deployment of Spark Integration Hub charm from channel ``3/edge`` with 
 app name ``integration-hub`` in a separate Juju model named ``spark``.
@@ -117,6 +108,28 @@ If successful, you should now see ``integration-hub`` listed as a ``saas`` at th
 command in the ``kubeflow`` model.
 
 
+.. _deploy_and_configure_spark_integration_hub:
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+Deploy a new instance of Spark Integration Hub
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+.. note::
+
+   If you have an existing deployment of Spark Integration Hub, follow the step 
+   :ref:`Use an existing Spark Integration Hub deployment <use_existing_spark_integration_hub>` in place of this
+   step.
+
+Deploy the Spark Integration Hub charm in the ``kubeflow`` model by following the commands below.
+
+.. code-block:: bash
+
+   juju switch kubeflow
+   juju deploy spark-integration-hub-k8s --channel=3/edge integration-hub --trust
+
+Note that the ``--trust`` flag is essential when deploying the ``spark-integration-hub-k8s`` charm, for it 
+to be able to create and watch resources in the Kubernetes cluster.
+
 .. _deploy_data_kubeflow_integrator:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -127,7 +140,7 @@ Within the ``kubeflow`` model, deploy the Data-Kubeflow Integrator as follows:
 
 .. code-block:: bash
 
-   juju deploy -m kubeflow data-kubeflow-integrator --channel=1/edge
+   juju deploy data-kubeflow-integrator --channel=1/edge
 
 
 Set the ``profile`` and ``spark-service-account`` config in the Data-Kubeflow Integrator charm to specify the name 
@@ -136,7 +149,7 @@ to be created respectively.
 
 .. code-block:: bash
 
-   juju config -m kubeflow data-kubeflow-integrator \
+   juju config data-kubeflow-integrator \
        profile=* \
        spark-service-account=spark
 
@@ -156,7 +169,7 @@ Integrate the Data-Kubeflow Integrator with Spark Integration Hub as follows:
 
 .. code-block:: bash
 
-   juju integrate -m kubeflow data-kubeflow-integrator integration-hub
+   juju integrate data-kubeflow-integrator integration-hub
 
 
 .. _deploy_resource_dispatcher:
