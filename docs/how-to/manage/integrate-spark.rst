@@ -16,11 +16,13 @@ This integration enables running Spark jobs in Kubeflow Notebooks and Kubeflow P
 Requirements
 ---------------------
 
-- Minimum system requirements are at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
-- `MicroK8s`_ and Juju. See :ref:`CKF supported versions <supported_kubeflow_versions>` 
-  for more details about compatible versions of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
-- Juju agent version ``<=3.6.9``
-- ``charmcraft`` and ``tox`` pre-installed.
+Minimum requirements for this guide are:
+
+- A system with at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
+- `MicroK8s`_ and Juju (agent version ``<=3.6.9``) installed and configured in the system. 
+  See :ref:`CKF supported versions <supported_kubeflow_versions>` for more details about compatible versions 
+  of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
+- ``charmcraft`` and ``tox``
 - ``terraform``, if you chose to 
   :ref:`Deploy CKF + Charmed Apache Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>`.
 
