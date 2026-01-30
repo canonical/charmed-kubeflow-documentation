@@ -223,7 +223,7 @@ First of all, initialise Terraform. The following command downloads all the requ
 
    terraform init
 
-Define credentials that will later be used to log into Kubeflow dashboard.
+Define credentials that will later be used to log into Kubeflow dashboard:
 
 .. code-block:: bash
 
