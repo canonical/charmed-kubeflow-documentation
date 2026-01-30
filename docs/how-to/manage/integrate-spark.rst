@@ -316,7 +316,15 @@ Now run the following command to run the UAT:
        --test-image ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge@sha256:72a6e89985e35e0920fb40c063b3287425760ebf823b129a87143d5ec0e99af7  \
        --bundle ''
 
-This will run the tests to verify that Spark is enabled in both Kubeflow Notebooks and Kubeflow Pipeline steps.
+This will run the tests to verify that Spark is enabled in both Kubeflow Notebooks and Kubeflow Pipeline steps. The test
+takes around five minutes to complete and you should see some lines similar to the following lines at the end of the output,
+if the test was successful.
+
+.. code-block:: bash
+
+   spark-remote: OK (223.32=setup[0.07]+cmd[1.15,222.10] seconds)
+   congratulations :) (223.35 seconds)
+
 
 ---------------------------------------
 Access CKF dashboard to run Spark jobs

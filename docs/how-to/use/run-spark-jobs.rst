@@ -30,8 +30,10 @@ This section describes how Spark jobs can be run from inside a Kubeflow Notebook
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>`. This notebook is the workspace from which you run commands. 
 When creating the notebook, make sure to:
 
-1. Use Charmed Spark Jupyterlab OCI image (``ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge``) as the 
-   notebook image.
+1. Use `Charmed Spark Jupyterlab OCI image <https://github.com/canonical/charmed-spark-rock/pkgs/container/charmed-spark-jupyterlab>`_ 
+   corresponding to the Spark version of your choice as the notebook image. For the purpose of this guide, we will use the image 
+   ``ghcr.io/canonical/charmed-spark-jupyterlab:3.5-22.04_edge@sha256:72a6e89985e35e0920fb40c063b3287425760ebf823b129a87143d5ec0e99af7``
+   which corresponds to Apache Spark 3.5.
 2. Check the "Configure PySpark for Kubeflow notebooks" option under the "Configurations" section inside 
    "Advanced Options" to apply necessary PodDefaults to the notebook pod.
 
@@ -48,6 +50,11 @@ To verify that Spark jobs can indeed be run from inside the notebook environment
     result = rdd.map(lambda x: x * x).collect()
     print("Squared values:", result)
 
+You should see an output similar to the following lines:
+
+.. code-block:: text
+
+    Squared values: [1, 4, 9, 16, 25]
 
 .. _run_spark_job_in_kf_pipeline:
 
@@ -58,7 +65,6 @@ Run Spark jobs in Kubeflow Pipeline
 `Kubeflow Pipelines <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline/>`_ provide 
 `steps <https://www.kubeflow.org/docs/components/pipelines/concepts/step/>`_ inside of which you can run Spark jobs 
 by adding the ``access-spark-pipeline: true`` label to a step during the pipeline's definition. 
-See the detailed steps below.
 
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>` using the default notebook image. 
 This notebook is the workspace from which you run commands.
@@ -66,8 +72,9 @@ This notebook is the workspace from which you run commands.
 Once you are inside the notebook, you can now define Kubeflow 
 `components <https://www.kubeflow.org/docs/components/pipelines/concepts/component/>`_ that run Spark jobs using 
 ``pyspark``. It is recommended to use the ``SparkSession`` context manager in the ``spark8t`` Python package that 
-comes along with the Charmed Spark Jupyterlab image to create Spark sessions to ensure that they are correctly 
-closed at the end of the context manager. 
+comes along with the Charmed Spark Jupyterlab image to create Spark sessions -- for the ease of initialisation of
+Spark session with necessary configurations and to ensure that the sessions are correctly closed at the end of the 
+context manager. 
 
 Make sure the `KFP SDK <https://kubeflow-pipelines.readthedocs.io/en/master/>`_ is 
 installed in the Notebook's environment to be able to define and configure Kubeflow Pipelines in Python.
@@ -76,8 +83,8 @@ installed in the Notebook's environment to be able to define and configure Kubef
 
    !pip install kfp[kubernetes]
 
-If you don't have a notebook ready, use the following code as an example. It creates a Pipeline with a single component 
-that runs a trivial Spark job. 
+If you don't have a notebook that runs Spark jobs already, use the following code as an example. 
+It creates a Pipeline with a single component that runs a trivial Spark job. 
 
 .. note::
 
@@ -104,7 +111,7 @@ that runs a trivial Spark job.
             namespace=os.environ["SPARK_NAMESPACE"],
             username=os.environ["SPARK_SERVICE_ACCOUNT"]
         ) as session:
-            rdd = sc.parallelize(
+            rdd = session.sparkContext.parallelize(
                 ["spark is fast", "spark is simple", "spark works"],
                 numSlices=3
             )
@@ -143,7 +150,9 @@ Submit and run the Pipeline with the following code:
         enable_caching=False,
     )
 
-Once the pipeline starts running, navigate to the output ``Run details``. In its logs, you can see the result as shown below:
+Once the pipeline starts running, navigate to the output ``Run details``. Wait for some time to allow
+the run to complete, which usually takes a couple of minutes. Once the run is complete, you should see
+the result similar to the following somewhere in its logs:
 
 
 .. code-block:: text
