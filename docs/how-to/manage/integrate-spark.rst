@@ -217,7 +217,7 @@ Apply the Terraform module
 
 First of all, initialise Terraform. The following command downloads all the required 
 `Terraform modules <https://developer.hashicorp.com/terraform/language/modules>`_ and installs the Terraform 
-`Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_.
+`Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_:
 
 .. code-block:: bash
 
