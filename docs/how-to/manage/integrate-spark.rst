@@ -286,7 +286,7 @@ As the first step, verify all charms are in ``active`` status by monitoring the 
 .. code-block:: bash
 
    juju switch kubeflow
-   juju status --watch 1s
+   watch -n 1 "juju status"
 
 .. note::
 
