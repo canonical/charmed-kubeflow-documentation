@@ -25,7 +25,7 @@ Requirements
 Run Spark job on Kubeflow Notebooks
 ------------------------------------------
 
-This section describes how Spark jobs can be run from inside a Kubeflow Notebook environment.
+This section describes how to run Spark jobs from inside a Kubeflow notebook environment.
 
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>`. This notebook is the workspace from which you run commands. 
 When creating the notebook, make sure to:
@@ -153,7 +153,6 @@ Submit and run the Pipeline with the following code:
 Once the pipeline starts running, navigate to the output ``Run details``. Wait for some time to allow
 the run to complete, which usually takes a couple of minutes. Once the run is complete, you should see
 the result similar to the following somewhere in its logs:
-
 
 .. code-block:: text
 

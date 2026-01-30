@@ -40,7 +40,7 @@ section below.
 
 .. note::
 
-   When using an existing CKF deployment, sure that the ``metacontroller-operator`` charm is up to date with the 
+   When using an existing CKF deployment, ensure that the ``metacontroller-operator`` charm is up to date with the 
    ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
    to the stable channel.
 
@@ -205,8 +205,6 @@ Integrate the Resource Dispatcher charm with Data-Kubeflow Integrator charm over
    juju integrate resource-dispatcher:roles data-kubeflow-integrator:roles
    juju integrate resource-dispatcher:role-bindings data-kubeflow-integrator:role-bindings
 
-
-
 .. _deploy_kubeflow_spark_solution_using_terraform:
 
 ------------------------------------------------------------------
@@ -238,13 +236,13 @@ Apply the Terraform module
 
 First of all, initialise Terraform. The following command downloads all the required 
 `Terraform modules <https://developer.hashicorp.com/terraform/language/modules>`_ and installs the Terraform 
-`Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_.
+`Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_:
 
 .. code-block:: bash
 
    terraform init
 
-Define credentials that will later be used to log into Kubeflow dashboard.
+Define credentials that will later be used to log into Kubeflow dashboard:
 
 .. code-block:: bash
 
@@ -273,7 +271,6 @@ The command above:
   Spark integration aren't released to the stable channel yet.
 
 Wait until the deployment is complete, and the ``terraform apply`` command returns.
-
 
 .. _verify_kubeflow_spark_deployment:
 
