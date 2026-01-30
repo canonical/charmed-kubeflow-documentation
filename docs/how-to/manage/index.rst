@@ -32,7 +32,8 @@ Find out how to integrate CKF with other charms:
 
     Integrate with COS <integrate-cos>
     Integrate with MinIO <integrate-minio>  
-    Integrate with MLflow <integrate-mlflow>                                                                
+    Integrate with MLflow <integrate-mlflow>        
+    Integrate with Spark <integrate-spark>                                                        
                                    
 Learn how to manage profiles:
 
