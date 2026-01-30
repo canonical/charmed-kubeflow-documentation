@@ -139,7 +139,6 @@ Submit and run the Pipeline with the following code:
 
 Once the pipeline starts running, navigate to the output ``Run details``. In its logs, you can see the result as shown below:
 
-
 .. code-block:: text
 
     Squared numbers: [1, 4, 9, 16, 25]
