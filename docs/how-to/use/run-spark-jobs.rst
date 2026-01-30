@@ -27,12 +27,6 @@ Run Spark job on Kubeflow Notebooks
 
 This section describes how Spark jobs can be run from inside a Kubeflow Notebook environment.
 
-.. _create_notebook_for_spark_job:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Create a notebook for running Spark jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Create a :ref:`Kubeflow notebook <kubeflow_notebooks>`. This notebook is the workspace from which you run commands. 
 When creating the notebook, make sure to:
 
@@ -42,12 +36,6 @@ When creating the notebook, make sure to:
    "Advanced Options" to apply necessary PodDefaults to the notebook pod.
 
 Connect to the notebook and start a new Python 3 notebook session from the Launcher.
-
-.. _run_spark_job_using_notebook:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Run Spark jobs in notebook cells
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you are inside the notebook, you can access the Spark context using the in-built variable ``sc``. You can also 
 import ``pyspark`` which comes pre-installed in the image, and then create Spark context by yourself.
