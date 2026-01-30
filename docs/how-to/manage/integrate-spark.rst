@@ -318,12 +318,14 @@ Now run the following command to run the UAT:
 
 This will run the tests to verify that Spark is enabled in both Kubeflow Notebooks and Kubeflow Pipeline steps.
 
----------------------
-Access CKF dashboard
----------------------
+---------------------------------------
+Access CKF dashboard to run Spark jobs
+---------------------------------------
 
 Once you have Charmed Kubeflow deployment along with the Spark support by following the instructions above, you can
-now access the CKF dashboard through an IP address. 
+now access the CKF dashboard through an IP address. See :ref:`Access CKF dashboard <access_ckf_dashboard>` for more 
+details on how to access the CKF dashboard.
 
-See :ref:`Access CKF dashboard <access_ckf_dashboard>` for more details on how to access the CKF dashboard.
-See :ref:`Run Spark jobs <run_spark_jobs>` for running sample Spark jobs using Kubeflow Notebook and Kubeflow Pipeline.
+Using the Kubeflow dashboard, you can now create Kubeflow Notebooks and Kubeflow Pipelines and write code to run Spark
+jobs within them. See :ref:`Run Spark jobs <run_spark_jobs>` for the guide on how to run sample Spark jobs using 
+Kubeflow Notebook and Kubeflow Pipeline.
