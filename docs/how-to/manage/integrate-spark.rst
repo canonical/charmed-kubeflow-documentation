@@ -51,7 +51,7 @@ sections describe these actions in detail.
 .. _prepare_spark_integration_hub:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Spark Integration Hub for Setup
+Spark Integration Hub setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Charmed Kubeflow is integrated with the Charmed Apache Spark ecosystem with the help of the Spark Integration Hub
