@@ -25,7 +25,7 @@ Requirements
 Run Spark workloads on Kubeflow notebooks
 ------------------------------------------
 
-This section describes how Spark jobs can be run from inside a Kubeflow notebook environment.
+This section describes how to run Spark jobs from inside a Kubeflow notebook environment.
 
 .. _create_notebook_for_spark_job:
 
