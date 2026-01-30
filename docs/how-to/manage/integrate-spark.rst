@@ -253,7 +253,6 @@ The command above:
 
 Wait until the deployment is complete, and the ``terraform apply`` command returns.
 
-
 .. _verify_kubeflow_spark_deployment:
 
 ~~~~~~~~~~~~~~~~~~~~~~~
