@@ -41,24 +41,17 @@ section below.
 .. note::
 
    When using an existing CKF deployment, ensure that the ``metacontroller-operator`` charm is up to date with the 
-   ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
+   ``4.11/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
    to the stable channel.
 
-To integrate Charmed Kubeflow with Charmed Apache Spark, the following steps need to be followed:
-
-- :ref:`Prepare Spark Integration Hub for integration <prepare_spark_integration_hub>`
-- :ref:`Deploy and configure Data-Kubeflow Integrator <deploy_data_kubeflow_integrator>`
-- :ref:`Integrate Data-Kubeflow Integrator with Spark Integration Hub <integrate_data_kubeflow_integrator_with_integration_hub>`
-- :ref:`Deploy and configure Resource Dispatcher <deploy_resource_dispatcher>`
-- :ref:`Integrate Resource Dispatcher with Data-Kubeflow Integrator <integrate_resource_dispatcher_with_data_kubeflow_integrator>` 
-
-
-The following sections describe these actions in detail.
+To integrate Charmed Kubeflow with Charmed Apache Spark, you need to deploy Spark Integration Hub, Data-Kubeflow
+Integrator and Resource Dispatcher charms, configure them and integrate them with Juju relations. The following 
+sections describe these actions in detail.
 
 .. _prepare_spark_integration_hub:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Prepare Spark Integration Hub for integration
+Spark Integration Hub for Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Charmed Kubeflow is integrated with the Charmed Apache Spark ecosystem with the help of the Spark Integration Hub
@@ -133,9 +126,9 @@ to be able to create and watch resources in the Kubernetes cluster.
 
 .. _deploy_data_kubeflow_integrator:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy and configure Data-Kubeflow Integrator
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Data-Kubeflow Integrator setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Within the ``kubeflow`` model, deploy the Data-Kubeflow Integrator as follows:
 
@@ -159,13 +152,6 @@ Note that the value of ``profile`` is set as ``*`` to enable Spark in all Kubefl
 `this documentation <https://canonical-charmed-spark.readthedocs-hosted.com/main/how-to/manage-service-accounts/>`_ 
 to read more about the Spark service accounts.
 
-
-.. _integrate_data_kubeflow_integrator_with_integration_hub:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Integrate Data-Kubeflow Integrator with Spark Integration Hub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Integrate the Data-Kubeflow Integrator with Spark Integration Hub as follows:
 
 .. code-block:: bash
@@ -175,9 +161,9 @@ Integrate the Data-Kubeflow Integrator with Spark Integration Hub as follows:
 
 .. _deploy_resource_dispatcher:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy and configure Resource Dispatcher
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Resource Dispatcher setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Within the ``kubeflow`` model, deploy the Resource Dispatcher charm as follows:
 
@@ -187,12 +173,6 @@ Within the ``kubeflow`` model, deploy the Resource Dispatcher charm as follows:
 
 Note that the ``--trust`` flag is essential when deploying the ``resource-dispatcher`` charm, for it 
 to be able to create resources in Kubernetes.
-
-.. _integrate_resource_dispatcher_with_data_kubeflow_integrator:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Integrate Resource Dispatcher with Data-Kubeflow Integrator
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Integrate the Resource Dispatcher charm with Data-Kubeflow Integrator charm over the endpoints ``secrets``,
 ``service-accounts``, ``pod-defaults``, ``roles`` and ``role-bindings`` as follows:
@@ -214,11 +194,6 @@ Deploy CKF + Charmed Apache Spark solution using Terraform
 Alternatively, you can deploy the entire Charmed Kubeflow-Spark solution from scratch on an existing Juju controller using Terraform.
 This section of the guide assumes you have a working Juju K8s controller and the ``terraform`` and ``charmcraft`` CLI installed.
 
-.. _fetch_kubeflow_spark_terraform_module:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Fetch the Charmed Kubeflow-Spark Terraform module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Clone the ``charmed-kubeflow-solutions`` repository and change directory to the Kubeflow-Spark module as follows:
 
@@ -228,13 +203,7 @@ Clone the ``charmed-kubeflow-solutions`` repository and change directory to the 
    cd charmed-kubeflow-solutions/modules/kubeflow-spark
 
 
-.. _apply_terraform_module:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Apply the Terraform module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-First of all, initialise Terraform. The following command downloads all the required 
+Initialise Terraform. The following command downloads all the required 
 `Terraform modules <https://developer.hashicorp.com/terraform/language/modules>`_ and installs the Terraform 
 `Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_:
 
