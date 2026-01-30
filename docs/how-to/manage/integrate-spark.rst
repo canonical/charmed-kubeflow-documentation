@@ -182,8 +182,6 @@ Integrate the Resource Dispatcher charm with Data-Kubeflow Integrator charm over
    juju integrate resource-dispatcher:roles data-kubeflow-integrator:roles
    juju integrate resource-dispatcher:role-bindings data-kubeflow-integrator:role-bindings
 
-
-
 .. _deploy_kubeflow_spark_solution_using_terraform:
 
 ------------------------------------------------------------------
