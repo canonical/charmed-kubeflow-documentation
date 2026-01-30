@@ -216,10 +216,6 @@ Deploy CKF + Charmed Apache Spark solution using Terraform
 Alternatively, you can deploy the entire Charmed Kubeflow-Spark solution from scratch on an existing Juju controller using Terraform.
 This section of the guide assumes you have a working Juju K8s controller and the ``terraform`` and ``charmcraft`` CLI installed.
 
-The steps to deploy the Charmed Kubeflow-Spark solution using Terraform is pretty similar to 
-:ref:`Deploy Charmed Kubeflow using Terraform <install_terraform>`, the only difference being the Terraform module that is to be 
-applied.
-
 .. _fetch_kubeflow_spark_terraform_module:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
