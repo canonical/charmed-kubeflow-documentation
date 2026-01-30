@@ -5,7 +5,7 @@ Run Spark jobs
 
 .. note::
 
-   This feature is experimental and is not to be used in a production environment yet.
+   This feature is experimental and therefore should not to be used in a production environment.
 
 This guide describes how to run Spark jobs from inside Kubeflow Notebooks and in Kubeflow Pipeline steps.
 

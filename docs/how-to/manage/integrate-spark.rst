@@ -5,10 +5,11 @@ Integrate with Charmed Apache Spark
 
 .. note::
 
-   This feature is experimental and is not to be used in a production environment yet.
+   This feature is experimental and therefore should not to be used in a production environment.
 
-This guide describes how Charmed Kubeflow (CKF) and the Charmed Apache Spark can be integrated using `Juju`_. 
-This integration enables running Spark jobs in Kubeflow Notebooks and Kubeflow Pipelines.
+This guide describes how Charmed Kubeflow (CKF) and the 
+`Charmed Apache Spark <https://canonical-charmed-spark.readthedocs-hosted.com/main/>`_ can be integrated using 
+`Juju`_. This integration enables running Spark jobs in Kubeflow Notebooks and Kubeflow Pipelines.
 
 .. _kf_spark_requirements:
 
@@ -43,12 +44,12 @@ section below.
    ``latest/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
    to the stable channel.
 
-To integrate Charmed Kubeflow with Charmed Apache Spark, the following steps needs to be followed:
+To integrate Charmed Kubeflow with Charmed Apache Spark, the following steps need to be followed:
 
 - :ref:`Prepare Spark Integration Hub for integration <prepare_spark_integration_hub>`
 - :ref:`Deploy and configure Data-Kubeflow Integrator <deploy_data_kubeflow_integrator>`
 - :ref:`Integrate Data-Kubeflow Integrator with Spark Integration Hub <integrate_data_kubeflow_integrator_with_integration_hub>`
-- :ref:`Deploy Resource Dispatcher <deploy_resource_dispatcher>`
+- :ref:`Deploy and configure Resource Dispatcher <deploy_resource_dispatcher>`
 - :ref:`Integrate Resource Dispatcher with Data-Kubeflow Integrator <integrate_resource_dispatcher_with_data_kubeflow_integrator>` 
 
 
@@ -174,9 +175,9 @@ Integrate the Data-Kubeflow Integrator with Spark Integration Hub as follows:
 
 .. _deploy_resource_dispatcher:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Deploy Resource Dispatcher
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Deploy and configure Resource Dispatcher
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Within the ``kubeflow`` model, deploy the Resource Dispatcher charm as follows:
 
@@ -280,9 +281,9 @@ Wait until the deployment is complete, and the ``terraform apply`` command retur
 
 .. _verify_kubeflow_spark_deployment:
 
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 Verify the deployment
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 As the first step, verify all charms are in ``active`` status by monitoring the Juju model:
 
