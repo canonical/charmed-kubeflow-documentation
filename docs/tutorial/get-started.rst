@@ -26,169 +26,153 @@ Install and configure dependencies
 
 CKF relies on:
 
-* `Kubernetes`_ (K8s). This tutorial uses `MicroK8s`_, an open-source zero-ops lightweight distribution of Kubernetes, to run a K8s cluster.
+* `Kubernetes`_ (K8s). This tutorial uses Canonical K8s, an enterprise-ready Kubernetes distribution.
 * A software orchestration engine. This tutorial uses `Juju`_ to deploy and manage the Kubeflow components.
+* Infrastructure as Code. This tutorial uses `Terraform`_ to provision the CKF deployment.
  
-Install MicroK8s
-~~~~~~~~~~~~~~~~~
+Install required tools
+~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
-    This tutorial deploys the latest version of K8s supported in CKF. 
-    For using other versions, check :ref:`Supported versions <supported_kubeflow_versions>` for compatibility with Juju. 
-    If you have already installed MicroK8s, you may skip some steps within this section. 
-
-
-MicroK8s can be installed using `snap`_ as follows:
+Install the necessary packages and tools for the deployment:
 
 .. code-block:: bash
 
-    sudo snap install microk8s --channel=1.32/stable --classic
+    sudo apt-get install -yqq pipx git
+    pipx ensurepath
+    export PATH="$HOME/.local/bin:$PATH"
 
-After MicroK8s is installed, you need sufficient permissions to access it. 
-Grant those as follows:
-
-.. code-block:: bash
-
-    sudo usermod -a -G microk8s $USER
-
-To refresh the permissions, restart your machine or run the following command:
+Install Python package managers that will be used for managing dependencies:
 
 .. code-block:: bash
 
-    newgrp microk8s
+    pipx install tox
+    pipx install poetry
 
-See `Get started with MicroK8s <https://microk8s.io/docs/getting-started>`_ for more details about installing MicroK8s.
-
-Configure MicroK8s
-~~~~~~~~~~~~~~~~~~
-
-For deploying CKF, additional features from the default ones that come with MicroK8s are needed. 
-These can be installed as MicroK8s `add-ons <https://microk8s.io/docs/addons>`_. 
-Run the following command to enable them:
+Install Terraform, Concierge, and Juju using snap:
 
 .. code-block:: bash
 
-    sudo microk8s enable dns hostpath-storage metallb:10.64.140.43-10.64.140.49 rbac
-
-To confirm that all add-ons are successfully enabled, check the MicroK8s status as follows:
-
-.. code-block:: bash
-
-    microk8s status
-
-.. note::
-    The add-ons configuration may take a few minutes to complete before they are listed as ``enabled``.
-
-Install Juju
-~~~~~~~~~~~~
+    sudo snap install terraform --channel latest/stable --classic
+    sudo snap install concierge --classic
+    sudo snap install juju --channel 3.6/stable --classic
 
 .. note::
     This tutorial uses Juju 3.6. 
-    For using other versions, check :ref:`Supported versions <supported_kubeflow_versions>` for compatibility with K8s. 
-    If you have already installed Juju, you may skip some steps within this section. 
+    For using other versions, check :ref:`Supported versions <supported_kubeflow_versions>` for compatibility with K8s.
 
+Configure the environment with Concierge
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Juju can be installed using snap as follows:
+Concierge automates the setup of Kubernetes and Juju for local development. 
+Create a configuration file named ``concierge.yaml`` with the following content:
 
-.. code-block:: bash
+.. code-block:: yaml
 
-    sudo snap install juju --channel=3.6/stable
+    juju:
+      channel: 3.6/stable
+      agent-version: 3.6.9
+      model-defaults:
+        logging-config: <root>=INFO; unit=DEBUG
 
-On some machines, there might be a missing folder required for Juju. To ensure this folder exists, create it as follows:
+    providers:
+      k8s:
+        enable: true
+        bootstrap: true
+        channel: 1.32-classic/stable
+        features:
+          local-storage:
+          load-balancer:
+            enabled: true
+            l2-mode: true
+            cidrs: 10.64.140.43/32
+        bootstrap-constraints:
+          root-disk: 4G
 
-.. code-block:: bash
+      lxd:
+        enable: true
+        bootstrap: false
+        channel: latest/stable
 
-    mkdir -p ~/.local/share
+    host:
+      snaps:
+        charmcraft:
+          channel: 3.x/stable
 
-See `Get started with Juju <https://juju.is/docs/juju/tutorial>`_ for more details about installing Juju.
+This configuration sets up:
 
-Configure Juju
-~~~~~~~~~~~~~~
-
-Enable MicroK8s for Juju as follows:
-
-.. code-block:: bash
-
-    microk8s config | juju add-k8s my-k8s --client
-
-Next, deploy a Juju controller to your MicroK8s cluster:
-
-.. code-block:: bash
-
-    juju bootstrap my-k8s uk8sx
-
-.. note::
-    The controller may take a few minutes to deploy.
-
-The Juju controller is used to deploy and control the Kubeflow components.
-You now need to create a Kubeflow model for the Juju controller as follows:
-
-.. code-block:: bash
-
-    juju add-model kubeflow
-
-.. note::
-    The model name must be ``kubeflow``.
-
-Deploy CKF
-----------
+* Juju 3.6 with specific agent version
+* Canonical K8s 1.32 with local storage and load balancer features
+* LXD for containerization support
+* Charmcraft for charm development
 
 .. note::
+    The ``cidrs`` value (``10.64.140.43/32``) specifies the IP address that will be assigned to the load balancer. 
+    You may need to adjust this value based on your network configuration.
 
-    Older versions of MicroK8s were setting low `inotify` limits, that did not comply
-    with Kubeflow needs. Please make sure that `fs.inotify.max_user_instances` is larger than `1024` and
-    `fs.inotify.max_user_watches` is larger than `655360`. To change these values use `sysctl`
-    commands, e.g. `sudo sysctl <key>=<value>`.
-
-To deploy CKF with Juju, run the following command:
+Run Concierge to prepare the environment:
 
 .. code-block:: bash
 
-    juju deploy kubeflow --trust --channel=1.10/stable
+    sudo concierge prepare --trace
 
 .. note::
-    The deployment may take a few minutes to complete.
+    The preparation may take several minutes to complete as it installs and configures Canonical K8s and bootstraps the Juju controller.
 
-Once the deployment is completed, you get a message like the following:
-
-.. code::bash
-
-    Deploy of bundle completed.
-
-.. note::
-    After the deployment, the bundle components need some time to initialise and establish communication with each other. 
-    This process may take up to 20 minutes.
-
-Check the status of the components as follows:
+Verify the Juju controller is running:
 
 .. code-block:: bash
 
     juju status
 
-Use the ``watch`` option to continuously track their status:
+Deploy CKF with Terraform
+--------------------------
+
+Clone the Charmed Kubeflow solutions repository:
 
 .. code-block:: bash
 
-    juju status --watch 5s
+    git clone https://github.com/canonical/charmed-kubeflow-solutions.git
+    cd charmed-kubeflow-solutions/
 
-You should expect an output like this:
+Switch to the 1.11 track:
 
 .. code-block:: bash
 
-    Model 	Controller  Cloud/Region  	Version  SLA      	Timestamp
-    kubeflow  uk8sx   	my-k8s/localhost  3.6.4	unsupported  16:12:02Z
+    git checkout track/1.11
 
-    App                  	Version              	Status  Scale  Charm                	Channel      	Rev  Address     	Exposed  Message
-    admission-webhook                             	active  	1  admission-webhook    	1.10/stable   	411  10.152.183.153  no  	 
-    argo-controller                               	active  	1  argo-controller      	3.4/stable   	683  10.152.183.168  no  	 
-    dex-auth                                      	active  	1  dex-auth             	2.41/stable  	641  10.152.183.184  no  	 
-    envoy                                         	active  	1  envoy                	2.4/stable   	364  10.152.183.74   no
+Navigate to the Kubeflow Terraform module:
 
-    Unit                    	Workload  Agent  	Address 	Ports      	Message
-    admission-webhook/0*    	active	idle   	10.1.80.9             	 
-    argo-controller/0*      	active	idle   	10.1.80.10            	 
-    dex-auth/0*             	active	idle   	10.1.80.11            	 
-    envoy/0*                	active	idle   	10.1.80.14
+.. code-block:: bash
+
+    cd modules/kubeflow
+
+Initialize Terraform to download the required providers and modules:
+
+.. code-block:: bash
+
+    terraform init
+
+Deploy CKF using Terraform:
+
+.. code-block:: bash
+
+    terraform apply -auto-approve
+
+.. note::
+    The deployment may take 15-30 minutes to complete. 
+    Terraform will provision all the necessary Kubeflow components and configure them automatically.
+
+Monitor the deployment status:
+
+.. code-block:: bash
+
+    juju status
+
+You can also check the Kubernetes services in the kubeflow namespace:
+
+.. code-block:: bash
+
+    kubectl get svc -n kubeflow
 
 CKF is ready when all the applications and units are in ``active`` status.  
 During the configuration process, some of the components may momentarily change to a ``blocked`` or ``error`` state. 
@@ -216,10 +200,10 @@ To check the IP address associated with your deployment, run the following comma
 
 .. code-block:: bash
 
-    microk8s kubectl -n kubeflow get svc istio-ingressgateway-workload -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+    kubectl get svc -n kubeflow istio-ingressgateway-workload -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 
 .. note::
-    You should see an output like this: ``10.64.140.43``, which is the default IP address used in the MicroK8s configuration. 
+    You should see an output like this: ``10.64.140.43``, which is the IP address configured in the Concierge setup. 
     If the output shows a different IP, use that IP for the rest of this tutorial.
 
 To access your deployment, open a browser and visit the dashboard IP. 
@@ -247,3 +231,4 @@ Next steps
 * Once deployed, :ref:`build your first ML model on Kubeflow <build_your_first_ml_model>`.
 * To learn about common tasks and use cases, see :ref:`how-to guides <index_how_to>`.
 * To learn about the advantages of using CKF over upstream Kubeflow, see :ref:`Charmed vs upstream Kubeflow <charmed_vs_upstream>`.
+

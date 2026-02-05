@@ -38,6 +38,7 @@
 .. _`Sphinx extensions`: https://www.sphinx-doc.org/en/master/usage/extensions/index.html
 .. _Sphinx tabs: https://sphinx-tabs.readthedocs.io/en/latest/
 .. _tables: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#table-directives
+.. _Terraform: https://www.terraform.io/
 .. _toctree: https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
 .. _Vale: https://vale.sh/
 .. _Vale rules: https://github.com/canonical/praecepta
