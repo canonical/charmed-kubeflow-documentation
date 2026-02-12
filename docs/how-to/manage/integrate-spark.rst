@@ -225,8 +225,7 @@ Finally, deploy Charmed Kubeflow-Spark solution using Terraform as follows:
    terraform apply \
       -var dex_static_username=$DEX_USERNAME \
       -var dex_static_password=$DEX_PASSWORD \
-      -var metacontroller_operator_revision=551 \
-      -var resource_dispatcher_revision=434
+      -var risk=edge
 
 The command above:
 
