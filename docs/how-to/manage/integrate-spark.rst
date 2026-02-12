@@ -230,12 +230,12 @@ Finally, deploy Charmed Kubeflow-Spark solution using Terraform as follows:
 The command above:
 
 * Creates a `Juju model <https://juju.is/docs/juju/model>`_ named ``kubeflow``.  
-* Deploys CKF ``1.10/stable``.  
+* Deploys CKF ``1.10/`` from ``edge``.  
 * Deploys charms like Spark Integration Hub, Data-Kubeflow Integrator and Resource Dispatcher that are necessary 
   for Spark integration.
 * Configures `dex-auth <https://charmhub.io/dex-auth>`_ charm with a static user username and password.  
-* Deploys a specific revision of `metacontroller-operator <https://charmhub.io/metacontroller-operator>`_ 
-  and `resource-dispatcher <https://charmhub.io/resource-dispatcher>`_ charms because the changes necessary for 
+* Deploys `metacontroller-operator <https://charmhub.io/metacontroller-operator>`_ 
+  and `resource-dispatcher <https://charmhub.io/resource-dispatcher>`_ charms from edge channel because the changes necessary for 
   Spark integration aren't released to the stable channel yet.
 
 Wait until the deployment is complete, and the ``terraform apply`` command returns.
