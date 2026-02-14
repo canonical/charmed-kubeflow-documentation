@@ -68,7 +68,8 @@ Run the following command to enable them:
 
 .. code-block:: bash
 
-    sudo microk8s enable dns hostpath-storage metallb:10.64.140.43-10.64.140.49 rbac
+    IP_ADDR=$(ip -4 -j route get 2.2.2.2 | jq -r '.[] | .prefsrc')
+    sudo microk8s enable dns hostpath-storage metallb:$IP_ADDR-$IP_ADDR rbac
 
 To confirm that all add-ons are successfully enabled, check the MicroK8s status as follows:
 
