@@ -12,7 +12,7 @@ and deploying Kubeflow using the Terraform, `Kubernetes <https://kubernetes.io/>
 Requirements
 ---------------------
 
-* A K8s cluster version 1.27-1.29 with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
+* A K8s cluster version 1.29-1.32 with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
 
 ---------------------
@@ -64,19 +64,16 @@ Deploy CKF as follows:
    terraform apply \
       -var cos_configuration=true \
       -var dex_static_username=$DEX_USERNAME \
-      -var dex_static_password=$DEX_PASSWORD \
-      -var kfp_db_revision=203 \
-      -var katib_db_revision=203
+      -var dex_static_password=$DEX_PASSWORD
 
 The command above:
 
 * Creates a `Juju model <https://juju.is/docs/juju/model>`_ named ``kubeflow``.  
-* Deploys CKF ``1.9/stable``.  
+* Deploys CKF ``1.11/stable``.  
 * Configures CKF to integrate with `Canonical Observability Stack <https://charmhub.io/topics/canonical-observability-stack>`_. See :ref:`Monitoring <index_monitoring>` for more details.  
 * Configures `dex-auth <https://charmhub.io/dex-auth>`_ charm with a static user username and password.  
-* Deploys a specific revision of `mysql-k8s <https://charmhub.io/mysql-k8s>`_ charm due to `this bug <https://github.com/canonical/mysql-k8s-operator/issues/504>`_.  
 
-See `CKF Terraform solution <https://github.com/canonical/charmed-kubeflow-solutions/blob/track/1.9/modules/kubeflow/README.md>`_ for more details.
+See `CKF Terraform solution <https://github.com/canonical/charmed-kubeflow-solutions/blob/track/1.11/modules/kubeflow/README.md>`_ for more details.
 
 5. Once the deployment is completed, you should see the Terraform solution module's outputs:
 
