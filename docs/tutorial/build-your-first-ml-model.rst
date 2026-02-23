@@ -48,7 +48,7 @@ Now install the Python packages required for the remaining of the tutorial:
 
 .. code-block:: python
     
-    pip install mlflow==2.15.1 kserve==0.13.1 tenacity
+    pip install mlflow==2.22.4 kserve==0.15.2 tenacity
 
 Kubeflow pipelines
 ------------------
@@ -88,7 +88,7 @@ Create a component that downloads the sample dataset, imports it as a ``.csv`` f
 
     @component(
         base_image="python:3.11",
-        packages_to_install=["requests==2.32.3", "pandas==2.2.2"]
+        packages_to_install=["requests==2.32.5", "pandas==2.3.3"]
     )
     def download_dataset(url: str, dataset_path: OutputPath('Dataset')) -> None:
         import requests
@@ -111,7 +111,7 @@ Create a component that preprocesses the dataset and saves it as an [Apache Parq
 
     @component(
         base_image="python:3.11",
-        packages_to_install=["pandas==2.2.2", "pyarrow==15.0.2"]
+        packages_to_install=["pandas==2.3.3", "pyarrow==19.0.1"]
     )
     def preprocess_dataset(dataset: InputPath('Dataset'), output_file: OutputPath('Dataset')) -> None:
         import pandas as pd
@@ -128,8 +128,8 @@ Now that the dataset is preprocessed, you can write a component that splits the 
 .. code-block:: python
 
     @component(
-        base_image="python:3.11",
-        packages_to_install=["pandas==2.2.2", "scikit-learn==1.5.1", "mlflow==2.15.1", "pyarrow==15.0.2", "boto3==1.34.162"]
+    base_image="python:3.11",  # Use Python 3.11 base image
+    packages_to_install=["pandas==2.3.3", "scikit-learn==1.8.0", "mlflow==2.22.4", "pyarrow==19.0.1", "boto3==1.42.37"]
     )
     def train_model(dataset: InputPath('Dataset'), run_name: str, model_name: str) -> str:
         import os
@@ -164,7 +164,7 @@ Deploy the ML model
 ~~~~~~~~~~~~~~~~~~~
 
 After the model has been trained, you can create a KServe inference service to enable scalable and performant model inference using HTTP requests. 
-See `KServe documentation <https://kserve.github.io/website/0.13/get_started/first_isvc/>`_ for more details. 
+See `KServe documentation <https://kserve.github.io/archive/0.15/get_started/first_isvc/>`_ for more details. 
 
 Write a component that creates a KServe inference service and returns its URL as follows:
 
@@ -172,7 +172,7 @@ Write a component that creates a KServe inference service and returns its URL as
 
     @component(
         base_image="python:3.11",
-        packages_to_install=["kserve==0.13.1", "kubernetes==26.1.0", "tenacity==9.0.0"]
+        packages_to_install=["kserve==0.15.2", "kubernetes==30.1.0", "tenacity==9.1.2"]
     )
     def deploy_model_with_kserve(model_uri: str, isvc_name: str) -> str:
         from kubernetes.client import V1ObjectMeta
