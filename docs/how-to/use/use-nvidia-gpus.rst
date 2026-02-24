@@ -152,8 +152,8 @@ For example, the inference service YAML file from `this example <https://kserve.
             name: sklearn
             storageUri: "gs://kfserving-examples/models/sklearn/1.0/model"
             resources:
-            limits:
-                nvidia.com/gpu: 1
+                limits:
+                    nvidia.com/gpu: 1
 
 ~~~~~~~~~~~~~~~~~~~
 Within a notebook
