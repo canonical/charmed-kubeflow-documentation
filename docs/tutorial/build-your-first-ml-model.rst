@@ -27,9 +27,9 @@ Requirements
 Kubeflow notebooks
 ------------------
 
-From the sidebar of the Kubeflow central dashboard, go to `Notebooks` and click on `New Notebook`. Enter a name for your notebook, and select the `kubeflownotebookswg/jupyter-scipy:v1.9.0` image:
+From the sidebar of the Kubeflow central dashboard, go to `Notebooks` and click on `New Notebook`. Enter a name for your notebook, and select the `charmedkubeflow/jupyter-scipy:1.10.0-0be57a5` image:
 
-.. image:: https://assets.ubuntu.com/v1/fdef0086-kubeflow-central-dashboard.png
+.. image:: https://assets.ubuntu.com/v1/898c31df-screenshot_from_2026_02_25_13_06_58.png
 
 From ``Advanced Options``, go to ``Configurations`` and allow access to Kubeflow Pipelines, `MinIO <https://min.io/>`_, and MLflow from the dropdown menu:
 

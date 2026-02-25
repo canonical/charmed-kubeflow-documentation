@@ -12,7 +12,7 @@ and deploying Kubeflow using the Terraform, `Kubernetes <https://kubernetes.io/>
 Requirements
 ---------------------
 
-* A K8s cluster version 1.29-1.32 with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
+* A K8s cluster version 1.29-1.33 with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
 
 ---------------------
@@ -21,7 +21,7 @@ Bootstrap Juju
 
 CKF is deployed to Kubernetes with Juju. 
 Before deployment, Juju must be bootstrapped to the K8s cluster. 
-See `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>` for more details.
+See `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>`_ for more details.
 
 .. note::
 
@@ -37,7 +37,7 @@ Deploy CKF as follows:
 
 .. note::
 
-   This command checks out the default branch, which should be ``track/1.9``. If that's not the case, make sure to ``git checkout`` to that branch.
+   This command checks out the default branch, which should be ``track/1.11``. If that's not the case, make sure to ``git checkout`` to that branch.
 
 .. code-block:: bash
 
