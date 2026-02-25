@@ -1,7 +1,7 @@
 .. _upgrade_1.10_1.11:
 
 Upgrade from 1.10 to 1.11
-========================
+=========================
 
 This guide describes how to upgrade Charmed Kubeflow (CKF) from 1.10 to 1.11.
 Upgrading the solution by more than one minor version to another is not supported, nor is it recommended.
