@@ -13,6 +13,7 @@
 .. _How to connect your Read the Docs account to your Git provider: https://docs.readthedocs.com/platform/stable/guides/connecting-git-account.html
 .. _How to manually configure a Git repository integration: https://docs.readthedocs.io/en/stable/guides/setup/git-repo-manual.html
 .. _How to publish documentation on Read the Docs: https://library.canonical.com/documentation/publish-on-read-the-docs
+.. _Istio Ambient Mesh: https://istio.io/latest/docs/ambient/overview/
 .. _Juju: https://juju.is/
 .. _Kubernetes: https://kubernetes.io/
 .. _Level AA conformance: https://www.w3.org/WAI/WCAG2AA-Conformance
