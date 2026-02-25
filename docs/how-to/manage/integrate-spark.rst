@@ -225,12 +225,13 @@ Finally, deploy Charmed Kubeflow-Spark solution using Terraform as follows:
 
    terraform apply \
       -var dex_static_username=$DEX_USERNAME \
-      -var dex_static_password=$DEX_PASSWORD
+      -var dex_static_password=$DEX_PASSWORD \
+      -var risk=edge
 
 The command above:
 
 * Creates a `Juju model <https://juju.is/docs/juju/model>`_ named ``kubeflow``.  
-* Deploys CKF ``1.10/stable``.  
+* Deploys CKF ``1.10/`` from ``edge``.  
 * Deploys charms like Spark Integration Hub, Data-Kubeflow Integrator and Resource Dispatcher that are necessary 
   for Spark integration.
 * Configures `dex-auth <https://charmhub.io/dex-auth>`_ charm with a static user username and password.  
