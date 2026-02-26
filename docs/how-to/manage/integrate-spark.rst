@@ -20,9 +20,11 @@ Requirements
 Minimum requirements for this guide are:
 
 - A system with at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
-- `MicroK8s`_ and Juju (agent version ``<=3.6.9``) installed and configured in the system. 
+- Juju (agent version ``<=3.6.9``) installed and configured in the system.
+- Kubernetes version depending on the CKF version you are deploying.
   See :ref:`CKF supported versions <supported_kubeflow_versions>` for more details about compatible versions 
   of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.
+- A default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
 - ``charmcraft`` and ``tox``
 - ``terraform``, if you chose to 
   :ref:`deploy CKF + Charmed Apache Spark solution using Terraform <deploy_kubeflow_spark_solution_using_terraform>`.
@@ -41,8 +43,7 @@ section below.
 .. note::
 
    When using an existing CKF deployment, ensure that the ``metacontroller-operator`` charm is up to date with the 
-   ``4.11/edge`` channel, since the changes that support Charmed Apache Spark integration are not yet merged 
-   to the stable channel.
+   ``4.11/stable`` channel.
 
 To integrate Charmed Kubeflow with Charmed Apache Spark, you need to deploy Spark Integration Hub, Data-Kubeflow
 Integrator and Resource Dispatcher charms, configure them and integrate them with Juju relations. The following 
@@ -234,9 +235,6 @@ The command above:
 * Deploys charms like Spark Integration Hub, Data-Kubeflow Integrator and Resource Dispatcher that are necessary 
   for Spark integration.
 * Configures `dex-auth <https://charmhub.io/dex-auth>`_ charm with a static user username and password.  
-* Deploys `metacontroller-operator <https://charmhub.io/metacontroller-operator>`_ 
-  and `resource-dispatcher <https://charmhub.io/resource-dispatcher>`_ charms from edge channel because the changes necessary for 
-  Spark integration aren't released to the stable channel yet.
 
 Wait until the deployment is complete, and the ``terraform apply`` command returns.
 

@@ -15,14 +15,13 @@ Remove the Juju model containing your Kubeflow deployment as follows:
 
    juju destroy-model kubeflow --destroy-storage
 
-If you chose a different name other than ``kubeflow`` for the model, substitute it in the command above. 
 This will remove all the applications under that Kubernetes namespace, and then remove the namespace itself.
 
 If needed, you can force the deletion of the model as follows:
 
 .. code-block:: bash
 
-   juju destroy-model kubeflow --yes --destroy-storage --force
+   juju destroy-model kubeflow -no-prompt --destroy-storage --force
 
 Alternatively, you can also simply release storage instead of deleting the model by using the following flag:
 

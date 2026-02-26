@@ -6,12 +6,14 @@ Supported Kubeflow versions
 Charmed Kubeflow only supports the two most recent releases of Kubeflow that have charms available.
 
 .. note:: 
-    Supported releases: current release `1.10 <https://charmhub.io/kubeflow>`_ & `1.9 <https://charmhub.io/kubeflow?channel=1.9/stable>`_.
+    Supported releases: current release `1.11 <https://charmhub.io/kubeflow>`_ & `1.10 <https://charmhub.io/kubeflow?channel=1.10/stable>`_.
 
 +------------------+-------------------+------------------------------------+---------------+
 | Kubeflow version | Release date      | Kubernetes version                 | Juju version  |
 +==================+===================+====================================+===============+
-| 1.10             | 7 April 2025      | 1.29, 1.30, 1.31, 1.32, 1.33       | 3.6           |
+| 1.11             | TBD               | 1.29, 1.30, 1.31, 1.33             | 3.6           |
++------------------+-------------------+------------------------------------+---------------+
+| 1.10             | 7 April 2025      | 1.29, 1.30, 1.31, 1.33             | 3.6           |
 +------------------+-------------------+------------------------------------+---------------+
 | 1.9              | 31 July 2024      | 1.27, 1.28, 1.29                   | >=3.4.3       |
 +------------------+-------------------+------------------------------------+---------------+

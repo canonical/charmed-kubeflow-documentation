@@ -11,6 +11,7 @@ artifacts
 backend
 backends
 Charmcraft
+charmedkubeflow
 cjk
 ckf
 CKF
@@ -36,6 +37,7 @@ gyre
 https
 html
 hyperparameters
+Initialize
 io
 ingressgateway
 istio
@@ -330,6 +332,7 @@ VisualStudio
 CNI
 CNI's
 conflist
+containerization
 CA
 CAs
 InferenceServices
@@ -380,5 +383,5 @@ NSG
 customizations
 VNet
 allowlists
-
+TBD
 
