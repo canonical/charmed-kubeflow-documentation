@@ -20,7 +20,7 @@ Requirements
 Minimum requirements for this guide are:
 
 - A system with at least 8 cores CPU processor, 64GB of RAM and 150GB of disk space.
-- Juju (agent version ``<=3.6.9``) installed and configured in the system.
+- Juju installed and configured in the system.
 - Kubernetes version depending on the CKF version you are deploying.
   See :ref:`CKF supported versions <supported_kubeflow_versions>` for more details about compatible versions 
   of `Kubeflow <https://www.kubeflow.org/docs/releases/>`_ and Juju.

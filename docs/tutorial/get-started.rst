@@ -70,7 +70,7 @@ Create a configuration file named ``concierge.yaml`` with the following content:
 
     juju:
       channel: 3.6/stable
-      agent-version: 3.6.9
+      agent-version: 3.6.14
       model-defaults:
         logging-config: <root>=INFO; unit=DEBUG
 
