@@ -48,6 +48,7 @@ Upgrade charms
 ---------------------
 
 To upgrade charms, follow the steps below in the order shown.
+The upgrade procedure involves first upgrading Istio charms, and then the others.
 
 .. note::
 
