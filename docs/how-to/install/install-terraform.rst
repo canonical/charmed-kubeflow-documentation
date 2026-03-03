@@ -12,7 +12,7 @@ and deploying Kubeflow using the Terraform, `Kubernetes <https://kubernetes.io/>
 Requirements
 ---------------------
 
-* A K8s cluster version ``1.29``-``1.33`` with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
+* A K8s cluster version supported by Charmed Kubeflow (see :ref:`Supported versions <supported_kubeflow_versions>`) with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
 
 ---------------------
@@ -37,7 +37,7 @@ Deploy CKF as follows:
 
 .. note::
 
-   This command checks out the default branch, which should be ``track/1.11``. If that's not the case, make sure to ``git checkout`` to that branch.
+   This command checks out the default branch. If you need to deploy a specific version of CKF, make sure to ``git checkout`` to that branch.
 
 .. code-block:: bash
 
@@ -69,7 +69,7 @@ Deploy CKF as follows:
 The command above:
 
 * Creates a `Juju model <https://juju.is/docs/juju/model>`_ named ``kubeflow``.  
-* Deploys CKF ``1.11/stable``.  
+* Deploys the latest supported stable version of CKF.  
 * Configures CKF to integrate with `Canonical Observability Stack <https://charmhub.io/topics/canonical-observability-stack>`_. See :ref:`Monitoring <index_monitoring>` for more details.  
 * Configures `dex-auth <https://charmhub.io/dex-auth>`_ charm with a static user username and password.  
 
