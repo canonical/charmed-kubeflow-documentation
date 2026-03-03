@@ -63,8 +63,8 @@ Deploy CKF as follows:
 
    terraform apply \
       -var cos_configuration=true \
-      -var dex_static_username=$DEX_USERNAME \
-      -var dex_static_password=$DEX_PASSWORD
+      -var dex_static_username="${DEX_USERNAME}" \
+      -var dex_static_password="${DEX_PASSWORD}"
 
 The command above:
 
