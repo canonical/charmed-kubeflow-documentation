@@ -105,9 +105,10 @@ This configuration sets up:
 * LXD for containerization support
 * Charmcraft for charm development
 
-.. note::
+.. warning::
     The ``cidrs`` value (``10.64.140.43/32``) specifies the IP address that will be assigned to the load balancer. 
-    You may need to adjust this value based on your network configuration.
+    You may need to adjust this value based on your network configuration, by changing the ``cidrs`` value under
+    the ``load-balancer`` configuration for `k8s`.
 
 Run Concierge to prepare the environment:
 
@@ -168,15 +169,15 @@ Monitor the deployment status:
 
     juju status
 
+CKF is ready when all the applications and units are in ``active`` status.  
+During the configuration process, some of the components may momentarily change to a ``blocked`` or ``error`` state. 
+This is an expected behaviour that should resolve as the bundle configures itself. 
+
 You can also check the Kubernetes services in the kubeflow namespace:
 
 .. code-block:: bash
 
     kubectl get svc -n kubeflow
-
-CKF is ready when all the applications and units are in ``active`` status.  
-During the configuration process, some of the components may momentarily change to a ``blocked`` or ``error`` state. 
-This is an expected behaviour that should resolve as the bundle configures itself. 
 
 Access your deployment
 ----------------------

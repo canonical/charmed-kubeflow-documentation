@@ -12,7 +12,7 @@ and deploying Kubeflow using the Terraform, `Kubernetes <https://kubernetes.io/>
 Requirements
 ---------------------
 
-* A K8s cluster version 1.29-1.33 with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
+* A K8s cluster version ``1.29``-``1.33`` with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.  
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
 
 ---------------------

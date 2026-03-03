@@ -18,12 +18,14 @@ In comparison with the upstream Kubeflow project, CKF:
 What's new
 ----------
 
+* Enabled the configuration of user workloads security policies. See :ref:`Configure user workloads to run unprivileged <configure_unprivileged_workloads>` for more information.
+* Enabled backup of control plane data and user workloads using `Charmed Velero <https://charmhub.io/velero-operator>`_. See :ref:`Back up <back_up>` for more information.
+* Introduced Kubeflow Trainer V2, working alongside Kubeflow Trainer V1.
+
 Highlights
 ~~~~~~~~~~
 
-* Enabled the configuration of user workloads security policies. See :ref:`Configure user workloads to run unprivileged <configure_unprivileged_workloads>` for more information.
 * Charms and workloads now run as unprivileged in the cluster.
-* Introduced Kubeflow Trainer V2, working alongside Kubeflow Trainer V1.
 
 Upgrades
 ~~~~~~~~
@@ -32,7 +34,7 @@ Upgrades
 * Istio upgraded to 1.28 (previously 1.24).
 * KServe upgraded to 0.15.2 (previously 0.14.1).
 * Pipelines upgraded to 2.15.0 (previously 2.5.0).
-* Support for Kubernetes 1.29-1.33.
+* Support for Kubernetes 1.32-1.33.
 
 Features
 ~~~~~~~~

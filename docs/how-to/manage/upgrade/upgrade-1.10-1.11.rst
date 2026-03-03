@@ -4,7 +4,7 @@ Upgrade from 1.10 to 1.11
 =========================
 
 This guide describes how to upgrade Charmed Kubeflow (CKF) from 1.10 to 1.11.
-Upgrading the solution by more than one minor version to another is not supported, nor is it recommended.
+Upgrading the solution by more than one minor version at a time is not recommended and not supported.
 
 .. warning::
     
@@ -35,19 +35,11 @@ Before upgrading CKF, you should do the following:
 Upgrade environment
 ---------------------
 
-~~~~~~~~~~~~~~~~~~~
-Juju
-~~~~~~~~~~~~~~~~~~~
-
 The current stable version of CKF is supported on Juju 3.6. 
 If needed, follow the `instructions <https://documentation.ubuntu.com/juju/3.6/howto/manage-your-juju-deployment/upgrade-your-juju-deployment/>`_ in order to upgrade the deployment. 
 See :ref:`Supported versions <supported_kubeflow_versions>` for more information.
 
-~~~~~~~~~~~~~~~~~~~
-Kubernetes
-~~~~~~~~~~~~~~~~~~~
-
-The current stable version of CKF requires a Kubernetes cluster of at least version 1.29. 
+The current stable version of CKF requires a Kubernetes cluster of at least version 1.32. 
 For a full list of supported versions, refer to :ref:`Supported versions <supported_kubeflow_versions>`. 
 Before upgrading to CKF, make sure this requirement is met.
 
@@ -55,7 +47,7 @@ Before upgrading to CKF, make sure this requirement is met.
 Upgrade charms
 ---------------------
 
-To upgrade charms, you should follow the steps below in the proposed order.
+To upgrade charms, follow the steps below in the order shown.
 
 .. note::
 
@@ -66,7 +58,7 @@ To upgrade charms, you should follow the steps below in the proposed order.
 Istio
 ~~~~~~~~~~~~~~~~~~~
 
-The current stable version of CKF requires Istio 1.28, please follow the instructions below to upgrade the ``istio-pilot`` and ``istio-gateway`` charms to that version:
+The current stable version of CKF requires Istio 1.28. Follow the instructions below to upgrade the ``istio-pilot`` and ``istio-gateway`` charms to that version:
 
 1. Scale down the ``istio-ingressgateway`` application to 0:
 

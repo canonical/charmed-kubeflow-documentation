@@ -27,7 +27,7 @@ Requirements
 Kubeflow notebooks
 ------------------
 
-From the sidebar of the Kubeflow central dashboard, go to `Notebooks` and click on `New Notebook`. Enter a name for your notebook, and select the `charmedkubeflow/jupyter-scipy:1.10.0-0be57a5` image:
+From the sidebar of the Kubeflow central dashboard, go to `Notebooks` and click on `New Notebook`. Enter a name for your notebook, and select the ``charmedkubeflow/jupyter-scipy:1.10.0-0be57a5`` image:
 
 .. image:: https://assets.ubuntu.com/v1/898c31df-screenshot_from_2026_02_25_13_06_58.png
 

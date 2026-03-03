@@ -21,7 +21,7 @@ If needed, you can force the deletion of the model as follows:
 
 .. code-block:: bash
 
-   juju destroy-model kubeflow -no-prompt --destroy-storage --force
+   juju destroy-model kubeflow --no-prompt --destroy-storage --force
 
 Alternatively, you can also simply release storage instead of deleting the model by using the following flag:
 
