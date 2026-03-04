@@ -28,10 +28,21 @@ Requirements
 Migration process
 ---------------------
 
+Configure Cilium (Canonical Kubernetes only)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are running on Canonical Kubernetes, configure Cilium to work with Charmed Istio in Ambient mode. 
+For more information, see the `Charmed Istio documentation`_.
+
+.. code-block:: bash
+
+   kubectl -n kube-system patch configmap cilium-config --type merge --patch '{"data":{"bpf-lb-sock-hostns-only":"true"}}'
+   kubectl -n kube-system rollout restart daemonset cilium
+
 Remove legacy Istio components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First, remove the existing sidecar-based Istio installation:
+Remove the existing sidecar-based Istio installation:
 
 .. code-block:: bash
 
@@ -56,18 +67,33 @@ Remove Knative components, as serverless deployment is not supported with Ambien
 Deploy new Istio charms
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Deploy the new Istio charms that support Ambient Mesh mode:
+Deploy the new Istio charms that support Ambient Mesh mode.
+
+Determine the ``platform`` value for ``istio-k8s`` based on your Kubernetes substrate:
+
+* For **MicroK8s** (default): Use ``platform=microk8s`` or omit the config (defaults to ``microk8s``)
+* For **Canonical Kubernetes**: Use ``platform=""`` (empty string)
+* For other platforms: Refer to the `Istio platform prerequisites`_ for the appropriate value
+
+Deploy ``istio-k8s`` with the appropriate platform configuration:
 
 .. code-block:: bash
 
-   juju deploy istio-k8s --trust --channel 2/edge
+   # For MicroK8s (or omit --config entirely to use the default):
+   juju deploy istio-k8s --trust --channel 2/edge --config platform=microk8s
+
+   # For Canonical Kubernetes:
+   juju deploy istio-k8s --trust --channel 2/edge --config platform=""
+
+   # For other platforms, replace with the appropriate value
+
+Deploy the remaining Istio components and integrate:
+
+.. code-block:: bash
+
    juju deploy istio-beacon-k8s --trust --channel 2/edge
-   juju config istio-beacon-k8s model-on-mesh=true
    juju deploy istio-ingress-k8s --trust --channel 2/edge
    juju integrate istio-ingress-k8s istio-k8s
-
-.. note::
-   The ``istio-beacon-k8s`` charm manages the Ambient Mesh configuration for the entire model.
 
 Migrate admission webhook
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,11 +126,7 @@ Upgrade the training operator, manually delete its deployment, and integrate wit
 .. code-block:: bash
 
    juju refresh training-operator
-   kubectl -n kubeflow delete deployments.apps training-operator
    juju integrate training-operator:service-mesh istio-beacon-k8s:service-mesh
-
-.. note::
-   The manual deletion of the deployment is required to ensure the operator restarts with the correct Ambient Mesh configuration.
 
 Migrate KServe controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,14 +153,8 @@ Upgrade Dex and OIDC Gatekeeper to work with the new Istio ingress:
 
    juju refresh dex-auth
    juju refresh oidc-gatekeeper
-
-.. code-block:: bash
-
    juju integrate dex-auth:service-mesh istio-beacon-k8s:service-mesh
    juju integrate dex-auth:istio-ingress-route-unauthenticated istio-ingress-k8s:istio-ingress-route-unauthenticated
-
-.. code-block:: bash
-
    juju integrate oidc-gatekeeper:service-mesh istio-beacon-k8s:service-mesh
    juju integrate oidc-gatekeeper:forward-auth istio-ingress-k8s:forward-auth
    juju integrate oidc-gatekeeper:istio-ingress-route-unauthenticated istio-ingress-k8s:istio-ingress-route-unauthenticated
@@ -167,12 +183,11 @@ Upgrade the Jupyter UI and controller, integrating both with the service mesh:
    juju refresh jupyter-ui
    juju integrate jupyter-ui:service-mesh istio-beacon-k8s:service-mesh
    juju integrate jupyter-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
-   juju integrate jupyter-ui:dashboard-links kubeflow-dashboard:links
 
 Migrate Kubeflow Pipelines components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upgrade all KFP components and integrate them with the service mesh:
+Upgrade all KFP components, add new relations, and integrate them with the service mesh:
 
 .. code-block:: bash
 
@@ -189,6 +204,18 @@ Upgrade all KFP components and integrate them with the service mesh:
    juju integrate kfp-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
    juju refresh kfp-viz
    juju integrate kfp-viz:service-mesh istio-beacon-k8s:service-mesh
+   juju integrate kfp-api:kfp-api-grpc kfp-persistence:kfp-api-grpc
+   juju integrate kfp-api:kfp-api-grpc kfp-schedwf:kfp-api-grpc
+
+Migrate MinIO
+^^^^^^^^^^^^^
+
+Upgrade MinIO and integrate it with the service mesh:
+
+.. code-block:: bash
+
+   juju refresh minio
+   juju integrate minio:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Kubeflow Dashboard
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -209,14 +236,13 @@ Upgrade the profiles controller with Ambient Mesh configuration:
 .. code-block:: bash
 
    juju refresh kubeflow-profiles
-   juju integrate kubeflow-profiles:kubeflow-profiles kubeflow-dashboard:kubeflow-profiles
    juju integrate kubeflow-profiles:service-mesh istio-beacon-k8s:service-mesh
    juju config kubeflow-profiles service-mesh-mode=istio-ambient
-   juju config kubeflow-profiles istio-gateway-principal=cluster.local/ns/kubeflow/sa/istio-ingress-k8s-istio
+   juju config kubeflow-profiles istio-gateway-service-account=istio-ingress-k8s-istio
 
 .. note::
    The ``service-mesh-mode`` configuration is critical for Ambient Mesh support. 
-   The ``istio-gateway-principal`` must match the service account used by the Istio ingress gateway.
+   The ``istio-gateway-service-account`` must match the service account used by the Istio ingress gateway.
 
 Migrate Kubeflow Volumes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -245,6 +271,23 @@ Upgrade both the Tensorboard controller and web app:
    juju refresh tensorboards-web-app
    juju integrate tensorboards-web-app:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboards-web-app:istio-ingress-route istio-ingress-k8s:istio-ingress-route
+
+Remove sidecar containers from user namespaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After migrating to Ambient Mesh, delete the ML Pipeline pods from user namespaces to remove the old sidecar containers. 
+The pods will be automatically recreated by their deployments without sidecars:
+
+.. code-block:: bash
+
+   kubectl delete pod -l app=ml-pipeline-ui-artifact -n <user-namespace>
+   kubectl delete pod -l app=ml-pipeline-visualizationserver -n <user-namespace>
+
+Replace ``<user-namespace>`` with the actual user namespace name (for example, ``admin``).
+
+.. note::
+   These pods are managed by deployments created by the KFP Profile Controller for each user namespace. 
+   After deletion, they will be automatically recreated without the Istio sidecar containers, as Ambient Mesh does not use sidecars.
 
 ---------------------
 Verify the migration
