@@ -121,7 +121,7 @@ Upgrade the Katib controller and UI, and integrate them with the service mesh:
 Migrate training operator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upgrade the training operator, manually delete its deployment, and integrate with the service mesh:
+Upgrade the training operator, and integrate with the service mesh:
 
 .. code-block:: bash
 
