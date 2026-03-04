@@ -275,7 +275,7 @@ Upgrade both the Tensorboard controller and web app:
 Remove sidecar containers from user namespaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After migrating to Ambient Mesh, delete the ML Pipeline pods from user namespaces to remove the old sidecar containers. 
+After migrating to Ambient Mesh, delete the ML Pipeline pods from existing user namespaces to remove the old sidecar containers. 
 The pods will be automatically recreated by their deployments without sidecars:
 
 .. code-block:: bash
@@ -284,10 +284,6 @@ The pods will be automatically recreated by their deployments without sidecars:
    kubectl delete pod -l app=ml-pipeline-visualizationserver -n <user-namespace>
 
 Replace ``<user-namespace>`` with the actual user namespace name (for example, ``admin``).
-
-.. note::
-   These pods are managed by deployments created by the KFP Profile Controller for each user namespace. 
-   After deletion, they will be automatically recreated without the Istio sidecar containers, as Ambient Mesh does not use sidecars.
 
 ---------------------
 Verify the migration
