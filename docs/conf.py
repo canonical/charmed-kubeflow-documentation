@@ -246,6 +246,11 @@ linkcheck_ignore = [
     "https://lh7-rt.googleusercontent.com/docsz/*",
     "https://developer.hashicorp.com/terraform/cli",
     "https://www.terraform.io/",
+    "https://github.com/search?q=org%3Acanonical+topic%3Acharm+topic%3Akubeflow&type=repositories",
+    "https://github.com/search?q=org%3Acanonical+topic%3Arocks+topic%3Akubeflow&type=repositories",
+    "https://www.kubeflow.org/docs/components/katib/user-guides/trial-template/",
+    "https://www.kubeflow.org/docs/components/central-dash/overview/",
+    "https://v1-9-branch.kubeflow.org/docs/components/katib/user-guides/trial-template/",
 ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'

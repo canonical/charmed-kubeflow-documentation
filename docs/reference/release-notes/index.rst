@@ -10,6 +10,7 @@ Learn more about each CKF release:
 .. toctree::
    :maxdepth: 1
    
+   Charmed Kubeflow 1.11 <release-notes-1-11>
    Charmed Kubeflow 1.10 <release-notes-1-10>
    Charmed Kubeflow 1.9 <release-notes-1-9>
    Charmed Kubeflow 1.8 <release-notes-1-8>
