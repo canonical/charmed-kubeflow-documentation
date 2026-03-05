@@ -11,7 +11,7 @@ This guide describes how to migrate Charmed Kubeflow (CKF) from Istio sidecar mo
    This migration process involves removing and redeploying several critical components. 
    Ensure you have a backup of your deployment before proceeding. See :ref:`back_up` for more details.
 
-.. note::
+.. warning::
    During the migration, your Kubeflow deployment will experience downtime as components are removed and redeployed. 
    Plan the migration during a maintenance window.
 
@@ -31,8 +31,8 @@ Migration process
 Configure Cilium (Canonical Kubernetes only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are running on Canonical Kubernetes, configure Cilium to work with Charmed Istio in Ambient mode. 
-For more information, see the `Charmed Istio documentation`_.
+If you are running on Canonical Kubernetes, configure Cilium to work with Charmed Istio in ambient mode. 
+For more information, see the `Cilium documentation`_.
 
 .. code-block:: bash
 
@@ -67,25 +67,27 @@ Remove Knative components, as serverless deployment is not supported with Ambien
 Deploy new Istio charms
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Deploy the new Istio charms that support Ambient Mesh mode.
+Deploy the new Istio charms that support Ambient Mesh.
 
-Determine the ``platform`` value for ``istio-k8s`` based on your Kubernetes substrate:
+Deploy ``istio-k8s`` with the appropriate ``platform`` value for your Kubernetes substrate:
 
 * For **MicroK8s** (default): Use ``platform=microk8s`` or omit the config (defaults to ``microk8s``)
+
+  .. code-block:: bash
+
+     juju deploy istio-k8s --trust --channel 2/edge --config platform=microk8s
+
 * For **Canonical Kubernetes**: Use ``platform=""`` (empty string)
+
+  .. code-block:: bash
+
+     juju deploy istio-k8s --trust --channel 2/edge --config platform=""
+
 * For other platforms: Refer to the `Istio platform prerequisites`_ for the appropriate value
 
-Deploy ``istio-k8s`` with the appropriate platform configuration:
+  .. code-block:: bash
 
-.. code-block:: bash
-
-   # For MicroK8s (or omit --config entirely to use the default):
-   juju deploy istio-k8s --trust --channel 2/edge --config platform=microk8s
-
-   # For Canonical Kubernetes:
-   juju deploy istio-k8s --trust --channel 2/edge --config platform=""
-
-   # For other platforms, replace with the appropriate value
+     juju deploy istio-k8s --trust --channel 2/edge --config platform=<appropriate-value>
 
 Deploy the remaining Istio components and integrate:
 
@@ -297,7 +299,7 @@ After completing the migration, verify that all components are operational:
 
    juju status
 
-2. Verify that the Kubeflow Dashboard is accessible through the ingress gateway.
+2. Verify that the Kubeflow Dashboard is accessible, meaning that the ingress gateway allows for traffic.
 
 3. Test core functionality, for example:
 
