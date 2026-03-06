@@ -119,6 +119,6 @@ Similarly to ``minio``, the value of ``secret-key`` is created from a randomly g
 ``pvc-viewer``
 ~~~~~~~~~~~~~~
 
-The `pvc-viewer charm <https://github.com/canonical/pvcviewer-operator>`_ creates a ``MutatingWebhookConfiguration`` object that calls a webhook whenever a new `PVCViewer <https://github.com/kubeflow/kubeflow/blob/v1.9-branch/components/proposals/20230130-pvcviewer-controller.md>`_ is created or updated.
+The `pvc-viewer charm <https://github.com/canonical/pvcviewer-operator>`_ creates a ``MutatingWebhookConfiguration`` object that calls a webhook whenever a new `PVCViewer <https://github.com/kubeflow/kubeflow/blob/v1.10-branch/components/proposals/20230130-pvcviewer-controller.md>`_ is created or updated.
 
 Similar to other charms that create ``MutatingWebhookConfiguration`` objects, this charm generates a self-signed X.509 certificate so that the Kubernetes API server can confirm the workload container identity.

@@ -46,8 +46,8 @@ For example, define a file named ``images.yaml`` with the following contents:
 
 .. code-block:: bash
 
-   - kubeflownotebookswg/jupyter-pytorch-full:v1.9.0
-   - kubeflownotebookswg/jupyter-tensorflow-full:v1.9.0
+   - kubeflownotebookswg/jupyter-pytorch-full:v1.10.0
+   - kubeflownotebookswg/jupyter-tensorflow-full:v1.10.0
    - bitnami/jupyter-base-notebook:4.1.5
 
 .. note::
@@ -71,7 +71,7 @@ If you want to do so, for example, adding a new notebook image to your current c
 
 .. code-block:: bash
 
-   juju config jupyter-ui jupyter-images > images_v1.yaml
+   juju config jupyter-ui jupyter-images | tee images_v1.yaml
 
    # edit images_v1.yaml, save as images_v2.yaml
    juju config jupyter-ui jupyter-images=@images_v2.yaml

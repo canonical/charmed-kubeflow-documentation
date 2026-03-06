@@ -89,7 +89,7 @@ Refresh Juju to update previous changes:
 
 .. code-block:: bash
 
-   juju refresh –kubeflow
+   juju refresh -kubeflow
 
 Now you should be able to access MinIO.
 
@@ -97,7 +97,7 @@ You can check if it is added to the model as follows:
 
 .. code-block:: bash
 
-   sudo microk8s kubectl get PodDefault -n admin
+   k8s kubectl get PodDefault -n admin
 
 You should see ``allow-minio``.
 
