@@ -3,7 +3,7 @@
 Migrate to Istio Ambient Mesh
 ==============================
 
-This guide describes how to migrate Charmed Kubeflow (CKF) from Istio sidecar mode to Istio Ambient Mesh.
+This guide describes how to migrate Charmed Kubeflow (CKF) from Istio Sidecar Mode to Istio Ambient Mesh.
 
 `Istio Ambient Mesh`_ is a data plane mode that provides secure communication between services without injecting sidecar proxies into application pods. 
 
@@ -37,6 +37,7 @@ For more information, see the `Cilium documentation`_.
 .. code-block:: bash
 
    kubectl -n kube-system patch configmap cilium-config --type merge --patch '{"data":{"bpf-lb-sock-hostns-only":"true"}}'
+   kubectl -n kube-system patch configmap cilium-config --type merge --patch '{"data":{"cni-exclusive":"false"}}'
    kubectl -n kube-system rollout restart daemonset cilium
 
 Remove legacy Istio components
