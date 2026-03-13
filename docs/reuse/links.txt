@@ -2,6 +2,7 @@
 .. _Canonical Reference Library: https://library.canonical.com/
 .. _Canonical Sphinx: https://github.com/canonical/canonical-sphinx
 .. _change log: https://github.com/canonical/sphinx-docs-starter-pack/wiki/Change-log
+.. _Cilium documentation: https://docs.cilium.io/en/stable/network/servicemesh/istio/
 .. _Diátaxis: https://diataxis.fr/
 .. _Example product documentation: https://canonical-example-product-documentation.readthedocs-hosted.com/
 .. _Example product documentation repository: https://github.com/canonical/example-product-documentation
@@ -13,6 +14,8 @@
 .. _How to connect your Read the Docs account to your Git provider: https://docs.readthedocs.com/platform/stable/guides/connecting-git-account.html
 .. _How to manually configure a Git repository integration: https://docs.readthedocs.io/en/stable/guides/setup/git-repo-manual.html
 .. _How to publish documentation on Read the Docs: https://library.canonical.com/documentation/publish-on-read-the-docs
+.. _Istio Ambient Mesh: https://istio.io/latest/docs/ambient/overview/
+.. _Istio platform prerequisites: https://istio.io/latest/docs/ambient/install/platform-prerequisites/
 .. _Juju: https://juju.is/
 .. _Kubernetes: https://kubernetes.io/
 .. _Level AA conformance: https://www.w3.org/WAI/WCAG2AA-Conformance
