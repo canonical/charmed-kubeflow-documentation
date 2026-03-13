@@ -217,7 +217,7 @@ Upgrade MinIO and integrate it with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh minio
+   juju refresh minio --trust
    juju integrate minio:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Kubeflow Dashboard
