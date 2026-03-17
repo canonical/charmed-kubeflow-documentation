@@ -140,7 +140,7 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
    juju refresh kubeflow-volumes --channel 1.10/stable
    juju refresh metacontroller-operator --channel 4.11/stable
    juju refresh mlmd --channel ckf-1.10/stable
-   juju refresh minio --channel ckf-1.10/stable
+   juju refresh minio --channel 1.10/stable
    juju refresh oidc-gatekeeper --channel ckf-1.10/stable
    juju refresh pvcviewer-operator --channel 1.10/stable
    juju refresh tensorboard-controller --channel 1.10/stable
