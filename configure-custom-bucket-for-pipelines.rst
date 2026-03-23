@@ -33,7 +33,7 @@ Procedure
 Step 1: label and taint your node pools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Set up your K8s cluster while labeling and tainting your node pools as described for the desired alternative, between the two that follow.
+Set up your K8s cluster while labeling and tainting your node pools as described for the desired alternative, between the two ones that follow.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Alternative 1: not segregating Juju system but keeping pools for general workloads
@@ -83,53 +83,379 @@ No additional, specific precautions required.
 Step 3: set up a former `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Create a temporary Juju model and deploy `namespace-node-affinity-operator` into such a model, using a Juju application name different from the default one of the charm. For example:
+
+  .. code-block:: bash
+
+    juju add-model temp-namespace-node-affinity
+    juju switch temp-namespace-node-affinity
+
+    juju deploy --trust --channel 2.2/stable namespace-node-affinity temp-namespace-node-affinity
+    juju wait-for application temp-namespace-node-affinity
+
+Then, configure `namespace-node-affinity-operator` to inject workloads scheduled in the (not-yet-created) namespace of the Kubeflow platform with:
+
+- When not scheduling different CKF-platform workloads to different node pools: both node affinity and tolerations, respectively matching the label and the taint of the Kubeflow-platform node pool. An example may be:
+
+  .. code-block:: bash
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    EOF
+    )
+    juju config temp-namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
+
+- When scheduling different CKF-platform workloads to different node pools: only tolerations, matching the taint of the Kubeflow-platform node pool. An example may be:
+
+  .. code-block:: bash
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: “true”
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    EOF
+    )
+    juju config temp-namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 4: create the Kubeflow-platform Juju model
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-No additional, specific precautions required.
+No additional, specific precautions required. For instance:
+
+.. code-block:: bash
+
+  juju add-model kubeflow
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 5: label the Kubeflow-platform model's namespace(s)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Label with `namespace-node-affinity=enabled` the namespace of the Juju model for the Kubeflow platform. In case Knative is to be deployed, also label the namespaces of Knative, `knative-eventing` and `knative-serving`, in the same way after manually creating them.
+Label with `namespace-node-affinity=enabled` the namespace of the Juju model for the Kubeflow platform. In case Knative is to be deployed, also label the namespaces of Knative, `knative-eventing` and `knative-serving`, in the same way, after manually creating them. For example:
+
+.. code-block:: bash
+
+  kubectl label namespaces kubeflow namespace-node-affinity=enabled
+
+  kubectl create namespace knative-eventing
+  kubectl label namespaces knative-eventing namespace-node-affinity=enabled
+
+  kubectl create namespace knative-serving
+  kubectl label namespaces knative-serving namespace-node-affinity=enabled
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 6: set up a latter `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Deploy (another instance of) `namespace-node-affinity-operator` into (a different model,) the model for the Kubeflow platform, using a Juju application name as the charm name or simply different from the name of the `namespace-node-affinity-operator` instance in the former namespace, and configure it with the same configurations as for the former `namespace-node-affinity-operator`. In case Knative is to be deployed, replicate the same configurations of the standard Kubeflow-platform namespace for the namespaces of Knative. An example of such configurations may be:
+
+- When not scheduling different CKF-platform workloads to different node pools:
+
+  .. code-block:: bash
+
+    juju switch kubeflow
+
+    juju deploy --trust --channel 2.2/stable namespace-node-affinity namespace-node-affinity
+    juju wait-for application namespace-node-affinity
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-eventing: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-serving: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    EOF
+    )
+    juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
+
+- When scheduling different CKF-platform workloads to different node pools:
+
+  .. code-block:: bash
+
+    juju switch kubeflow
+
+    juju deploy --trust --channel 2.2/stable namespace-node-affinity namespace-node-affinity
+    juju wait-for application namespace-node-affinity
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-eventing: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-serving: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    EOF
+    )
+    juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 7: tear down the former `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Delete the former `namespace-node-affinity-operator`, that is the one deployed in the temporary Juju model, not the one in the Juju model for the Kubeflow platform.
+Delete the former `namespace-node-affinity-operator`, that is the one deployed in the temporary Juju model, not the one in the Juju model for the Kubeflow platform. For example:
+
+.. code-block:: bash
+
+  juju switch temp-namespace-node-affinity
+
+  juju remove-application --destroy-storage --no-prompt temp-namespace-node-affinity
+  juju destroy-model --destroy-storage --no-prompt temp-namespace-node-affinity
+
+  juju switch kubeflow
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 8: deploy Charmed Kubeflow
+Step 8: deploy CKF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Deploy CKF following any installation method among :ref:`the supported ones <index_install>` and by also:
+
+- When not scheduling different CKF-platform workloads to different node pools:
+
+  - No additional, specific precautions required.
+
+- When scheduling different CKF-platform workloads to different node pools:
+
+  - Deploying Juju applications with `Juju constraints' tags <https://documentation.ubuntu.com/juju/3.6/reference/constraint/#tags>`__ defining specific node affinities as exemplified `in here <https://discourse.charmhub.io/t/pod-priority-and-affinity-in-juju-charms/4091>`__, one for each application to target the desired node pool (with the respective node label(s)) among the Kubeflow-platform ones. Here is an example: `--constraints="tags=node.kubeflow-platform-arch=arm64"`.
+
+  - Deploying Juju applications that operate additional platform workloads (in addition to the ones defined in `metadata.yaml`) with charm configurations that add to such workloads node affinities as in the point above (not necessarily the same ones as the respective charms, at the user's own discretion).
+
+.. note::
+
+  Make sure that a charm revision of `kubeflow-profiles` greater than or equal to `839` is deployed, to include the changes required for it to label user Profiles' namespaces to enable `namespace-node-affinity-operator`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 9: (re)configure your Kubeflow Profiles' default node pools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Among the configurations of `namespace-node-affinity-operator`, add new configuration sections for (not-yet-created) Profiles' namespaces as described for the desired alternative, between the two ones that follow.
+
+Moreover, for each namespace, add configurations to allow for some label(s) to disable the default injection by `namespace-node-affinity-operator`, to also be able to schedule specific workflows to different node pools than the default one — i.e. the “Customization” objective in Abstract. An example of such a label could be `exclude-me-from-namespace-node-affinity-operator=”true”`. Profiles whose namespaces are not configured with exclusion labels will not be able to override the default node-pool scheduling, therefore opting out of such a feature.
+
+.. note::
+
+  CKF admins can continuously reconfigure the default node-pool allocation and whether to enable customization for any Profiles. Nevertheless, Profile workloads deployed before the desired configuration changes are not expected to be rescheduled or migrated. For this reason, it is recommended to configure Profiles before their actual creation (knowing namespace names correspond to Profile names).
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Alternative 1: not segregating Juju system but keeping pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-TODO
+For each Profile's namespace, add configurations to inject workloads with node affinity matching labels of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities for default node pools will see their workloads randomly scheduled in any node pools without taints, including not only all the default ones but also any other general ones that may exist, therefore opting out of such a feature.
+
+An example of resulting overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` as its default one, may be:
+
+.. code-block:: bash
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-eventing: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-serving: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    profile-i: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - a
+    profile-j: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - a
+    profile-k: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - b
+    EOF
+    )
+    juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Alternative 2: segregating Juju system but not keeping pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-TODO
+For each Profile's namespace, add configurations to inject workloads with node affinity and tolerations respectively matching labels and taints of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities and tolerations for default node pools will see their workloads scheduled in the node pool for Juju-system workloads.
+
+An example of resulting overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` and tainted with `kubeflow-default-node-pool=a:NoSchedule` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` and tainted with `kubeflow-default-node-pool=b:NoSchedule` as its default one, may be:
+
+.. code-block:: bash
+
+    namespace_node_affinity_settings=$(cat << EOF
+    kubeflow: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-eventing: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    knative-serving: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-platform
+            operator: Exists
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-platform
+          operator: Exists
+    profile-i: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - a
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-default-node-pool
+          operator: Equal
+          value: a
+    profile-j: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - a
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-default-node-pool
+          operator: Equal
+          value: a
+    profile-k: |
+      excludedLabels:
+        exclude-me-from-namespace-node-affinity-operator: "true"
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubeflow-default-node-pool
+            operator: In
+            values:
+              - b
+      tolerations:
+        - effect: NoSchedule
+          key: kubeflow-default-node-pool
+          operator: Equal
+          value: b
+    EOF
+    )
+    juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 10: create some (new) Kubeflow Profiles
@@ -137,34 +463,28 @@ Step 10: create some (new) Kubeflow Profiles
 
 No additional, specific precautions required.
 
+See `how to create a Profile <https://www.kubeflow.org/docs/components/central-dash/profiles/#create-a-profile>`_ for general instructions.
+
+For instance, coherently with the examples used above, such Profiles could be created this way:
+
+.. code-block:: bash
+
+  for profile_name in profile-i profile-j profile-k;
+  do
+  kubectl apply -f - << EOF
+  apiVersion: kubeflow.org/v1
+  kind: Profile
+  metadata:
+    name: $profile_name
+  spec:
+    owner:
+      kind: User
+      name: admin@example.com
+  EOF
+  done
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 11: deploy some (new) Profiles' Workloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TODO
-
-
-
-
-
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~
-XXXXXXXXXXXXXXXXXXXXXXXX
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Update the `default pipeline root <https://www.kubeflow.org/docs/components/pipelines/concepts/pipeline-root>`__ for pipeline Runs across all Profiles, which includes the schema for, the name of and the path to the bucket, via its ``default_pipeline_root`` `configuration option <https://charmhub.io/kfp-profile-controller/configurations>`__, e.g.:
-
-.. code-block:: bash
-
-  juju config kfp-profile-controller default_pipeline_root=minio://${BUCKET_NAME}/v2/artifacts
-
-.. note::
-
-  In Charmed Kubeflow, Pipelines can only be configured with the MinIO schema.
-
-This automatically creates a ``ConfigMap`` named ``kfp-launcher`` in each Profile
-
-.. note::
-
-  For this configuration change to take effect, existing ``ConfigMaps`` — if any — named ``kfp-launcher`` in the namespace of each Profile of interest have to be manually deleted after the configuration change is applied, so that they are automatically recreated with the updated default pipeline root. Refer to `this issue <https://github.com/canonical/metacontroller-operator/issues/193>`__ for details.
