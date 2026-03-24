@@ -458,7 +458,7 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 10: create some (new) Kubeflow Profiles
+Step 10: create some (other) Kubeflow Profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 No additional, specific precautions required.
@@ -484,7 +484,7 @@ For instance, coherently with the examples used above, such Profiles could be cr
   done
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 11: deploy some (new) Profiles' Workloads
+Step 11: deploy some (other) Profiles' Workloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Follow the procedure 
