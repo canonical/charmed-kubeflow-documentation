@@ -487,14 +487,5 @@ For instance, coherently with the examples used above, such Profiles could be cr
 Step 11: deploy some (other) Profiles' Workloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Deploy workloads to their respective Profiles' default node pools
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-No further action is required, since user workloads will already be injected with affinities — and tolerations, when segretating Juju-system components — for their Profile's default node pool.
-
-++++++++++++++++++++++++++++++++++++++++++++++++++++
-Deploy workloads to some other, arbitrary node pools
-++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-Follow the procedure detailed in :ref:`scheduling patterns <workload_scheduling_patterns>`.
+Follow the procedure detailed in :ref:`configure workloads for the most advanced node-pool scheduling possible
+ <configure_most_advanced_scheduling_possible>`.
