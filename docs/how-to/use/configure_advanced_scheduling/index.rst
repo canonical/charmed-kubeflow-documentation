@@ -12,5 +12,5 @@ Set up scheduling depending on your use case:
 .. toctree::
     :maxdepth: 1
 
-    Configure advanced scheduling <configure-advanced-scheduling>
-    Configure advanced scheduling <configure-advanced-scheduling>
+    Configure workloads for general advanced node-pool scheduling <configure-general-advanced-scheduling>
+    Configure workloads for the most advanced node-pool scheduling possible <configure-most-advanced-scheduling-possible>

@@ -55,7 +55,7 @@ Label and taint node pools this way:
 
   These labels do not need to correspond to Kubeflow Profiles, but rather (zero, one or more) Kubeflow Profiles will later use these (and possibly the same) labels for the default node affinity of their workloads.
 
-- For each node pool with special hardware meant to be used by workloads only when explicitly overriding the default node pool-allocation of their respective Kubeflow Profile(s), add one specific label and one specific taint - different for each node pool - that do not conflict with any default ones. An example could be `special-hardware=x` for the label and `special-hardware=x:NoSchedule` for the taint for one of the special-hardware node pools, and `special-hardware=y` for the label and `special-hardware=y:NoSchedule` for the taint for another special-hardware one.
+- For each node pool (with special hardware) meant to be used by workloads only when explicitly overriding the default node pool-allocation of their respective Kubeflow Profile(s), add one specific label and one specific taint - different for each node pool - that do not conflict with any default ones. An example could be `special-hardware=x` for the label and `special-hardware=x:NoSchedule` for the taint for one of the special-hardware node pools, and `special-hardware=y` for the label and `special-hardware=y:NoSchedule` for the taint for another special-hardware one.
 
 - Feel free to keep (zero, one or more) node pools unlabeled and untainted, for general use.
 
@@ -487,4 +487,14 @@ For instance, coherently with the examples used above, such Profiles could be cr
 Step 11: deploy some (other) Profiles' Workloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Follow the procedure 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Deploy workloads to their respective Profiles' default node pools
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+No further action is required, since user workloads will already be injected with affinities — and tolerations, when segretating Juju-system components — for their Profile's default node pool.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+Deploy workloads to some other, arbitrary node pools
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Follow the procedure detailed in :ref:`scheduling patterns <workload_scheduling_patterns>`.
