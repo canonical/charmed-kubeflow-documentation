@@ -13,11 +13,9 @@ This guide describes how to set up your K8s cluster and how to install Charmed K
   - CKF-user workloads
 - (optionally) different CKF-platform workloads are in turn selectively scheduled to different node pools, among the ones allocated to CKF platform workloads
 
------------
-Limitations
------------
+.. warning::
 
-TODO
+  Not all user workloads support scheduling to a different node pool than the default one of their respective Profile: creating Kubeflow Notebooks programmatically, instead of using the Kubeflow Dashboard's UI, will not allow to select a different node pool than the Profile's default one. This is due to the fact that the API to create Notebooks programmatically does not allow for labels, while a label is necessary to prevent `namespace-node-affinity-operator` from injecting/overriding the Notebook request to K8s' API server with the default node affinity and tolerations, so that the Notebook could define any custom node affinities and tolerations. Given Notebooks are rarely created programmatically, though (but rather from the Dashboard's UI, preferentially), this limitation is negligible. Notebooks created from the Dashboard can rely on PodDefaults to add labels, instead, with no such problem - and can use the UI to define both node affinity and tolerations, in CKF. All other user workloads (KServe's, Pipelines', Katib's, Training's, Trainer's) fully support the objective “Customization”, as their APIs allow not only for node affinity and tolerations but also for labels.
 
 ------------
 Requirements
@@ -34,6 +32,10 @@ Step 1: label and taint your node pools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set up your K8s cluster while labeling and tainting your node pools as described for the desired alternative, between the two ones that follow.
+
+.. warning::
+
+  It is assumed that the described node-pool setup, with nodes appropriately labeled and tainted, is either already in place or independently achievable, without expecting the described process to handle the migration and/or rescheduling of user workloads from previous clusters and/or cluster states that may differ in terms of node pools.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Alternative 1: not segregating Juju system but keeping pools for general workloads
