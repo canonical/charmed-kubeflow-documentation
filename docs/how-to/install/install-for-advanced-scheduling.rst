@@ -8,13 +8,21 @@ Install allowing for advanced node-pool scheduling
   This guide does not replace the other installation methods described in :ref:`Install <index_install>` but rather enriches them with additional steps.
 
 This guide describes how to set up your K8s cluster and how to install Charmed Kubeflow (CKF) to allow for the most advanced node-pool scheduling possible, so that:
+
 - each Kubeflow Profile has a configirable node pool where respective user worklaods will be scheduled to by default
+
 - each user workload can be selectively scheduled to different node pools than the default one of the respective Kubeflow Profile, among the node pools allocated to user workloads
+
 - the following are mutually segregated to different node pools:
+
   - K8s-control-plane workloads
+
   - (optionally) Juju-system workloads
+
   - CKF-platform workloads
+
   - CKF-user workloads
+
 - (optionally) different CKF-platform workloads are in turn selectively scheduled to different node pools, among the ones allocated to CKF platform workloads
 
 .. warning::
