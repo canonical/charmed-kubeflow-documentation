@@ -33,7 +33,7 @@ This guide describes how to set up your K8s cluster and how to install Charmed K
 Requirements
 ------------
 
-Follow the same requirements as the desired installation method among the other ones listed in :ref:`Install <index_install>`.
+Follow the same requirements as in the desired installation method among the other ones listed in :ref:`Install <index_install>`.
 
 ---------
 Procedure
