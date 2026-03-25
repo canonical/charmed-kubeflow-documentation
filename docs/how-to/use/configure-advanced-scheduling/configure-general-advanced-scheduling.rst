@@ -1,7 +1,7 @@
-.. _configure_advanced_scheduling:
+.. _configure_general_advanced_scheduling:
 
-Configure advanced scheduling
-=============================
+Configure workloads for general advanced node-pool scheduling
+=============================================================
 
 This guide describes how to configure different Charmed Kubeflow (CKF) workloads, such as Notebooks, Pipeline steps, and distributed jobs, 
 to align with specific :ref:`scheduling patterns <workload_scheduling_patterns>` that might be required.

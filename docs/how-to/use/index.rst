@@ -12,7 +12,7 @@ Set up scheduling depending on your use case:
 .. toctree::
     :maxdepth: 1
     
-    Configure advanced scheduling <configure-advanced-scheduling>
+    Configure advanced scheduling <configure-advanced-scheduling/index>
 
 Learn how to customize the link configuration of the Kubeflow Central Dashboard:
 
