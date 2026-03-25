@@ -49,9 +49,9 @@ jupyter
 Jupyter
 JupyterLab
 Katib
-Katib’s
+Katib's
 KServe
-KServe’s
+KServe's
 Kserve
 kfp
 KFP
