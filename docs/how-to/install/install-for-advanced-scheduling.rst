@@ -5,7 +5,7 @@ Install allowing for advanced node-pool scheduling
 
 .. note::
 
-This guide does not replace the other installation methods described in :ref:`Install <index_install>` but rather enriches them with additional steps.
+  This guide does not replace the other installation methods described in :ref:`Install <index_install>` but rather enriches them with additional steps.
 
 This guide describes how to set up your K8s cluster and how to install Charmed Kubeflow (CKF) to allow for the most advanced node-pool scheduling possible, so that:
 - each Kubeflow Profile has a configirable node pool where respective user worklaods will be scheduled to by default
@@ -59,7 +59,7 @@ Label and taint node pools this way:
 
   .. note::
 
-  These labels do not need to correspond to Kubeflow Profiles, but rather (zero, one or more) Kubeflow Profiles will later use these (and possibly the same) labels for the default node affinity of their workloads.
+    These labels do not need to correspond to Kubeflow Profiles, but rather (zero, one or more) Kubeflow Profiles will later use these (and possibly the same) labels for the default node affinity of their workloads.
 
 - For each node pool (with special hardware) meant to be used by workloads only when explicitly overriding the default node pool-allocation of their respective Kubeflow Profile(s), add one specific label and one specific taint - different for each node pool - that do not conflict with any default ones. An example could be `special-hardware=x` for the label and `special-hardware=x:NoSchedule` for the taint for one of the special-hardware node pools, and `special-hardware=y` for the label and `special-hardware=y:NoSchedule` for the taint for another special-hardware one.
 
@@ -493,5 +493,4 @@ For instance, coherently with the examples used above, such Profiles could be cr
 Step 11: deploy some (other) Profiles' Workloads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Follow the procedure detailed in :ref:`configure workloads for the most advanced node-pool scheduling possible
- <configure_most_advanced_scheduling_possible>`.
+Follow the procedure detailed in :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>`.
