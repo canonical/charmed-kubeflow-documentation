@@ -5,7 +5,7 @@ Install allowing for advanced node-pool scheduling
 
 .. note::
 
-  This guide does not replace the other installation methods described in :ref:`Install <index_install>` but rather enriches them with additional steps.
+  This guide can be combined with other installation methods described in :ref:`Install <index_install>`. In such a case, it is recommended to go through both this guide and the chosen installation method first, to then understand how to interleave the steps of this guide to the ones of the chosen installation method, which may also contain its own specificl cluster-setup and deployment instructions.
 
 This guide describes how to set up your K8s cluster and how to install Charmed Kubeflow (CKF) to allow for the most advanced node-pool scheduling possible, so that:
 
@@ -24,10 +24,6 @@ This guide describes how to set up your K8s cluster and how to install Charmed K
   - CKF-user workloads
 
 - (optionally) different CKF-platform workloads are in turn selectively scheduled to different node pools, among the ones allocated to CKF platform workloads
-
-.. warning::
-
-  Not all user workloads support scheduling to a different node pool than the default one of their respective Profile: creating Kubeflow Notebooks programmatically, instead of using the Kubeflow Dashboard's UI, will not allow to select a different node pool than the Profile's default one. This is due to the fact that the API to create Notebooks programmatically does not allow for labels, while a label is necessary to prevent `namespace-node-affinity-operator` from injecting/overriding the Notebook request to K8s' API server with the default node affinity and tolerations, so that the Notebook could define any custom node affinities and tolerations. Given Notebooks are rarely created programmatically, though (but rather from the Dashboard's UI, preferentially), this limitation is negligible. Notebooks created from the Dashboard can rely on PodDefaults to add labels, instead, with no such problem - and can use the UI to define both node affinity and tolerations, in CKF. All other user workloads (KServe's, Pipelines', Katib's, Training's, Trainer's) fully support the objective “Customization”, as their APIs allow not only for node affinity and tolerations but also for labels.
 
 ------------
 Requirements
