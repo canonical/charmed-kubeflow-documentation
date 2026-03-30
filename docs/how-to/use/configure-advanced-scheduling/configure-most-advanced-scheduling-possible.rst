@@ -3,35 +3,33 @@
 Configure workloads for the most advanced node-pool scheduling possible
 =======================================================================
 
-The following guide details how to schedule workloads to available, preconfigured node pools as selectively as possible.
+The following guide shows how to schedule workloads to available, preconfigured node pools as selectively as possible.
 
 .. warning::
 
-  The following guide applies only if Charmed Kubeflow was installed with the additional precautions detailed in :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>`. Instead, refer to :ref:`Configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for alternative, more general scheduling guidelines.
+  While Notebooks created from the Dashboard can rely on PodDefaults to add labels to disable `namespace-node-affinity-operator`, in order to target a different node pool than the Profile's default one, `the API to create Kubeflow Notebooks programmatically does not allow for that <https://www.kubeflow.org/docs/components/notebooks/api-reference/notebook-v1/#kubeflow.org/v1.NotebookTemplateSpec>`__.
 
-.. warning::
+.. note::
 
-  This guide does not allow for migration and/or rescheduling of Profile workloads. An effective workaround may be as simple as deleting and recreating workloads in any way suitable to the user.
-
-.. warning::
-
-  Not all user workloads support scheduling to a different node pool than the default one of their respective Profile: creating Kubeflow Notebooks programmatically, instead of using the Kubeflow Dashboard's UI, will not allow to select a different node pool than the Profile's default one. This is due to the fact that the API to create Notebooks programmatically does not allow for labels, while a label is necessary to prevent `namespace-node-affinity-operator` from injecting/overriding the Notebook request to K8s' API server with the default node affinity and tolerations, so that the Notebook could define any custom node affinities and tolerations. Given Notebooks are rarely created programmatically, though (but rather from the Dashboard's UI, preferentially), this limitation is negligible. Notebooks created from the Dashboard can rely on PodDefaults to add labels, instead, with no such problem - and can use the UI to define both node affinity and tolerations, in CKF. All other user workloads (KServe's, Pipelines', Katib's, Training's, Trainer's) fully support the objective “Customization”, as their APIs allow not only for node affinity and tolerations but also for labels.
+  This guide does not support migrating or rescheduling Profile workloads. A practical workaround may be to delete and recreate workloads using whichever method best suits your needs.
 
 ------------
 Requirements
 ------------
 
-Having followed :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>`.
+Charmed Kubeflow installed using the specific :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>` guide. If Charmed Kubeflow was not installed with such additional precautions, refer to :ref:`Configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for alternative, more general scheduling guidelines.
 
 ---------
 Procedure
 ---------
 
+Workloads can either be scheduled to their respective Profiles' default node pools, which is the default behavior, or deployed to other arbitrary node pools.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Deploy workloads to their respective Profiles' default node pools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-No further action is required, since user workloads will already be injected with affinities — and tolerations, when segregating Juju-system components — for their Profile's default node pool.
+Create workloads without extra precautions, since by default they will already be injected with affinities — and tolerations, when segregating Juju-system components — for their Profile's default node pool.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Deploy workloads to some other, arbitrary node pools
@@ -44,7 +42,5 @@ Ensure the specific workloads are defined with:
 - Node affinity (of type `requiredDuringSchedulingIgnoredDuringExecution` and not `preferredDuringSchedulingIgnoredDuringExecution`) matching the label of the target node pool
 
 - Tolerations matching the taint of the target node pool
-
-minding that Notebooks created programmatically are the only kind of workloads not supporting this — as described in :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>`.
 
 Refer to :ref:`Configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for further details about configuring some of the points above.
