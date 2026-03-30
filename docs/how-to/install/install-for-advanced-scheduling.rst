@@ -43,15 +43,17 @@ Step 1: label and taint your node pools
 
 Set up your K8s cluster while labeling and tainting your node pools in one of two ways, either:
 
-* Not segregating Juju system but keeping pools for general workloads, or
-* Segregating Juju system but not keeping pools for general workloads
+* Unsegregated Juju system and pools for general workloads, or
+* Segregated Juju system and no pools for general workloads
+
+Given that Juju-system workloads do not support specifying node affinities or tolerations, they will be randomly scheduled to any untainted node pools. Follow the latter approach when you prefer to segregate Juju-system workloads to a specific node pool, and the former when you prefer to use untainted node pools also for general workloads.
 
 .. warning::
 
   It is assumed that the described node-pool setup, with nodes appropriately labeled and tainted, is either already in place or independently achievable, without expecting the described process to handle the migration and/or rescheduling of user workloads from previous clusters and/or cluster states that may differ in terms of node pools.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Option 1: not segregating Juju system but keeping pools for general workloads
+Option 1: unsegregated Juju system and pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Label and taint node pools this way:
@@ -79,14 +81,14 @@ Label and taint node pools this way:
   Make sure that all applied taints are of type `NoSchedule`, and not `NoExecute`, in order not to disrupt pre-existing cluster workloads in case of incorrect initial cluster settings, expectations and/or assumptions. Do not use `PreferNoSchedule` either, as scheduling guarantees are required.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Option 2: segregating Juju system but not keeping pools for general workloads
+Option 2: segregated Juju system and no pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Label and taint node pools as described above for option 1 but with the following changes:
 
-- For each node pool meant to be used as the default one of some Kubeflow Profile(s), add not only one specific label but also one specific taint.
-
 - Keep one and only node pool unlabeled and untainted, meant to be used for Juju-system workloads only and without foreseeing any general workloads ending up in the same pool.
+
+- For each node pool meant to be used as the default one of some Kubeflow Profile(s), add both specific label(s) and specific taint(s).
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 2: set up your Juju controller
@@ -308,7 +310,7 @@ Moreover, for each namespace, add configurations to allow for some label(s) to d
   CKF admins can continuously reconfigure the default node-pool allocation and whether to enable customization for any Profiles. Nevertheless, Profile workloads deployed before the desired configuration changes are not expected to be rescheduled or migrated. For this reason, it is recommended to configure Profiles before their actual creation (knowing namespace names correspond to Profile names).
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Option 1: not segregating Juju system but keeping pools for general workloads
+Option 1: unsegregated Juju system and pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 For each Profile's namespace, add configurations to inject workloads with node affinity matching labels of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities for default node pools will see their workloads randomly scheduled in any node pools without taints, including not only all the default ones but also any other general ones that may exist, therefore opting out of such a feature.
@@ -383,7 +385,7 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Option 2: segregating Juju system but not keeping pools for general workloads
+Option 2: segregated Juju system and no pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 For each Profile's namespace, add configurations to inject workloads with node affinity and tolerations respectively matching labels and taints of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities and tolerations for default node pools will see their workloads scheduled in the node pool for Juju-system workloads.
