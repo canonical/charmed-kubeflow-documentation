@@ -7,7 +7,7 @@ The following guides cover common tasks and use cases for using Charmed Kubeflow
 
 .. note:: This content is intended for end users.
 
-Set up scheduling depending on your use case:
+Control scheduling:
 
 .. toctree::
     :maxdepth: 1

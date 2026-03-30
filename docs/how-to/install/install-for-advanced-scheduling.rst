@@ -39,6 +39,8 @@ Follow the same requirements as in the desired installation method among the oth
 Procedure
 ---------
 
+Take the follwing steps in the same order.
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 1: label and taint your node pools
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,7 +96,7 @@ Label and taint node pools as described above for option 1 but with the followin
 Step 2: set up your Juju controller
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-No additional, specific precautions required.
+For bootstrapping instructions, see `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>`_. No additional, specific precautions are required.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 3: set up a former `namespace-node-affinity-operator`

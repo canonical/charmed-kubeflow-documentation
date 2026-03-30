@@ -3,9 +3,7 @@
 Configure advanced node-pool scheduling
 =======================================
 
-The following guides illustrate how to schedule workflows targeting specific node pools.
-
-Set up scheduling depending on your use case:
+The following guides illustrate how to schedule workflows targeting specific node pools:
 
 .. toctree::
     :maxdepth: 1
