@@ -3,7 +3,7 @@
 Configure workloads for advanced node-pool scheduling
 =====================================================
 
-The following guide illustrates how to schedule workflows targeting specific node pools, both in general and when Charmed Kubeflow is set up for the most advanced scheduling capabilities as possible.
+The following guides illustrate how to schedule workflows targeting specific node pools, both in general and when Charmed Kubeflow is set up for the most advanced scheduling capabilities as possible.
 
 .. _configure_general_advanced_scheduling:
 
