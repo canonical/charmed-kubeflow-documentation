@@ -536,4 +536,4 @@ For instance, coherently with the examples used above, such Profiles could be cr
 What's next
 -----------
 
-You can finally deploy some (other) Profiles' workloads by following :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_advanced_scheduling#configure-workloads-for-the-most-advanced-node-pool-scheduling-possible>`.
+You can finally deploy some (other) Profiles' workloads by following :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>`.

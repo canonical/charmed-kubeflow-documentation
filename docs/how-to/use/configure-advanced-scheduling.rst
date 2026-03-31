@@ -5,6 +5,8 @@ Configure workloads for advanced node-pool scheduling
 
 The following guide illustrates how to schedule workflows targeting specific node pools, both in general and when Charmed Kubeflow is set up for the most advanced scheduling capabilities as possible.
 
+.. _configure_general_advanced_scheduling:
+
 -------------------------------------------------------------
 Configure workloads for general advanced node-pool scheduling
 -------------------------------------------------------------
@@ -164,6 +166,8 @@ See the example below for more details:
             operator: "Exists"
             effect: "NoSchedule"
 
+.. _configure_most_advanced_scheduling_possible:
+
 -----------------------------------------------------------------------
 Configure workloads for the most advanced node-pool scheduling possible
 -----------------------------------------------------------------------
@@ -182,7 +186,7 @@ The following guide shows how to schedule workloads to available, preconfigured 
 Requirements
 ~~~~~~~~~~~~
 
-Charmed Kubeflow installed using the specific :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>` guide. If Charmed Kubeflow was not installed with such additional precautions, refer to :ref:`configure workloads for general advanced node-pool scheduling <configure_advanced_scheduling#configure-workloads-for-general-node-pool-scheduling>` for alternative, more general scheduling guidelines.
+Charmed Kubeflow installed using the specific :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>` guide. If Charmed Kubeflow was not installed with such additional precautions, refer to :ref:`configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for alternative, more general scheduling guidelines.
 
 ~~~~~~~~~
 Procedure
@@ -208,4 +212,4 @@ Ensure the specific workloads are defined with:
 
 - Tolerations matching the taint of the target node pool
 
-Refer to :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_advanced_scheduling#configure-workloads-for-the-most-advanced-node-pool-scheduling-possible>` for further details about configuring some of the points above.
+Refer to :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>` for further details about configuring some of the points above.
