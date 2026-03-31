@@ -72,4 +72,4 @@ For more details on how workload Pods can be configured, see the following guide
 
 1. :ref:`Schedule Pods on GPU nodes <use_nvidia_gpus>`.
 2. :ref:`Scheduling patterns in Charmed Kubeflow <workload_scheduling_patterns>`.
-3. :ref:`Configure scheduling for Kubeflow workloads <index_configure_advanced_scheduling>`.
+3. :ref:`Configure scheduling for Kubeflow workloads <configure_advanced_scheduling>`.

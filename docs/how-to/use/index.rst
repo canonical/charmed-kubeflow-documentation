@@ -7,32 +7,32 @@ The following guides cover common tasks and use cases for using Charmed Kubeflow
 
 .. note:: This content is intended for end users.
 
-Control scheduling:
+Configure workflow scheduling:
 
 .. toctree::
     :maxdepth: 1
-    
-    Configure scheduling <configure-advanced-scheduling/index>
+
+    Configure advanced workflow scheduling <configure-advanced-workflow-scheduling>
 
 Learn how to customize the link configuration of the Kubeflow Central Dashboard:
 
 .. toctree::
     :maxdepth: 1
-    
+
     Customise link configuration <customise-link-configuration>
 
 Use PodDefaults to configure Kubernetes Pods:
 
 .. toctree::
     :maxdepth: 1
-    
+
     Leverage PodDefaults <leverage-poddefaults>
 
 Run Spark Jobs in Kubeflow notebooks and Pipelines:
 
 .. toctree::
     :maxdepth: 1
-    
+
     Run Spark Jobs <run-spark-jobs>
 
 Leverage NVIDIA with CKF:
