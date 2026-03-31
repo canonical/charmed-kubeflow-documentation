@@ -532,8 +532,8 @@ For instance, coherently with the examples used above, such Profiles could be cr
   EOF
   done
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 11: deploy some (other) Profiles' Workloads
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------
+What's next
+-----------
 
-Follow the procedure detailed in :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>`.
+You can finally deploy some (other) Profiles' workloads by following :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>`.
