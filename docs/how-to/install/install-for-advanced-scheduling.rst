@@ -62,9 +62,9 @@ Label and taint node pools this way:
 
 - For the node pool(s) of the Kubeflow platform:
 
-  - When not scheduling different CKF-platform workloads to different node pools: add one specific label and one specific taint that do not conflict with any default ones. An example could be `kubeflow-platform=true` for the label and `kubeflow-platform=true:NoSchedule` for the taint.
+  - When not scheduling different CKF-platform workloads to different node pools: add one specific label and one specific taint that do not conflict with any default ones. An example could be `platform=kubeflow` for the label and `platform=kubeflow:NoSchedule` for the taint.
 
-  - When scheduling different CKF-platform workloads to different node pools: add one specific, different label for each such node pool and one same, specific taint for all such node pools, with all labels and taints not conflicting with any default ones. An example could be `kubeflow-platform-arch=amd64` for the label and `kubeflow-platform=true:NoSchedule` for the taint of a node pool and `kubeflow-platform-arch=arm64` for the label and `kubeflow-platform=true:NoSchedule` for the taint of another node pool.
+  - When scheduling different CKF-platform workloads to different node pools: add one specific, different label for each such node pool and one same, specific taint for all such node pools, with all labels and taints not conflicting with any default ones. An example could be `kubeflow-platform-arch=amd64` for the label and `platform=kubeflow:NoSchedule` for the taint of a node pool and `kubeflow-platform-arch=arm64` for the label and `platform=kubeflow:NoSchedule` for the taint of another node pool.
 
 - For each node pool meant to be used as the default one of some Kubeflow Profile(s), add one specific label - different for each node pool - that does not conflict with any default ones. An example could be `kubeflow-default-node-pool=a` for one of the default node pools and `kubeflow-default-node-pool=b` for another default one.
 
@@ -126,12 +126,14 @@ Then, configure `namespace-node-affinity-operator` to inject workloads scheduled
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: [kubeflow]
     EOF
     )
     juju config temp-namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
@@ -146,8 +148,9 @@ Then, configure `namespace-node-affinity-operator` to inject workloads scheduled
         exclude-me-from-namespace-node-affinity-operator: “true”
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     EOF
     )
     juju config temp-namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
@@ -199,34 +202,40 @@ Deploy (another instance of) `namespace-node-affinity-operator` into (a differen
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-eventing: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-serving: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     EOF
     )
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
@@ -246,22 +255,25 @@ Deploy (another instance of) `namespace-node-affinity-operator` into (a differen
         exclude-me-from-namespace-node-affinity-operator: "true"
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-eventing: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-serving: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     EOF
     )
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
@@ -333,34 +345,40 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-eventing: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-serving: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     profile-i: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
@@ -408,34 +426,40 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-eventing: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     knative-serving: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
       nodeSelectorTerms:
         - matchExpressions:
-          - key: kubeflow-platform
-            operator: Exists
+          - key: platform
+            operator: In
+            values: [kubeflow]
       tolerations:
         - effect: NoSchedule
-          key: kubeflow-platform
-          operator: Exists
+          key: platform
+          operator: Equal
+          value: kubeflow
     profile-i: |
       excludedLabels:
         exclude-me-from-namespace-node-affinity-operator: "true"
