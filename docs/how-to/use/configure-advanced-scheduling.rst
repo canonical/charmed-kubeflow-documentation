@@ -212,4 +212,4 @@ Ensure the specific workloads are defined with:
 
 - Tolerations matching the taint of the target node pool
 
-Refer to :ref:`configure workloads for the most advanced node-pool scheduling possible <configure_most_advanced_scheduling_possible>` for further details about configuring some of the points above.
+Refer to :ref:`configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for further details about configuring some of the points above.
