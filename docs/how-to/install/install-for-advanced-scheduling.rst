@@ -64,7 +64,7 @@ Label and taint node pools this way:
 
   - When not scheduling different CKF-platform workloads to different node pools: add one specific label and one specific taint that do not conflict with any default ones. An example could be `platform=kubeflow` for the label and `platform=kubeflow:NoSchedule` for the taint.
 
-  - When scheduling different CKF-platform workloads to different node pools: add one specific, different label for each such node pool and one same, specific taint for all such node pools, with all labels and taints not conflicting with any default ones. An example could be `kubeflow-platform-arch=amd64` for the label and `platform=kubeflow:NoSchedule` for the taint of a node pool and `kubeflow-platform-arch=arm64` for the label and `platform=kubeflow:NoSchedule` for the taint of another node pool.
+  - When scheduling different CKF-platform workloads to different node pools: add one specific, different label for each such node pool and one same, specific taint for all such node pools, with all labels and taints not conflicting with any default ones. An example could be `kubeflow-platform-arch=i` for the label and `platform=kubeflow:NoSchedule` for the taint of a node pool and `kubeflow-platform-arch=j` for the label and `platform=kubeflow:NoSchedule` for the taint of another node pool.
 
 - For each node pool meant to be used as the default one of some Kubeflow Profile(s), add one specific label - different for each node pool - that does not conflict with any default ones. An example could be `kubeflow-default-node-pool=a` for one of the default node pools and `kubeflow-default-node-pool=b` for another default one.
 
@@ -309,7 +309,7 @@ Deploy CKF following any installation method among :ref:`the supported ones <ind
 
 - When scheduling different CKF-platform workloads to different node pools:
 
-  - Deploying Juju applications with `Juju constraints' tags <https://documentation.ubuntu.com/juju/3.6/reference/constraint/#tags>`__ defining specific node affinities as exemplified `in here <https://discourse.charmhub.io/t/pod-priority-and-affinity-in-juju-charms/4091>`__, one for each application to target the desired node pool (with the respective node label(s)) among the Kubeflow-platform ones. Here is an example: `--constraints="tags=node.kubeflow-platform-arch=arm64"`.
+  - Deploying Juju applications with `Juju constraints' tags <https://documentation.ubuntu.com/juju/3.6/reference/constraint/#tags>`__ defining specific node affinities as exemplified `in here <https://discourse.charmhub.io/t/pod-priority-and-affinity-in-juju-charms/4091>`__, one for each application to target the desired node pool (with the respective node label(s)) among the Kubeflow-platform ones. Here is an example: `--constraints="tags=node.kubeflow-platform-arch=j"`.
 
   - Deploying Juju applications that operate additional platform workloads (in addition to the ones defined in `metadata.yaml`) with charm configurations that add to such workloads node affinities as in the point above (not necessarily the same ones as the respective charms, at the user's own discretion).
 
