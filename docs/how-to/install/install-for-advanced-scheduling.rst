@@ -97,8 +97,12 @@ Step 2: set up your Juju controller
 For bootstrapping instructions, see `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>`_. No additional, specific precautions are required.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 3: set up a former `namespace-node-affinity-operator`
+Step 3 (Optional): set up a former `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+  This step is required only if it is desirable to have `namespace-node-affinity-operator` itself scheduled to Kubeflow-platform node pools instead of any untainted node pools such as Juju-system ones or (when available) general-workload ones.
 
 Create a temporary Juju model and deploy `namespace-node-affinity-operator` into such a model, using a Juju application name different from the default one of the charm. For example:
 
@@ -263,8 +267,12 @@ Deploy (another instance of) `namespace-node-affinity-operator` into (a differen
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 7: tear down the former `namespace-node-affinity-operator`
+Step 7 (Optional): tear down the former `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+  This step is required if and only if step 3 above was followed.
 
 Delete the former `namespace-node-affinity-operator`, that is the one deployed in the temporary Juju model, not the one in the Juju model for the Kubeflow platform. For example:
 
