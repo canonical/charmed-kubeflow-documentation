@@ -5,7 +5,7 @@ Install allowing for advanced node-pool scheduling
 
 .. note::
 
-  This guide can be combined with other installation methods described in :ref:`Install <index_install>`. In such a case, it is recommended to go through both this guide and the chosen installation method first, to then understand how to interleave the steps of this guide to the ones of the chosen installation method, which may also contain its own specificl cluster-setup and deployment instructions.
+  This guide can be combined with other installation methods described in :ref:`Install <index_install>`. In such a case, it is recommended to go through both this guide and the chosen installation method first, to then understand how to interleave the steps of this guide to the ones of the chosen installation method, which may also contain its own specific cluster-setup and deployment instructions.
 
 This guide describes how to set up your K8s cluster and how to install Charmed Kubeflow (CKF) to allow for the most advanced node-pool scheduling possible, so that:
 
@@ -35,7 +35,7 @@ Follow the same requirements as in the desired installation method among the oth
 Procedure
 ---------
 
-Take the follwing steps in the same order.
+Take the following steps in the same order.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 1: label and taint your node pools

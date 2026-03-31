@@ -192,7 +192,7 @@ Charmed Kubeflow installed using the specific :ref:`Install allowing for advance
 Procedure
 ~~~~~~~~~
 
-Workloads can either be scheduled to their respective Profiles' default node pools, which is the default behavior, or deployed to other arbitrary node pools.
+Workloads can either be scheduled to their respective Profiles' default node pools, which is the default behaviour, or deployed to other arbitrary node pools.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Deploy workloads to their respective Profiles' default node pools
