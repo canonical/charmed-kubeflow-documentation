@@ -182,7 +182,7 @@ The following guide shows how to schedule workloads to available, preconfigured 
 Requirements
 ~~~~~~~~~~~~
 
-Charmed Kubeflow installed using the specific :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>` guide. If Charmed Kubeflow was not installed with such additional precautions, refer to :ref:`Configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for alternative, more general scheduling guidelines.
+Charmed Kubeflow installed using the specific :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>` guide. If Charmed Kubeflow was not installed with such additional precautions, refer to :ref:`configure workloads for general advanced node-pool scheduling <configure_advanced_scheduling#configure-workloads-for-general-node-pool-scheduling>` for alternative, more general scheduling guidelines.
 
 ~~~~~~~~~
 Procedure

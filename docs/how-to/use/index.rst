@@ -12,7 +12,7 @@ Configure workflow scheduling:
 .. toctree::
     :maxdepth: 1
 
-    Configure advanced workflow scheduling <configure-advanced-workflow-scheduling>
+    Configure advanced workflow scheduling <configure-advanced-scheduling>
 
 Learn how to customize the link configuration of the Kubeflow Central Dashboard:
 
