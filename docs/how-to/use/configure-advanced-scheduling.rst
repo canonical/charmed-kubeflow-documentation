@@ -212,4 +212,4 @@ Ensure the specific workloads are defined with:
 
 - Tolerations matching the taint of the target node pool
 
-Refer to :ref:`configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` for further details about configuring some of the points above.
+For more information on configuring node affinity and tolerations to specific workloads, see :ref:`configure workloads for general advanced node-pool scheduling <configure_general_advanced_scheduling>` above.
