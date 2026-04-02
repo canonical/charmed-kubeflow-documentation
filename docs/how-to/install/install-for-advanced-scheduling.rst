@@ -335,7 +335,12 @@ Option 1: unsegregated Juju system and pools for general workloads
 
 For each Profile's namespace, add configurations to inject workloads with node affinity matching labels of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities for default node pools will see their workloads randomly scheduled in any node pools without taints, including not only all the default ones but also any other general ones that may exist, therefore opting out of such a feature.
 
-An example of resulting overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` as its default one, may be:
+An example to set overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` as its default one, may be:
+
+.. raw:: html
+
+  <details>
+  <summary>Example</summary>
 
 .. code-block:: bash
 
@@ -410,13 +415,22 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
     )
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
 
+.. raw:: html
+
+  </details>
+
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Option 2: segregated Juju system and no pools for general workloads
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 For each Profile's namespace, add configurations to inject workloads with node affinity and tolerations respectively matching labels and taints of default node pools, to schedule Profiles' workloads to respective default node pools. Profiles whose namespaces are not configured with affinities and tolerations for default node pools will see their workloads scheduled to the node pool for Juju-system workloads.
 
-An example of resulting overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` and tainted with `kubeflow-default-node-pool=a:NoSchedule` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` and tainted with `kubeflow-default-node-pool=b:NoSchedule` as its default one, may be:
+An example to set overall configurations, where both Profiles `profile-i` and `profile-j` have the node pool labeled with `kubeflow-default-node-pool=a` and tainted with `kubeflow-default-node-pool=a:NoSchedule` as their default one and Profile `profile-k` has the node pool labeled with `kubeflow-default-node-pool=b` and tainted with `kubeflow-default-node-pool=b:NoSchedule` as its default one, may be:
+
+.. raw:: html
+
+  <details>
+  <summary>Example</summary>
 
 .. code-block:: bash
 
@@ -505,6 +519,10 @@ An example of resulting overall configurations, where both Profiles `profile-i` 
     EOF
     )
     juju config namespace-node-affinity settings_yaml="$namespace_node_affinity_settings"
+
+.. raw:: html
+
+  </details>
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Step 10: create some (other) Kubeflow Profiles
