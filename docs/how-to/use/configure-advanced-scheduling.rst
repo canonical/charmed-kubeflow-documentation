@@ -208,7 +208,7 @@ Ensure the specific workloads are defined with:
 
 - The (set of) label(s) configured for disabling `namespace-node-affinity-operator` for the Profile — for instance, following the example set in :ref:`Install allowing for advanced node-pool scheduling <install_allowing_for_advanced_node_pool_scheduling>`, the label `exclude-me-from-namespace-node-affinity-operator=”true”`
 
-- Node affinity (of type `requiredDuringSchedulingIgnoredDuringExecution` and not `preferredDuringSchedulingIgnoredDuringExecution`) matching the label of the target node pool
+- Node affinity (of type ``requiredDuringSchedulingIgnoredDuringExecution`` and not ```preferredDuringSchedulingIgnoredDuringExecution``) matching the label of the target node pool
 
 - Tolerations matching the taint of the target node pool
 

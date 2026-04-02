@@ -78,7 +78,7 @@ Label and taint node pools this way:
 
 .. warning::
 
-  Make sure that all applied taints are of type `NoSchedule`, and not `NoExecute`, in order not to disrupt pre-existing cluster workloads in case of incorrect initial cluster settings, expectations and/or assumptions.
+  Make sure that all applied taints are of type ``NoSchedule``, and not ``NoExecute``, in order not to disrupt pre-existing cluster workloads in case of incorrect initial cluster settings, expectations and/or assumptions.
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Option 2: segregated Juju system and no pools for general workloads

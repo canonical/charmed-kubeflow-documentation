@@ -71,8 +71,6 @@ MLOps
 NIM
 NIMs
 NGC
-NoExecute
-NoSchedule
 oidc
 OIDC
 ons
@@ -81,14 +79,11 @@ performant
 plantuml
 PNG
 PodDefaults
-PreferNoSchedule
-preferredDuringSchedulingIgnoredDuringExecution
 preprocesses
 preprocessed
 preprocessing
 Pygments
 QEMU
-requiredDuringSchedulingIgnoredDuringExecution
 Rockcraft
 readthedocs
 rst
