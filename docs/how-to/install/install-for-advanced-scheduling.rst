@@ -97,7 +97,7 @@ Step 2: set up your Juju controller
 For bootstrapping instructions, see `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>`_. No additional, specific precautions are required.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 3 (Optional): set up a former `namespace-node-affinity-operator`
+Step 3 (Optional): set up a temporary `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
@@ -182,10 +182,10 @@ Label with `namespace-node-affinity=enabled` the namespace of the Juju model for
   kubectl label namespaces knative-serving namespace-node-affinity=enabled
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Step 6: set up a latter `namespace-node-affinity-operator`
+Step 6: set up `namespace-node-affinity-operator`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Deploy (another instance of) `namespace-node-affinity-operator` into (a different model,) the model for the Kubeflow platform, using a Juju application name as the charm name or simply different from the name of the `namespace-node-affinity-operator` instance in the former namespace, and configure it with the same configurations as for the former `namespace-node-affinity-operator`. In case Knative is to be deployed, replicate the same configurations of the standard Kubeflow-platform namespace for the namespaces of Knative. An example of such configurations may be:
+Deploy (the primary instance of) `namespace-node-affinity-operator` into (a different model,) the model for the Kubeflow platform. If you deployed a temporary instance of the same operator following step 3 above, use a different Juju application name, despite being on different Juju models, to avoid conflicts among the underlying K8s resources. Then, configure it using the same configurations as for the former operator in step 3. In case Knative is to be deployed, replicate the same configurations of the standard Kubeflow-platform namespace for the namespaces of Knative. An example of such configurations may be:
 
 - When not scheduling different CKF-platform workloads to different node pools:
 
