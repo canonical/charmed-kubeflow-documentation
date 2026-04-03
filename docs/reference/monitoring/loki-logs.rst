@@ -362,8 +362,8 @@ To do so, you need to follow these steps:
 
 1. Define a namespace for the `kubernetes_sd_config <https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config>`_.
 2. Define a `label selectors <https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors>`_ to scrape only required Pods. This is recommended to save resources.
-3. [Optional] Enable all original labels from Pods via `relabel_configs <https://grafana.com/docs/loki/latest/send-data/promtail/configuration/#relabel_configs>`_ and action labelmap.
-4. [Optional] Add the rest of Juju topology to each log via `pipeline stages and static_labels <https://grafana.com/docs/loki/latest/send-data/promtail/stages/static_labels/>`_.
+3. [Optional] Enable all original labels from Pods via `relabel_configs <https://grafana.com/docs/loki/latest/send-data/promtail/>`_ and action labelmap.
+4. [Optional] Add the rest of Juju topology to each log via `pipeline stages and static_labels <https://grafana.com/docs/loki/latest/send-data/promtail/>`_.
 
 Here's an example of scrape jobs for `istio-pilot <https://charmhub.io/istio-pilot>`_ and `istio-gateway <https://charmhub.io/istio-gateway>`_ controllers:
 
