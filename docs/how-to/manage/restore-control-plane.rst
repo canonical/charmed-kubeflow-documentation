@@ -110,4 +110,4 @@ This step avoids the ``Primary`` database from becoming unavailable during backu
    juju run kfp-db/leader restore restore-to-time=latest
    juju run katib-db/leader restore restore-to-time=latest
 
-Please refer to the `Charmed MySQL K8s documentation <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/how-to/back-up-and-restore/>`_ for more details.
+Please refer to the `Charmed MySQL K8s documentation <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/8.0/how-to/back-up-and-restore/>`_ for more details.

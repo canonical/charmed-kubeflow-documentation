@@ -49,4 +49,4 @@ In this scenario, CKF workload Pods must also be configured with the necessary T
 See also
 --------
 
-Learn how to :ref:`configure advanced scheduling <configure_advanced_scheduling>` for specific use cases.
+Learn how to :ref:`configure advanced workflow scheduling <configure_advanced_scheduling>` for specific use cases.
