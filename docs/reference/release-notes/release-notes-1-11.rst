@@ -15,7 +15,7 @@ In comparison with the upstream Kubeflow project, CKF:
 * Uses `OIDC-Authservice <https://github.com/arrikto/oidc-authservice>`_ for authentication.
 * Does not include the `Model registry <https://github.com/kubeflow/model-registry>`_ and `Spark operator <https://github.com/kubeflow/spark-operator>`_ components.
 
-The Charmed Kubeflow 1.11 release has been validated on K8s versions 1.32, 1.33 and 1.34, also validating GPU acceleration on A10 and Tesla GPU architectures.
+The Charmed Kubeflow 1.11 release has been validated on K8s versions 1.32, 1.33 and 1.34, also validating GPU acceleration on NVIDIA A10 and Tesla GPU architectures.
 
 What's new
 ----------
