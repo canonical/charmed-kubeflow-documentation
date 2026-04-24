@@ -7,6 +7,11 @@ This guide describes how to migrate Charmed Kubeflow (CKF) from Istio Sidecar Mo
 
 `Istio Ambient Mesh`_ is a data plane mode that provides secure communication between services without injecting sidecar proxies into application pods. 
 
+.. note::
+   Istio Ambient Mesh support is currently available in the **edge** channel. 
+   The stable channel release will be available soon. 
+   This guide uses edge channel versions for the migration.
+
 .. warning::
    This migration process involves removing and redeploying several critical components. 
    Ensure you have a backup of your deployment before proceeding. See :ref:`back_up` for more details.
@@ -19,7 +24,8 @@ This guide describes how to migrate Charmed Kubeflow (CKF) from Istio Sidecar Mo
 Requirements
 ---------------------
 
-* A running CKF 1.11 deployment with sidecar-based Istio.
+* A running CKF 1.11/stable deployment with sidecar-based Istio.
+  If you are on an older version, first upgrade to 1.11/stable before proceeding with the migration.
 * Admin access to the Kubernetes (K8s) cluster where CKF is deployed.
 * Juju admin access to the ``kubeflow`` model.
 * ``kubectl`` CLI tool installed and configured.
@@ -105,7 +111,7 @@ Upgrade the admission webhook to the latest version and integrate it with the Am
 
 .. code-block:: bash
 
-   juju refresh admission-webhook
+   juju refresh admission-webhook --channel 1.10/edge
    juju integrate admission-webhook:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Katib components
@@ -115,9 +121,9 @@ Upgrade the Katib controller and UI, and integrate them with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh katib-controller
+   juju refresh katib-controller --channel 0.19/edge
    juju integrate katib-controller:service-mesh istio-beacon-k8s:service-mesh
-   juju refresh katib-ui
+   juju refresh katib-ui --channel 0.19/edge
    juju integrate katib-ui:service-mesh istio-beacon-k8s:service-mesh
    juju integrate katib-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -128,7 +134,7 @@ Upgrade the training operator, and integrate with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh training-operator
+   juju refresh training-operator --channel 1.9/edge
    juju integrate training-operator:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate KServe controller
@@ -138,7 +144,7 @@ Upgrade KServe, configure it for raw deployment mode, and integrate with both th
 
 .. code-block:: bash
 
-   juju refresh kserve-controller
+   juju refresh kserve-controller --channel 0.15/edge
    juju config kserve-controller deployment-mode=rawdeployment
    juju integrate kserve-controller:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kserve-controller:gateway-metadata istio-ingress-k8s:gateway-metadata
@@ -154,8 +160,8 @@ Upgrade Dex and OIDC Gatekeeper to work with the new Istio ingress:
 
 .. code-block:: bash
 
-   juju refresh dex-auth
-   juju refresh oidc-gatekeeper
+   juju refresh dex-auth --channel 2.41/edge
+   juju refresh oidc-gatekeeper --channel ckf-1.10/edge
    juju integrate dex-auth:service-mesh istio-beacon-k8s:service-mesh
    juju integrate dex-auth:istio-ingress-route-unauthenticated istio-ingress-k8s:istio-ingress-route-unauthenticated
    juju integrate oidc-gatekeeper:service-mesh istio-beacon-k8s:service-mesh
@@ -169,7 +175,7 @@ Upgrade the Envoy proxy and integrate with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh envoy
+   juju refresh envoy --channel 2.4/edge
    juju integrate envoy:service-mesh istio-beacon-k8s
    juju integrate envoy:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -180,10 +186,10 @@ Upgrade the Jupyter UI and controller, integrating both with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh jupyter-controller
+   juju refresh jupyter-controller --channel 1.10/edge
    juju integrate jupyter-controller:service-mesh istio-beacon-k8s:service-mesh
    juju integrate jupyter-controller:gateway-metadata istio-ingress-k8s:gateway-metadata
-   juju refresh jupyter-ui
+   juju refresh jupyter-ui --channel 1.10/edge
    juju integrate jupyter-ui:service-mesh istio-beacon-k8s:service-mesh
    juju integrate jupyter-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -194,18 +200,18 @@ Upgrade all KFP components, add new relations, and integrate them with the servi
 
 .. code-block:: bash
 
-   juju refresh kfp-api
+   juju refresh kfp-api --channel 2.15/edge
    juju integrate kfp-api:service-mesh istio-beacon-k8s:service-mesh
-   juju refresh kfp-persistence
+   juju refresh kfp-persistence --channel 2.15/edge
    juju integrate kfp-persistence:service-mesh istio-beacon-k8s:service-mesh
-   juju refresh kfp-profile-controller
+   juju refresh kfp-profile-controller --channel 2.15/edge
    juju integrate kfp-profile-controller:service-mesh istio-beacon-k8s:service-mesh
-   juju refresh kfp-schedwf
+   juju refresh kfp-schedwf --channel 2.15/edge
    juju integrate kfp-schedwf:service-mesh istio-beacon-k8s:service-mesh
-   juju refresh kfp-ui
+   juju refresh kfp-ui --channel 2.15/edge
    juju integrate kfp-ui:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kfp-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
-   juju refresh kfp-viz
+   juju refresh kfp-viz --channel 2.15/edge
    juju integrate kfp-viz:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kfp-api:kfp-api-grpc kfp-persistence:kfp-api-grpc
    juju integrate kfp-api:kfp-api-grpc kfp-schedwf:kfp-api-grpc
@@ -217,7 +223,7 @@ Upgrade MinIO and integrate it with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh minio --trust
+   juju refresh minio --trust --channel 1.10/edge
    juju integrate minio:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Kubeflow Dashboard
@@ -227,7 +233,7 @@ Upgrade the central dashboard and integrate with the ingress:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-dashboard
+   juju refresh kubeflow-dashboard --channel 1.10/edge
    juju integrate kubeflow-dashboard:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kubeflow-dashboard:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -238,7 +244,7 @@ Upgrade the profiles controller with Ambient Mesh configuration:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-profiles
+   juju refresh kubeflow-profiles --channel 1.10/edge
    juju integrate kubeflow-profiles:service-mesh istio-beacon-k8s:service-mesh
    juju config kubeflow-profiles service-mesh-mode=istio-ambient
    juju config kubeflow-profiles istio-gateway-service-account=istio-ingress-k8s-istio
@@ -254,7 +260,7 @@ Upgrade the volumes web app and integrate with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-volumes
+   juju refresh kubeflow-volumes --channel 1.10/edge
    juju integrate kubeflow-volumes:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kubeflow-volumes:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -265,13 +271,13 @@ Upgrade both the Tensorboard controller and web app:
 
 .. code-block:: bash
 
-   juju refresh tensorboard-controller
+   juju refresh tensorboard-controller --channel 1.10/edge
    juju integrate tensorboard-controller:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboard-controller:gateway-metadata istio-ingress-k8s:gateway-metadata
 
 .. code-block:: bash
 
-   juju refresh tensorboards-web-app
+   juju refresh tensorboards-web-app --channel 1.10/edge
    juju integrate tensorboards-web-app:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboards-web-app:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
