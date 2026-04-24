@@ -8,9 +8,9 @@ This guide describes how to migrate Charmed Kubeflow (CKF) from Istio Sidecar Mo
 `Istio Ambient Mesh`_ is a data plane mode that provides secure communication between services without injecting sidecar proxies into application pods. 
 
 .. note::
-   Istio Ambient Mesh support is currently available in the **edge** channel. 
-   The stable channel release will be available soon. 
-   This guide uses edge channel versions for the migration.
+   Istio Ambient Mesh support is currently available only in the **1.11/edge** channel. 
+   The guide will be updated once the stable release is available.
+   This guide uses the edge risk for the migration.
 
 .. warning::
    This migration process involves removing and redeploying several critical components. 
