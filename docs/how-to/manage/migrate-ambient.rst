@@ -111,7 +111,7 @@ Upgrade the admission webhook to the latest version and integrate it with the Am
 
 .. code-block:: bash
 
-   juju refresh admission-webhook --channel 1.10/edge
+   juju refresh admission-webhook --channel 2.0/edge
    juju integrate admission-webhook:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Katib components
@@ -186,10 +186,10 @@ Upgrade the Jupyter UI and controller, integrating both with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh jupyter-controller --channel 1.10/edge
+   juju refresh jupyter-controller --channel 1.11/edge
    juju integrate jupyter-controller:service-mesh istio-beacon-k8s:service-mesh
    juju integrate jupyter-controller:gateway-metadata istio-ingress-k8s:gateway-metadata
-   juju refresh jupyter-ui --channel 1.10/edge
+   juju refresh jupyter-ui --channel 1.11/edge
    juju integrate jupyter-ui:service-mesh istio-beacon-k8s:service-mesh
    juju integrate jupyter-ui:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -233,7 +233,7 @@ Upgrade the central dashboard and integrate with the ingress:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-dashboard --channel 1.10/edge
+   juju refresh kubeflow-dashboard --channel 2.0/edge
    juju integrate kubeflow-dashboard:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kubeflow-dashboard:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
@@ -244,7 +244,7 @@ Upgrade the profiles controller with Ambient Mesh configuration:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-profiles --channel 1.10/edge
+   juju refresh kubeflow-profiles --channel 2.0/edge
    juju integrate kubeflow-profiles:service-mesh istio-beacon-k8s:service-mesh
    juju config kubeflow-profiles service-mesh-mode=istio-ambient
    juju config kubeflow-profiles istio-gateway-service-account=istio-ingress-k8s-istio
@@ -260,9 +260,19 @@ Upgrade the volumes web app and integrate with the service mesh:
 
 .. code-block:: bash
 
-   juju refresh kubeflow-volumes --channel 1.10/edge
+   juju refresh kubeflow-volumes --channel 1.11/edge
    juju integrate kubeflow-volumes:service-mesh istio-beacon-k8s:service-mesh
    juju integrate kubeflow-volumes:istio-ingress-route istio-ingress-k8s:istio-ingress-route
+
+Migrate PVC Viewer
+^^^^^^^^^^^^^^^^^^
+
+Upgrade the PVC Viewer operator and integrate with the service mesh:
+
+.. code-block:: bash
+
+   juju refresh pvcviewer-operator --channel 1.11/edge
+   juju integrate pvcviewer-operator:service-mesh istio-beacon-k8s:service-mesh
 
 Migrate Tensorboard components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -271,13 +281,13 @@ Upgrade both the Tensorboard controller and web app:
 
 .. code-block:: bash
 
-   juju refresh tensorboard-controller --channel 1.10/edge
+   juju refresh tensorboard-controller --channel 1.11/edge
    juju integrate tensorboard-controller:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboard-controller:gateway-metadata istio-ingress-k8s:gateway-metadata
 
 .. code-block:: bash
 
-   juju refresh tensorboards-web-app --channel 1.10/edge
+   juju refresh tensorboards-web-app --channel 1.11/edge
    juju integrate tensorboards-web-app:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboards-web-app:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
