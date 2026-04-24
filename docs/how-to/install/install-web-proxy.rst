@@ -104,16 +104,14 @@ Deploy CKF
 
 To deploy CKF, follow the steps provided in the :ref:`general installation <general_installation>` guide. 
 
-When deploying with terraform, make sure you are providing the proxy input variables, e.g. using a `tfvars.json` file
+When deploying with Terraform, make sure you are providing the proxy input variables, e.g. using a ``tfvars.json`` file
 
 .. code-block:: json
 
    {
-	...
-	"http_proxy": <http_proxy>,
-	"https_proxy": <https_proxy>,
-	"no_proxy": <no_proxy>
-	...
+	"http_proxy": "<http_proxy>",
+	"https_proxy": "<https_proxy>",
+	"no_proxy": "<no_proxy>"
    }
 
 
@@ -123,13 +121,13 @@ If you are re-using an existing model, make sure the ``kubeflow`` model has your
 
    juju model-config
 
-You should see the proxy settings in the ``juju-http-proxy``, ``juju-https-proxy`` and ``juju-no-proxy`` variables. If these are not set, proceed to set them to their correct values using the `juju model-config <key>=<value> command, as shonw above. 
+You should see the proxy settings in the ``juju-http-proxy``, ``juju-https-proxy`` and ``juju-no-proxy`` variables. If these are not set, proceed to set them to their correct values using the `juju model-config <key>=<value>` command, as shown above. 
 
 --------------------------------------
 Use Kubeflow components behind a proxy
 --------------------------------------
 
-The following sections provides information on how to set and manage the proxy values for the various kind of Kubeflow user workloads. However, note that how to set the proxy values may depend on the specific type of user workload and on their requirement to reach external resources. In particular, some python libraries may not handle the `no_proxy` environment variable correctly or they may not work with CIDR. In this specific cases, we recommend you to disable proxy to ensure that internal requests are not sent and blocked by the proxy.  
+The following sections provides information on how to set and manage the proxy values for the various kind of Kubeflow user workloads. However, note that how to set the proxy values may depend on the specific type of user workload and on their requirement to reach external resources. In particular, some python libraries may not handle the `no_proxy` environment variable correctly or they may not work with IP ranges. In this specific cases, we recommend you to disable proxy to ensure that internal requests are not sent and blocked by the proxy.  
 
 ~~~~~~~~~~~~~~~~~~~
 Notebooks
