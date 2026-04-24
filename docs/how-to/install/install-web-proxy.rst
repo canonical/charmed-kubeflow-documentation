@@ -74,7 +74,7 @@ As an example, on a local deployment of MicroK8s you can use the following snipp
     export HOSTNAME=$(hostname)
     export NO_PROXY="$CLUSTER_CIDR,$SERVICE_CIDR,127.0.0.1,localhost,$NODE_IP/24,$HOSTNAME,.svc,.local,.kubeflow"
 
-For more information on how to set variables on MicroK8s, please refer to [this guide](https://github.com/canonical/charmed-kubeflow-documentation/blob/95d5ce435492bf3d976c2b45928a682b0058693c/docs/how-to/install/install-web-proxy.rst#configure-microk8s).
+For more information on how to set variables on MicroK8s, please refer to `this guide <https://github.com/canonical/charmed-kubeflow-documentation/blob/95d5ce435492bf3d976c2b45928a682b0058693c/docs/how-to/install/install-web-proxy.rst#configure-microk8s>`_.
 
 Once the proxy environment variables are correctly set, install Juju:
 
