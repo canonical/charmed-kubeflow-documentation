@@ -48,10 +48,15 @@ ISVCs
 jupyter
 Jupyter
 JupyterLab
+Katib
+Katib's
 KServe
+KServe's
 Kserve
 kfp
 KFP
+labeled
+labeling
 kubeflownotebookswg
 lang
 LaTeX
@@ -383,4 +388,6 @@ customizations
 VNet
 allowlists
 TBD
-
+unlabeled
+YAML
+yaml

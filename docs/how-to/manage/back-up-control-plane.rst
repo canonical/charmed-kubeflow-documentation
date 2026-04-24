@@ -79,7 +79,7 @@ CKF uses ``katib-db`` and ``kfp-db`` as databases for Katib and Kubeflow pipelin
 
 1. Deploy and configure the `s3-integrator <https://charmhub.io/s3-integrator>`_ to connect to the shared S3 storage.
 
-See `S3 AWS <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/how-to/back-up-and-restore/configure-s3-aws/>`_ and `S3 Radowsg <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/how-to/back-up-and-restore/configure-s3-radosgw/>`_ configuration guides for this step.
+See `S3 AWS <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/8.0/how-to/back-up-and-restore/configure-s3-aws/>`_ and `S3 Radowsg <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/8.0/how-to/back-up-and-restore/configure-s3-radosgw/>`_ configuration guides for this step.
 
 2. Scale up ``kfp-db`` and ``katib-db``.
 
@@ -107,7 +107,7 @@ This step avoids the ``Primary`` database from becoming unavailable during backu
 .. note::
    Replace ``1`` with the unit number of the non-primary unit you found in the previous step.
 
-Please refer to the `Charmed MySQL K8s documentation <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/how-to/back-up-and-restore/>`_ for more details.
+Please refer to the `Charmed MySQL K8s documentation <https://canonical-charmed-mysql-k8s.readthedocs-hosted.com/8.0/how-to/back-up-and-restore/>`_ for more details.
 
 -----------------------------------
 List backups
