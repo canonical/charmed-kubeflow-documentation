@@ -25,7 +25,7 @@ Requirements
 ---------------------
 
 * A running CKF 1.11/stable deployment with sidecar-based Istio.
-  If you are on an older version, first upgrade to 1.11/stable before proceeding with the migration.
+  If you are on an older version, first upgrade to 1.11/stable before proceeding with the migration. See :ref:`upgrade_1.10_1.11` for upgrade instructions.
 * Admin access to the Kubernetes (K8s) cluster where CKF is deployed.
 * Juju admin access to the ``kubeflow`` model.
 * ``kubectl`` CLI tool installed and configured.
