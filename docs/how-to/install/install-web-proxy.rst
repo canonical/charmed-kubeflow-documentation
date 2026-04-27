@@ -5,6 +5,8 @@ Install behind a web proxy
 
 This guide describes how to install Charmed Kubeflow (CKF) behind a web proxy.
 
+This guide assumes that you have already setup your underlying K8s cluster with the proxy settings. Please refer to your Kubernetes distribution documentation for more details on how this can be done for your particular choice of K8s distribution. 
+
 -------------------------
 Prepare your environment
 -------------------------
@@ -74,7 +76,7 @@ As an example, on a local deployment of MicroK8s you can use the following snipp
     export HOSTNAME=$(hostname)
     export NO_PROXY="$CLUSTER_CIDR,$SERVICE_CIDR,127.0.0.1,localhost,$NODE_IP/24,$HOSTNAME,.svc,.local,.kubeflow"
 
-For more information on how to set variables on MicroK8s, please refer to `this guide <https://github.com/canonical/charmed-kubeflow-documentation/blob/95d5ce435492bf3d976c2b45928a682b0058693c/docs/how-to/install/install-web-proxy.rst#configure-microk8s>`_.
+For more information on how to set variables on MicroK8s, please refer to `this guide <https://github.com/canonical/charmed-kubeflow-documentation/blob/95d5ce435492bf3d976c2b45928a682b0058693c/docs/how-to/install/install-web-proxy.rst#configure-microk8s>`_. For other K8s distribution, please check their respective product documentation to find out how to retrieve these information. 
 
 Once the proxy environment variables are correctly set, install Juju:
 
