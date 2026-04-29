@@ -291,6 +291,16 @@ Upgrade both the Tensorboard controller and web app:
    juju integrate tensorboards-web-app:service-mesh istio-beacon-k8s:service-mesh
    juju integrate tensorboards-web-app:istio-ingress-route istio-ingress-k8s:istio-ingress-route
 
+Migrate Metacontroller
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Upgrade the Metacontroller operator and integrate with the service mesh:
+
+.. code-block:: bash
+
+   juju refresh metacontroller-operator --channel 4.11/edge
+   juju integrate metacontroller-operator:service-mesh istio-beacon-k8s:service-mesh
+
 Remove sidecar containers from user namespaces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
