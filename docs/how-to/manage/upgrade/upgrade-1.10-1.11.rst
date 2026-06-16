@@ -114,9 +114,9 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
    juju refresh envoy --channel 2.4/stable
    juju refresh jupyter-controller --channel 1.10/stable
    juju refresh jupyter-ui --channel 1.10/stable
-   juju refresh katib-controller --channel 0.18/stable
-   juju refresh katib-db-manager --channel 0.18/stable
-   juju refresh katib-ui --channel 0.18/stable
+   juju refresh katib-controller --channel 0.19/stable
+   juju refresh katib-db-manager --channel 0.19/stable
+   juju refresh katib-ui --channel 0.19/stable
    juju refresh kfp-api --channel 2.15/stable
    juju refresh kfp-metadata-writer --channel 2.15/stable
    juju refresh kfp-persistence --channel 2.15/stable
