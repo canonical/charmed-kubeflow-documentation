@@ -36,4 +36,5 @@ Explore other installation use cases:
     Install behind a web proxy <install-web-proxy> 
     Install on NVIDIA DGX <install-nvidia-dgx>
     Install using Terraform <install-terraform>
+    Install with Canonical Identity Platform using Terraform <install-terraform-identity>
     Install for advanced node-pool scheduling <install-for-advanced-scheduling>

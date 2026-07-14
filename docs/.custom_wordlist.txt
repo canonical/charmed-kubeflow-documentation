@@ -198,6 +198,12 @@ eventing
 api
 API
 otel
+CoreDNS
+hostnames
+iam
+Kratos
+MetalLB
+PMR
 runtime
 SeldonWebhookError
 SeldonUnfinishedWorkIncrease
