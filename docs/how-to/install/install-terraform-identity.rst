@@ -82,6 +82,7 @@ Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr`
 
 .. note::
 
+   The profile ``name`` (for example, ``ml-engineering``) is arbitrary; Kubeflow creates a namespace of the same name for the profile.
    The profile ``owner.name`` must match the Kratos username you create in the :ref:`Create a user <create_user_identity>` section.
    In this solution, the profile owner maps to the Identity Platform (Kratos) username, not to an email address.
 
