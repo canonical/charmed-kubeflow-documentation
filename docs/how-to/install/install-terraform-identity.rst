@@ -101,26 +101,18 @@ Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr`
 
    Terraform automatically loads ``terraform.tfvars`` during ``terraform apply``.
 
-5. Define the external hostnames for the ingress gateways and the Identity Platform:
-
-.. code-block:: bash
-
-   UI_HOSTNAME="ui.kubeflow.com"
-   API_HOSTNAME="api.kubeflow.com"
-   AUTH_HOSTNAME="auth.kubeflow.com"
-
-.. note::
-
-   These hostnames do not need to be registered with a public DNS provider. You make them resolvable in the :ref:`Configure DNS for the ingress gateways <configure_dns_identity>` section below.
-
-6. Deploy the solution using Terraform as follows:
+5. Deploy the solution using Terraform, setting the external hostnames for the ingress gateways and the Identity Platform:
 
 .. code-block:: bash
 
    terraform apply \
-      -var external_ui_hostname="${UI_HOSTNAME}" \
-      -var external_m2m_hostname="${API_HOSTNAME}" \
-      -var external_auth_hostname="${AUTH_HOSTNAME}"
+      -var external_ui_hostname="ui.kubeflow.com" \
+      -var external_m2m_hostname="api.kubeflow.com" \
+      -var external_auth_hostname="auth.kubeflow.com"
+
+.. note::
+
+   These hostnames do not need to be registered with a public DNS provider. You make them resolvable in the :ref:`Configure DNS for the ingress gateways <configure_dns_identity>` section below.
 
 The command above:
 
@@ -133,7 +125,7 @@ The command above:
 
 See `kubeflow-ambient-iam deployment <https://github.com/canonical/charmed-kubeflow-solutions/blob/feat/iam-integration/terraform-refactoring/tests/kubeflow-ambient-iam/README.md>`_ for more details.
 
-7. Verify all charms are in ``active`` status by monitoring the Juju models:
+6. Verify all charms are in ``active`` status by monitoring the Juju models:
 
 .. code-block:: bash
 
