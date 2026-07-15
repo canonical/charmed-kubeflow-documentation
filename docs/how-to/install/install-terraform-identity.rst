@@ -26,9 +26,11 @@ The deployment spans four `Juju models <https://juju.is/docs/juju/model>`_:
 Requirements
 ---------------------
 
-* A K8s cluster version supported by Charmed Kubeflow (see :ref:`Supported versions <supported_kubeflow_versions>`) with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
-* A load balancer provider on the cluster, so that the ingress gateways and the Identity Platform can be exposed through ``LoadBalancer`` services. For example, `MetalLB <https://metallb.io/>`_ on `MicroK8s`_.
-* A K8s cluster that meets the `Istio platform prerequisites`_ for the ambient mesh.
+* A K8s cluster that:
+
+  * is a version supported by Charmed Kubeflow (see :ref:`Supported versions <supported_kubeflow_versions>`), with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
+  * has a load balancer provider, so that the ingress gateways and the Identity Platform can be exposed through ``LoadBalancer`` services. For example, `MetalLB <https://metallb.io/>`_ on `MicroK8s`_.
+  * meets the `Istio platform prerequisites`_ for the ambient mesh.
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
 * `kubectl <https://kubernetes.io/docs/reference/kubectl/>`_ configured to access your cluster.
 
