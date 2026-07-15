@@ -148,7 +148,7 @@ The ingress gateways and the Identity Platform are exposed through ``LoadBalance
 For these hostnames to resolve, you need to configure DNS in two places:
 
 * **In-cluster DNS (CoreDNS)**, so that in-cluster workloads (for example, the authentication redirects between the gateways and the Identity Platform) can resolve the hostnames.
-* **Host DNS**, so that your browser can reach the gateways.
+* **Host DNS**, so that the machine running your browser (the cluster host itself or a separate workstation) can reach the gateways.
 
 1. Get the ``LoadBalancer`` IP addresses of the gateways and the Identity Platform ingress:
 
