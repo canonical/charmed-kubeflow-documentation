@@ -108,17 +108,3 @@ Katib status
 The metrics from the ``Katib`` controller expose the status of `Experiment and Trial custom resources <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/>`_.
 
 .. image:: https://assets.ubuntu.com/v1/e30e40e3-katib_metrics1.png
-
--------------------
-Serving models
--------------------
-
-The following dashboards provide visualisations related to serving ML models.
-
-~~~~~~~~~~~~~~~
-Seldon Core
-~~~~~~~~~~~~~~~
-
-The metrics from the ``Seldon Core`` controller expose the status of `Seldon Deployment custom resources <https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/>`_, also called models, including information related to Seldon deployments currently available on the controller.
-
-.. image:: https://assets.ubuntu.com/v1/0186bceb-seldon_metrics1.png

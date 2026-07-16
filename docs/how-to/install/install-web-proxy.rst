@@ -273,7 +273,7 @@ See here a full Katib experiment example:
 Pipelines
 ~~~~~~~~~~~~~~~~~~~
 
-If your pipeline needs to download data or pull an image, you can inject your proxy environment variables into a pipeline from inside a notebook with the KFP SDK as done in `this example notebook <https://raw.githubusercontent.com/Barteus/kubeflow-examples/main/e2e-wine-kfp-mlflow/proxy-e2e-kfp-mlflow-seldon-pipeline.ipynb>`_.
+If your pipeline needs to download data or pull an image, you can inject your proxy environment variables into a pipeline from inside a notebook with the KFP SDK as done in `this example notebook <https://github.com/canonical/charmed-kubeflow-uats/blob/e22896817f189d086a10e46b1327dd3f4a3db709/tests/notebooks/cpu/e2e-wine/e2e-wine-kfp-mlflow-kserve.ipynb>`_.
 
 ~~~~~~~~~~~~~~~~~~~
 Istio
