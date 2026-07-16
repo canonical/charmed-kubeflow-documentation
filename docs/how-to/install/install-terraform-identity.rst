@@ -6,7 +6,7 @@ Install with Canonical Identity Platform using Terraform
 This guide describes how to install Charmed Kubeflow (CKF) integrated with the
 `Canonical Identity Platform <https://charmhub.io/topics/canonical-identity-platform>`_ using `Terraform`_.
 
-This solution runs CKF on the `Istio Ambient Mesh`_ and wires it to the Canonical Identity Platform
+This solution runs CKF on the `Istio Ambient Mesh`_ and integrates it with the Canonical Identity Platform
 (Hydra, Kratos and the Login UI) so that authentication is handled by the Identity Platform.
 
 .. note::
@@ -26,9 +26,9 @@ The deployment spans four `Juju models <https://juju.is/docs/juju/model>`_:
 Requirements
 ---------------------
 
-* A K8s cluster that:
+* A Kubernetes (K8s) cluster that:
 
-  * is a version supported by Charmed Kubeflow (see :ref:`Supported versions <supported_kubeflow_versions>`), with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
+  * uses a version supported by Charmed Kubeflow (see :ref:`Supported versions <supported_kubeflow_versions>`), with a default `storage class <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ configured.
   * has a load balancer provider, so that the ingress gateways and the Identity Platform can be exposed through ``LoadBalancer`` services. For example, `MetalLB <https://metallb.io/>`_ on `MicroK8s`_.
   * meets the `Istio platform prerequisites`_ for the ambient mesh.
 * `Terraform CLI <https://developer.hashicorp.com/terraform/cli>`_. You can install it using the `snap`_.
@@ -39,7 +39,7 @@ Bootstrap Juju
 ---------------------
 
 CKF is deployed to Kubernetes with Juju.
-Before deployment, Juju must be bootstrapped to the K8s cluster.
+Before deployment, a Juju controller must be bootstrapped to the K8s cluster.
 See `Get started with Juju <https://documentation.ubuntu.com/juju/latest/tutorial/>`_ for more details.
 
 .. note::
@@ -52,7 +52,7 @@ Deploy CKF with the Identity Platform
 
 Deploy the solution as follows:
 
-1. Clone the repository and change directory to the solution module:
+1. Clone the ``charmed-kubeflow-solutions`` repository and change directory to the solution module:
 
 .. code-block:: bash
 
@@ -67,9 +67,9 @@ Deploy the solution as follows:
 
    terraform init
 
-3. Prepare a Profile Management Repository (PMR).
+3. Prepare a Profile Management Representation (PMR) in a Git repository.
 
-The ``github-profiles-automator`` charm keeps the Kubeflow profiles in sync with a ``pmr.yaml`` file stored in a GitHub repository.
+The ``github-profiles-automator`` charm keeps the Kubeflow profiles in sync with a YAML file stored in a GitHub repository.
 Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr``) containing a ``pmr.yaml`` file at its root, such as:
 
 .. code-block:: yaml
@@ -82,7 +82,7 @@ Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr`
 
 .. note::
 
-   The profile ``name`` (for example, ``ml-engineering``) is arbitrary; Kubeflow creates a namespace of the same name for the profile.
+   You can choose any ``name`` for the profile (for example, ``ml-engineering``); Kubeflow creates a namespace of the same name.
    The profile ``owner.name`` must match the Kratos username you create in the :ref:`Create a user <create_user_identity>` section.
    In this solution, the profile owner maps to the Identity Platform (Kratos) username, not to an email address.
 
@@ -100,6 +100,8 @@ Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr`
 .. note::
 
    Terraform automatically loads ``terraform.tfvars`` during ``terraform apply``.
+
+   By default, the ``github-profiles-automator`` charm reads a file named ``pmr.yaml`` at the repository root. To use a different file or path, set ``pmr-yaml-path`` in ``github_profiles_automator_config``.
 
 5. Deploy the solution using Terraform, setting the external hostnames for the ingress gateways and the Identity Platform:
 
@@ -136,7 +138,7 @@ See `kubeflow-ambient-iam deployment <https://github.com/canonical/charmed-kubef
 
 .. note::
 
-   This may take up to some minutes, depending on the cluster's node specifications.
+   Deployment may take several minutes to complete, depending on the cluster's node specifications.
 
 .. _configure_dns_identity:
 
@@ -236,7 +238,7 @@ To log in and own a profile, create a matching user in Kratos.
 
 .. note::
 
-   The ``owner.name`` in ``pmr.yaml`` maps to the Kratos ``username``, so both must be identical (for example, ``user1``).
+   The ``owner.name`` in ``pmr.yaml`` maps to the Kratos ``username``, so they must be identical (for example, ``user1``).
 
 The action output includes a link that the user opens to set their account password.
 
@@ -256,7 +258,7 @@ Once DNS is configured, you can access the CKF dashboard at ``https://ui.kubeflo
 You are redirected to the Canonical Identity Platform to authenticate with the user you created.
 
 The gateways and the Identity Platform are served with certificates issued by the ``self-signed-certificates`` charm by default.
-Because these certificates are not signed by a trusted certificate authority (CA), your browser warns that the connection is not trusted.
+Because these certificates are not signed by a trusted certificate authority (CA), your browser may warn that the connection is not trusted.
 
 * For a test or development deployment, accept the certificate warning in your browser to proceed to the login page.
 * For a production deployment, replace ``self-signed-certificates`` with a certificate provider backed by a trusted CA, so that browsers trust the certificates and no warning is shown.
