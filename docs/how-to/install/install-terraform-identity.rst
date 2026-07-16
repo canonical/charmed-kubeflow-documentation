@@ -169,22 +169,20 @@ For these hostnames to resolve, you need to configure DNS in two places:
 Configure in-cluster DNS (CoreDNS)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-2. Find the name of the CoreDNS ``ConfigMap`` in your cluster:
+2. Find the CoreDNS ``ConfigMap`` name and store it in a variable to reuse it in the following steps:
 
 .. code-block:: bash
 
-   kubectl -n kube-system get configmap | grep -i coredns
+   COREDNS=$(kubectl -n kube-system get configmap -o name | grep coredns | head -n1 | cut -d/ -f2)
+   echo "$COREDNS"
 
-The name depends on your K8s distribution:
+The ``ConfigMap`` name depends on your K8s distribution: ``ck-dns-coredns`` on Canonical Kubernetes and ``coredns`` on MicroK8s.
 
-* On Canonical Kubernetes, it is ``ck-dns-coredns``.
-* On MicroK8s, it is ``coredns``.
-
-3. Edit the CoreDNS ``ConfigMap`` (replace ``ck-dns-coredns`` with the name found above if it differs):
+3. Edit the CoreDNS ``ConfigMap``:
 
 .. code-block:: bash
 
-   kubectl -n kube-system edit configmap ck-dns-coredns
+   kubectl -n kube-system edit configmap "$COREDNS"
 
 Add a ``hosts`` block inside the ``.:53 { ... }`` server block, just before the ``kubernetes`` plugin line, using the IP addresses from step 1:
 
@@ -201,11 +199,11 @@ Add a ``hosts`` block inside the ``.:53 { ... }`` server block, just before the 
 
    The ``fallthrough`` directive ensures that any query not matching these hostnames is still resolved by the rest of the CoreDNS configuration.
 
-4. Restart CoreDNS to apply the change (replace ``ck-dns-coredns`` with the matching deployment name if it differs, for example ``coredns`` on MicroK8s):
+4. Restart CoreDNS to apply the change:
 
 .. code-block:: bash
 
-   kubectl -n kube-system rollout restart deployment ck-dns-coredns
+   kubectl -n kube-system rollout restart deployment "$COREDNS"
 
 Configure host DNS
 ~~~~~~~~~~~~~~~~~~~
