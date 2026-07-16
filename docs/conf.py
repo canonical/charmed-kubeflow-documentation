@@ -251,6 +251,8 @@ linkcheck_ignore = [
     "https://www.kubeflow.org/docs/components/katib/user-guides/trial-template/",
     "https://www.kubeflow.org/docs/components/central-dash/overview/",
     "https://v1-9-branch.kubeflow.org/docs/components/katib/user-guides/trial-template/",
+    "https://www.kubeflow.org/docs/components/katib/experiment",
+    "https://www.kubeflow.org/docs/components/notebooks/api-reference/notebook-v1/",
 ]
 
 # A regex list of URLs where anchors are ignored by 'make linkcheck'

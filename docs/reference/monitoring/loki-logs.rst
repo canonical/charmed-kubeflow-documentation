@@ -263,16 +263,6 @@ You can check its logs through the Grafana UI using the query ``{pebble_service=
 
 See `Pvcviewer-operator logs source <https://github.com/kubeflow/notebooks/tree/notebooks-v1/components/pvcviewer-controller>`_ for more details.
 
-~~~~~~~~~~~~~~~~
-Seldon-core
-~~~~~~~~~~~~~~~~
-
-``Seldon-core`` is a GO application that uses `controller-runtime/pkg/log <https://pkg.go.dev/sigs.k8s.io/controller-runtime/pkg/log>`_ for logging.
-
-You can check its logs through the Grafana UI using the query  ``{pebble_service="seldon-core", charm="seldon-core"}``.
-
-See `Seldon-core logs source <https://github.com/SeldonIO/seldon-core/tree/master/operator>`_ for more details.
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Tensorboard-controller
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

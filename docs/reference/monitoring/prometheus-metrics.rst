@@ -197,18 +197,6 @@ You can check its metrics through the Prometheus or Grafana UI using the followi
 
     {juju_charm="minio"}
 
------------------------------
-Seldon controller manager
------------------------------
-
-See `Seldon controller manager upstream documentation <https://docs.seldon.io/>`_ for more information on provided metrics.
-
-You can check its metrics through the Prometheus or Grafana UI using the following query:
-
-.. code-block:: bash
-
-    {juju_charm="seldon-controller-manager"}
-
 -------------------
 Training operator
 -------------------
