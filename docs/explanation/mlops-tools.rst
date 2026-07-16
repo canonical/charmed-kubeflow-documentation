@@ -33,9 +33,3 @@ MLflow
 ------
 
 `MLflow`_ is an experiment and model repository that enables model tracking including metadata, training results and model comparison.
-
-Seldon Core
------------
-
-`Seldon Core <https://docs.seldon.io/projects/seldon-core/en/latest/>`_ is a platform to deploy ML models on Kubernetes at scale as microservices. 
-It supports REST and gRPC protocols, manual and auto-scaling.

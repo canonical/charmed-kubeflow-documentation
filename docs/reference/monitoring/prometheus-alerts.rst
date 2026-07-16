@@ -233,28 +233,6 @@ Pvcviewer operator
 | KubeflowServiceIsNotStable  | Pvcviewer-operator service is not stable.            | Warning   |
 +-----------------------------+------------------------------------------------------+-----------+
 
-----------------------------
-Seldon controller manager
-----------------------------
-
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| Alert                         | Description                                                            | Severity  |
-+===============================+========================================================================+===========+
-| SeldonWorkqueueTooManyRetries | Seldon workqueue retries increasing for ``kubeflow/seldon-core/0``.    | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| SeldonHTTPError               | Seldon HTTP error in ``kubeflow/seldon-core/0``.                       | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| SeldonReconcileError          | Seldon reconciliation ``kubeflow/seldon-core/0`` failed.               | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| SeldonUnfinishedWorkIncrease  | Seldon unfinished work for ``kubeflow/seldon-core/0`` is increasing.   | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| SeldonWebhookError            | Seldon webhook failed for ``kubeflow/seldon-core/0``.                  | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| KubeflowServiceDown           | Seldon-core service is down.                                           | Critical  |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-| KubeflowServiceIsNotStable    | Seldon-core service is not stable.                                     | Warning   |
-+-------------------------------+------------------------------------------------------------------------+-----------+
-
 ------------------------
 Tensorboard-controller
 ------------------------
