@@ -67,26 +67,10 @@ Deploy the solution as follows:
 
    terraform init
 
-3. Prepare a Profile Management Representation (PMR) in a Git repository.
+3. Create a Git repository for the Profile Management Representation (PMR).
 
-The ``github-profiles-automator`` charm keeps the Kubeflow profiles in sync with a YAML file stored in a GitHub repository.
-Create a repository (for example, ``https://github.com/example-org/kubeflow-pmr``) containing a ``pmr.yaml`` file at its root, such as:
-
-.. code-block:: yaml
-
-   profiles:
-   - name: ml-engineering
-     owner:
-       kind: User
-       name: user1
-
-.. note::
-
-   You can choose any ``name`` for the profile (for example, ``ml-engineering``); Kubeflow creates a namespace of the same name.
-   The profile ``owner.name`` must match the Kratos username you create in the :ref:`Create a user <create_user_identity>` section.
-   In this solution, the profile owner maps to the Identity Platform (Kratos) username, not to an email address.
-
-   See :ref:`Manage profiles <manage_profiles>` for the full ``pmr.yaml`` format, including contributors and resource quotas.
+The ``github-profiles-automator`` charm keeps the Kubeflow profiles in sync with a YAML file (the PMR) stored in a GitHub repository.
+Create an empty repository (for example, ``https://github.com/example-org/kubeflow-pmr``). You add the PMR file to it later, in the :ref:`Prepare the PMR <prepare_pmr_identity>` section, once you have created a user to own the profiles.
 
 4. Configure the ``github-profiles-automator`` charm to sync from your PMR repository by creating a ``terraform.tfvars`` file in the current directory:
 
@@ -139,6 +123,10 @@ See `kubeflow-ambient-iam deployment <https://github.com/canonical/charmed-kubef
 .. note::
 
    Deployment may take several minutes to complete, depending on the cluster's node specifications.
+
+.. note::
+
+   The ``github-profiles-automator`` charm remains in a ``blocked`` state until you add the PMR file to the repository, which you do in the :ref:`Prepare the PMR <prepare_pmr_identity>` section.
 
 .. _configure_dns_identity:
 
@@ -222,11 +210,10 @@ Configure host DNS
 Create a user
 ---------------------
 
-The ``github-profiles-automator`` charm creates the Kubeflow profiles defined in your ``pmr.yaml`` file automatically.
-Each profile is owned by a user whose identity is provided by the Canonical Identity Platform.
-To log in and own a profile, create a matching user in Kratos.
+Kubeflow profiles are owned by users whose identities are provided by the Canonical Identity Platform.
+Create a user in Kratos; you reference this user as the profile owner when you prepare the PMR in the next section.
 
-1. Create a Kratos user whose username matches the ``owner.name`` of a profile in your ``pmr.yaml`` file, using the Kratos `create-admin-account <https://charmhub.io/kratos/actions#create-admin-account>`_ action:
+Create a Kratos user using the `create-admin-account <https://charmhub.io/kratos/actions#create-admin-account>`_ action:
 
 .. code-block:: bash
 
@@ -234,25 +221,51 @@ To log in and own a profile, create a matching user in Kratos.
       username=user1 \
       email=user1@example.com
 
-.. note::
-
-   The ``owner.name`` in ``pmr.yaml`` maps to the Kratos ``username``, so they must be identical (for example, ``user1``).
-
 The action output includes a link that the user opens to set their account password.
 
-2. Confirm that the profile defined in your ``pmr.yaml`` file has been created:
+.. note::
+
+   Take note of the ``username`` (for example, ``user1``). You use it as the profile ``owner.name`` in the next section.
+
+.. _prepare_pmr_identity:
+
+---------------------
+Prepare the PMR
+---------------------
+
+Define a Kubeflow profile in the PMR, owned by the user you created.
+
+1. In the repository you created, add a ``pmr.yaml`` file at its root:
+
+.. code-block:: yaml
+
+   profiles:
+   - name: ml-engineering
+     owner:
+       kind: User
+       name: user1
+
+.. note::
+
+   You can choose any ``name`` for the profile (for example, ``ml-engineering``); Kubeflow creates a namespace of the same name.
+   The profile ``owner.name`` must match the Kratos ``username`` you created, so they must be identical (for example, ``user1``).
+   In this solution, the profile owner maps to the Identity Platform (Kratos) username, not to an email address.
+
+   See :ref:`Manage profiles <manage_profiles>` for the full ``pmr.yaml`` format, including contributors and resource quotas.
+
+2. Commit and push the file. The ``github-profiles-automator`` charm syncs the repository and creates the profile.
+
+3. Confirm that the profile has been created:
 
 .. code-block:: bash
 
    kubectl get profiles
 
-See :ref:`Manage profiles <manage_profiles>` for more details on managing profiles and the ``pmr.yaml`` format.
-
 ---------------------
 Access CKF dashboard
 ---------------------
 
-Once DNS is configured, you can access the CKF dashboard at ``https://ui.kubeflow.com``.
+Once DNS, the user, and the profile are ready, you can access the CKF dashboard at ``https://ui.kubeflow.com``.
 You are redirected to the Canonical Identity Platform to authenticate with the user you created.
 
 The gateways and the Identity Platform are served with certificates issued by the ``self-signed-certificates`` charm by default.
