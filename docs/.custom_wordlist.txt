@@ -386,3 +386,10 @@ TBD
 unlabeled
 YAML
 yaml
+JWT
+JWKS
+OAuth
+oauth
+Kratos
+CoreDNS
+hostnames
