@@ -150,7 +150,7 @@ The following example uses a KServe ``InferenceService``.
 
    Every component is reached through the machine-to-machine gateway's (sub)domain, which is the single point of ingress. KServe is a special case: it automatically provisions a
    per-service subdomain of the gateway domain (for example, ``sklearn-v2-iris-ml-engineering.api.kubeflow.com``). Other components are reached at the gateway hostname
-   (``api.kubeflow.com``) under their own route path (for example, MLflow at ``https://api.kubeflow.com/<mlflow-route-path>``).
+   (``api.kubeflow.com``) under their own route path (for example, MLflow at ``https://api.kubeflow.com/mlflow/``).
 
 First, discover the machine-to-machine gateway serving the KServe domain. The gateway name matches the ``istio-ingress-k8s`` app serving the ``api.kubeflow.com`` domain:
 
