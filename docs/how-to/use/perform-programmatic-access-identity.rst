@@ -99,6 +99,12 @@ Commit and push the change. Once ``github-profiles-automator`` syncs it, an ``Au
 
 .. note::
 
+   Contributors can have the ``admin``, ``edit`` or ``view`` role. The gateway ``AuthorizationPolicy`` that lets a client reach the component is created for any of these roles,
+   so a ``view`` (read-only) contributor can still send inference requests. The role only changes the client's Kubernetes RBAC (``kubeflow-view`` versus ``kubeflow-edit``), that is,
+   what it can create or modify through the Kubernetes API. Use ``view`` for consumers that should only run inferences without modifying the served models.
+
+.. note::
+
    The profile ``owner.name`` maps to the Identity Platform (Kratos) username, while a machine-to-machine ``contributor`` is identified by the OAuth client's ``CLIENT_ID``.
    See :ref:`Manage profiles <manage_profiles>` for the full ``pmr.yaml`` format.
 
