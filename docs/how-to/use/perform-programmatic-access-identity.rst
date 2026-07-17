@@ -1,7 +1,7 @@
 .. _perform_programmatic_access_identity:
 
-Perform programmatic access (M2M) with Canonical Identity Platform
-==================================================================
+Perform programmatic access with Canonical Identity Platform
+============================================================
 
 This guide describes how to perform machine-to-machine (M2M) programmatic access, from outside the cluster, to Charmed Kubeflow (CKF) components when CKF is integrated with the
 `Canonical Identity Platform <https://charmhub.io/topics/canonical-identity-platform>`_.
@@ -12,16 +12,16 @@ issued by `Hydra <https://charmhub.io/hydra>`_ using the OAuth 2.0 ``client_cred
 Two conditions must be met for a request to succeed:
 
 * **Authentication**: the request carries a valid JWT whose issuer is trusted by the machine-to-machine gateway.
-* **Authorisation**: the token's identity (the OAuth client) is granted access to the target Kubeflow profile.
+* **Authorization**: the token's identity (the OAuth client) is granted access to the target Kubeflow profile.
 
-The steps to obtain a token and authorise a client are the same for any Kubeflow component that exposes an API through the machine-to-machine gateway.
+The steps to obtain a token and authorize a client are the same for any Kubeflow component that exposes an API through the machine-to-machine gateway.
 This guide uses a `KServe <https://kserve.github.io/website/>`_ ``InferenceService`` (ISVC) as a worked example.
 
 To do so, follow these steps:
 
 1. `Create an OAuth client <#create-an-oauth-client>`_.
 2. `Export the client credentials <#export-the-client-credentials>`_.
-3. `Authorise the client on a profile <#authorise-the-client-on-a-profile>`_.
+3. `Authorize the client on a profile <#authorize-the-client-on-a-profile>`_.
 4. `Request an access token <#request-an-access-token>`_.
 5. `Access the component API <#access-the-component-api>`_.
 
@@ -54,6 +54,12 @@ Create an OAuth client in Hydra using the ``client_credentials`` grant type:
 
 .. note::
 
+   You can use any ``name`` for the client. You can either reuse a single client for all programmatic access, or create a separate client per consumer.
+   Because a client is authorized individually as a profile contributor (see `Authorize the client on a profile <#authorize-the-client-on-a-profile>`_), separate
+   clients let you grant or revoke access per consumer, whereas a shared client grants the same access to everyone using it.
+
+.. note::
+
    The ``audience`` field is optional. Set it if you want to restrict the scope of the token. If you set it here, you must also request the token with a matching ``audience`` in the
    `Request an access token <#request-an-access-token>`_ step. See the `create-oauth-client action <https://charmhub.io/hydra/actions#create-oauth-client>`_ for details.
 
@@ -69,10 +75,10 @@ From the action output, export the client credentials as environment variables:
    CLIENT_SECRET=<client_secret from the action output>
 
 -----------------------------------
-Authorise the client on a profile
+Authorize the client on a profile
 -----------------------------------
 
-Authentication alone is not enough. The token's identity (the ``CLIENT_ID``) must also be authorised to access the target profile, otherwise the request is authenticated but rejected with ``RBAC: access denied``.
+Authentication alone is not enough. The token's identity (the ``CLIENT_ID``) must also be authorized to access the target profile, otherwise the request is authenticated but rejected with ``RBAC: access denied``.
 
 The ``github-profiles-automator`` charm reconciles profiles from a ``pmr.yaml`` file in the configured repository. Add the client as a contributor on the profile that owns the target resource.
 
@@ -134,6 +140,12 @@ Access the component API
 Once you have a token, pass it as a bearer token in the ``Authorization`` header of your requests to the target component's API through the machine-to-machine gateway.
 The following example uses a KServe ``InferenceService``.
 
+.. note::
+
+   Every component is reached through the machine-to-machine gateway's (sub)domain, which is the single point of ingress. KServe is a special case: it automatically provisions a
+   per-service subdomain of the gateway domain (for example, ``sklearn-v2-iris-ml-engineering.api.kubeflow.com``). Other components are reached at the gateway hostname
+   (``api.kubeflow.com``) under their own route path (for example, MLflow at ``https://api.kubeflow.com/<mlflow-route-path>``).
+
 First, discover the machine-to-machine gateway serving the KServe domain. The gateway name matches the ``istio-ingress-k8s`` app serving the ``api.kubeflow.com`` domain:
 
 .. code-block:: bash
@@ -142,6 +154,8 @@ First, discover the machine-to-machine gateway serving the KServe domain. The ga
    GATEWAY=$(kubectl -n kubeflow get gateway -o \
        jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.listeners[*].hostname}{"\n"}{end}' \
        | grep "api.kubeflow.com" | head -1 | cut -f1)
+
+.. TODO: Remove the following workaround once canonical/service-mesh#102 is fixed and the istio-ingress-k8s charm supports wildcard listeners natively.
 
 .. warning::
 
@@ -221,5 +235,5 @@ A successful request returns a prediction:
 
    {"predictions":[1,1]}
 
-This confirms that Hydra issued a ``client_credentials`` token, the machine-to-machine gateway validated the JWT issuer, the profile's ``AuthorizationPolicy`` authorised the client identity,
-and the component served the request once authenticated and authorised.
+This confirms that Hydra issued a ``client_credentials`` token, the machine-to-machine gateway validated the JWT issuer, the profile's ``AuthorizationPolicy`` authorized the client identity,
+and the component served the request once authenticated and authorized.

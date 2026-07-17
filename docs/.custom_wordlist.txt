@@ -393,3 +393,4 @@ oauth
 Kratos
 CoreDNS
 hostnames
+authorize
