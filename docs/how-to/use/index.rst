@@ -64,4 +64,4 @@ Perform machine-to-machine access when integrated with the Canonical Identity Pl
 .. toctree::
     :maxdepth: 1
 
-    Perform programmatic access (M2M) with Canonical Identity Platform <perform-programmatic-access-identity>
+    Perform programmatic access with Canonical Identity Platform <perform-programmatic-access-identity>
