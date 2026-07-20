@@ -59,7 +59,7 @@ Find out how to perform inference using programmatic access tokens:
 
     Perform inference on ISVCs using access tokens <perform-inference-isvc-tokens>
 
-Perform machine-to-machine access when integrated with the Canonical Identity Platform:
+Perform programmatic access when integrated with the Canonical Identity Platform:
 
 .. toctree::
     :maxdepth: 1
