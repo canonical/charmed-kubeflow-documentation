@@ -107,7 +107,7 @@ The command above:
 * Deploys the ``github-profiles-automator`` charm, which syncs Kubeflow profiles from your PMR repository.
 * Sets the external hostname on the UI gateway (``ui.kubeflow.com``), the machine-to-machine gateway (``api.kubeflow.com``) and the Identity Platform ingress (``auth.kubeflow.com``).
 
-See `kubeflow-ambient-iam deployment <http://github.com/canonical/charmed-kubeflow-solutions/blob/main/terraform/tests/kubeflow-ambient-iam/README.md>`_ for more details.
+See `kubeflow-ambient-iam deployment <https://github.com/canonical/charmed-kubeflow-solutions/blob/main/terraform/tests/kubeflow-ambient-iam/README.md>`_ for more details.
 
 6. Verify all charms are in ``active`` status by monitoring the Juju models:
 
