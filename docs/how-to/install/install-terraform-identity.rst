@@ -20,8 +20,6 @@ The deployment spans four `Juju models <https://juju.is/docs/juju/model>`_:
 * ``iam-core``: the Identity Platform dependencies (``postgresql-k8s``, ``traefik`` and ``self-signed-certificates``).
 * ``kubeflow``: the CKF applications, the two ambient ingress gateways (UI and machine-to-machine) and the Identity Platform authentication charms.
 
-.. TODO: Update this guide once the ``feat/iam-integration`` branch of charmed-kubeflow-solutions is merged, including the repository URL, branch and module path.
-
 ---------------------
 Requirements
 ---------------------
@@ -58,8 +56,8 @@ Deploy the solution as follows:
 
    git clone https://github.com/canonical/charmed-kubeflow-solutions
    cd charmed-kubeflow-solutions
-   git checkout feat/iam-integration
-   cd terraform-refactoring/tests/kubeflow-ambient-iam
+   git checkout main
+   cd terraform/tests/kubeflow-ambient-iam
 
 2. Initialise Terraform. The following command downloads all the required `Terraform modules <https://developer.hashicorp.com/terraform/language/modules>`_ and installs the Terraform `Juju provider <https://registry.terraform.io/providers/juju/juju/latest/docs>`_:
 
@@ -109,7 +107,7 @@ The command above:
 * Deploys the ``github-profiles-automator`` charm, which syncs Kubeflow profiles from your PMR repository.
 * Sets the external hostname on the UI gateway (``ui.kubeflow.com``), the machine-to-machine gateway (``api.kubeflow.com``) and the Identity Platform ingress (``auth.kubeflow.com``).
 
-See `kubeflow-ambient-iam deployment <https://github.com/canonical/charmed-kubeflow-solutions/blob/feat/iam-integration/terraform-refactoring/tests/kubeflow-ambient-iam/README.md>`_ for more details.
+See `kubeflow-ambient-iam deployment <http://github.com/canonical/charmed-kubeflow-solutions/blob/main/terraform/tests/kubeflow-ambient-iam/README.md>`_ for more details.
 
 6. Verify all charms are in ``active`` status by monitoring the Juju models:
 
