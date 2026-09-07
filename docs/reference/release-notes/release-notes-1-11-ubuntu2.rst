@@ -13,8 +13,8 @@ Key changes
 * **Ambient Mesh & Proxy Enhancements:** Added ``kubeflow-ambient`` solution support, added capability to run Kubeflow behind a proxy, and enabled Ambient Mesh on the 1.11 release. As part of this enablement, Kubeflow Notebooks have been upgraded to the Canonical-built 1.11 version.
 * **Spark Integration:** Added a new Kubeflow + Spark Terraform bundle for seamless Spark integration.
 * **Kubeflow Trainer Repository Migration:** Migrated Kubeflow Trainer to the new repository and track layout.
-* **Terraform Refactoring (CC008):** Underwent extensive Terraform refactoring to modularize components and integration interfaces.
-* **UAT & CI Hardening:** Improved UAT and CI pipeline stability using image preloading, enhanced diagnostic logging, parallelized workflow execution, and updated deployment tests.
+* **Terraform Refactoring (CC008):** Underwent extensive Terraform refactoring to create modular components and integration interfaces.
+* **UAT & CI Hardening:** Improved UAT and CI pipeline stability using image pre-loading, enhanced diagnostic logging, parallel workflow execution, and updated deployment tests.
 
 Upgrade instructions
 --------------------
