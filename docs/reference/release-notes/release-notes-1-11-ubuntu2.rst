@@ -90,7 +90,7 @@ If you encounter this issue, you can recover the application by running:
 Validation exclusion
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The current release has not been validated on a Kubernetes cluster running 1.34 with Ubuntu 20.04 as this is not a supported configuration. Also GPUs tests were not conducted on V100 GPUs as they are legacy hardware. 
+The current release has not been validated on Ubuntu 20.04 as this is no longer a supported configuration. GPUs tests were not conducted on V100 GPUs as they are no longer supported targets as of Charmed Kubeflow 1.11-ubuntu1. 
 
 
 Charm channels and revisions
