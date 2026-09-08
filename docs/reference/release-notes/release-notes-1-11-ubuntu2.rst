@@ -5,7 +5,7 @@ Release notes for Charmed Kubeflow 1.11-ubuntu2
 
 .. note::
 
-   Release date: April 13th, 2026
+   Release date: September 9th, 2026
 
 This page contains the release notes for Charmed Kubeflow (CKF) 1.11-ubuntu2.
 
@@ -72,6 +72,8 @@ To upgrade your charms to the ``1.11-ubuntu2`` revisions from previous 1.11 or 1
    juju refresh tensorboard-controller --channel="1.11/stable"
    juju refresh tensorboards-web-app --channel="1.11/stable"
    juju refresh training-operator --channel="1.9/stable"
+   juju refresh feast-integrator --channel="0.49/stable"
+   juju refresh feast-ui --channel="0.49/stable"
 
 Upgrading from 1.10
 ~~~~~~~~~~~~~~~~~~~
@@ -84,7 +86,7 @@ Important notes & troubleshooting
 Kubeflow Trainer (V2) migration (2.0 to 2.1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refreshing the ``kubeflow-trainer`` charm from ``2.0/edge`` to ``2.1/candidate`` may cause the unit to report an ``agent lost`` or degraded status. This is due to updates in Kubernetes labels and secret naming structures that previously conflicted.
+Refreshing the ``kubeflow-trainer`` charm from ``2.0/edge`` or the ``training-operator`` charm from ``1.9/stable`` (revision 714)  may cause the unit to report an ``agent lost`` or degraded status. This is due to updates in Kubernetes labels and secret naming structures that previously conflicted.
 
 If you encounter this issue, you can recover the application by running:
 
@@ -92,6 +94,9 @@ If you encounter this issue, you can recover the application by running:
 
    kubectl delete deployment -n kubeflow kubeflow-trainer
    kubectl delete pod -n kubeflow kubeflow-trainer-0
+   
+   kubectl delete deployment -n kubeflow training-operator
+   kubectl delete pod -n kubeflow training-operator-0
 
 
 Validation exclusion
@@ -229,3 +234,9 @@ The following table lists the charm channels and revisions included in this rele
    * - training-operator
      - 1.9/stable
      - 732
+   * - feast-ui
+     - 0.49/stable
+     - 173
+   * - feast-integrator
+     - 0.49/stable
+     - 201
