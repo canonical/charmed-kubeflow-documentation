@@ -3,17 +3,17 @@
 Release notes for Charmed Kubeflow 1.11-ubuntu2
 ===============================================
 
-Charmed Kubeflow 1.11-ubuntu2 promotes the ``track/1.11-rc`` release candidate into ``track/1.11``. It delivers a major update across Charmed Kubeflow solutions, introducing new product capabilities, upgrading core Kubeflow components, refactoring Terraform deployments, and hardening CI/UAT testing workflows.
+Charmed Kubeflow 1.11-ubuntu2 promotes the release candidate into ``track/1.11``. It delivers a major update across Charmed Kubeflow solutions, introducing new product capabilities, upgrading core Kubeflow components, refactoring Terraform deployments, and hardening CI/UAT testing workflows.
 
 Key changes
 -----------
 
 * **Kubeflow Pipelines (KFP) Upgraded:** Upgraded KFP charms to version **2.16**.
 * **KServe Upgraded:** Upgraded KServe controller to version **0.17**.
-* **Ambient Mesh & Proxy Enhancements:** Added ``kubeflow-ambient`` solution support, added capability to run Kubeflow behind a proxy, and enabled Ambient Mesh on the 1.11 release. As part of this enablement, Kubeflow Notebooks have been upgraded to the Canonical-built 1.11 version.
+* **Ambient Mesh & Proxy Enhancements:** Added ``kubeflow-ambient`` Terraform solution support, to run Kubeflow with Ambient Mesh for the 1.11 release. As part of this enablement, Kubeflow Notebooks have been upgraded to the Canonical-built 1.11 version.
+* **Terraform Refactoring (CC008):** Underwent extensive Terraform refactoring to create modular components and integration interfaces.
 * **Spark Integration:** Added a new Kubeflow + Spark Terraform bundle for seamless Spark integration.
 * **Kubeflow Trainer Repository Migration:** Migrated Kubeflow Trainer to the new repository and track layout.
-* **Terraform Refactoring (CC008):** Underwent extensive Terraform refactoring to create modular components and integration interfaces.
 * **UAT & CI Hardening:** Improved UAT and CI pipeline stability using image pre-loading, enhanced diagnostic logging, parallel workflow execution, and updated deployment tests.
 
 Upgrade instructions
