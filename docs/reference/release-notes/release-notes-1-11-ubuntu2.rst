@@ -3,7 +3,14 @@
 Release notes for Charmed Kubeflow 1.11-ubuntu2
 ===============================================
 
-Charmed Kubeflow 1.11-ubuntu2 promotes the release candidate into ``track/1.11``. It delivers a major update across Charmed Kubeflow solutions, introducing new product capabilities, upgrading core Kubeflow components, refactoring Terraform deployments, and hardening CI/UAT testing workflows.
+.. note::
+
+   Release date: April 13th, 2026
+
+This page contains the release notes for Charmed Kubeflow (CKF) 1.11-ubuntu2.
+
+The new release delivers a major update across Charmed Kubeflow solutions, introducing new product capabilities, upgrading core Kubeflow components, refactoring Terraform deployments, and hardening CI/UAT testing workflows.
+We would also like to thank the upstream Kubeflow community for the continued support and contributions, providing relevant updates to the core components which this new release features.
 
 Key changes
 -----------
@@ -69,7 +76,7 @@ To upgrade your charms to the ``1.11-ubuntu2`` revisions from previous 1.11 or 1
 Upgrading from 1.10
 ~~~~~~~~~~~~~~~~~~~
 
-If you are upgrading directly from **Charmed Kubeflow 1.10**, ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the official upgrade documentation.
+If you are upgrading directly from **Charmed Kubeflow 1.10**, ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the `official upgrade documentation <https://documentation.ubuntu.com/charmed-kubeflow/latest/how-to/manage/upgrade/upgrade-1.10-1.11/#istio>`
 
 Important notes & troubleshooting
 ---------------------------------
