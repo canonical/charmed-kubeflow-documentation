@@ -240,3 +240,7 @@ The following table lists the charm channels and revisions included in this rele
    * - feast-integrator
      - 0.49/stable
      - 201
+   * - data-kubeflow-integrator
+     - 1/stable
+     - 28
+ 
