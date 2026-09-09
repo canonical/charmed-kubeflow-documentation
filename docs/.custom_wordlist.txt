@@ -191,6 +191,7 @@ PVCViewer
 unauthorized
 Tensorboard
 tensorboard
+tensorboards
 KFAM
 kfam
 Kfam
