@@ -78,7 +78,7 @@ To upgrade your charms to the ``1.11-ubuntu2`` revisions from previous 1.11 or 1
 Upgrading from 1.10
 ~~~~~~~~~~~~~~~~~~~
 
-If you are upgrading directly from **Charmed Kubeflow 1.10**, ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the `official upgrade documentation <https://documentation.ubuntu.com/charmed-kubeflow/latest/how-to/manage/upgrade/upgrade-1.10-1.11/#istio>`_
+If you are upgrading directly from **Charmed Kubeflow 1.10**, ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the `official upgrade documentation <https://documentation.ubuntu.com/charmed-kubeflow/latest/how-to/manage/upgrade/upgrade-1.10-1.11/#istio>`_.
 
 Important notes & troubleshooting
 ---------------------------------
