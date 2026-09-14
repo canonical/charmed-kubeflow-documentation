@@ -7,7 +7,7 @@ Charmed Kubeflow 1.11
 
    Release date: April 13th, 2026
 
-This page contains the release notes for Charmed Kubeflow (CKF) 1.11.
+This test page contains the release notes for Charmed Kubeflow (CKF) 1.11.
 
 See `Kubeflow 1.11.0 <https://github.com/kubeflow/manifests/releases/tag/v1.11.0>`_ for details on the upstream Kubeflow release notes. 
 In comparison with the upstream Kubeflow project, CKF:
