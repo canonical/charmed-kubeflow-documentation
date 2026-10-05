@@ -188,7 +188,7 @@ Write a component that creates a KServe inference service and returns its URL as
 
         isvc = V1beta1InferenceService(
             api_version=constants.KSERVE_V1BETA1,
-            kind=constants.KSERVE_KIND,
+            kind=constants.KSERVE_KIND_INFERENCESERVICE,
             metadata=V1ObjectMeta(
                 name=isvc_name,
                 annotations={"sidecar.istio.io/inject": "false"},
