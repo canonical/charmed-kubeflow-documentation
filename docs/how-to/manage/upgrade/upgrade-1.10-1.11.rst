@@ -143,3 +143,20 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
    juju refresh tensorboard-controller --channel 1.11/stable
    juju refresh tensorboards-web-app --channel 1.11/stable
    juju refresh training-operator --channel 1.9/stable
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Kubeflow Trainer (V2) migration (2.0 to 2.1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Refreshing the ``kubeflow-trainer`` charm from ``2.0/edge`` or the ``training-operator`` charm from ``1.9/stable`` (revision 714) may cause the unit to report an ``agent lost`` or degraded status. 
+This is due to updates in Kubernetes labels and secret naming structures that previously conflicted.
+
+If you encounter this issue, you can recover the application by running:
+
+.. code-block:: bash
+
+   kubectl delete deployment -n kubeflow kubeflow-trainer
+   kubectl delete pod -n kubeflow kubeflow-trainer-0
+
+   kubectl delete deployment -n kubeflow training-operator
+   kubectl delete pod -n kubeflow training-operator-0
