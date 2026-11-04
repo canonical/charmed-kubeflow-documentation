@@ -108,36 +108,38 @@ Upgrade the rest of the charms to their current stable versions with ``juju refr
 
 .. code-block:: bash
 
-   juju refresh admission-webhook --channel 1.10/stable
+   juju refresh admission-webhook --channel 2.0/stable
    juju refresh argo-controller --channel 3.7/stable
    juju refresh dex-auth --channel 2.41/stable
    juju refresh envoy --channel 2.4/stable
-   juju refresh jupyter-controller --channel 1.10/stable
-   juju refresh jupyter-ui --channel 1.10/stable
+   juju refresh jupyter-controller --channel 1.11/stable
+   juju refresh jupyter-ui --channel 1.11/stable
    juju refresh katib-controller --channel 0.19/stable
    juju refresh katib-db-manager --channel 0.19/stable
    juju refresh katib-ui --channel 0.19/stable
-   juju refresh kfp-api --channel 2.15/stable
-   juju refresh kfp-metadata-writer --channel 2.15/stable
-   juju refresh kfp-persistence --channel 2.15/stable
-   juju refresh kfp-profile-controller --channel 2.15/stable
-   juju refresh kfp-schedwf --channel 2.15/stable
-   juju refresh kfp-ui --channel 2.15/stable
-   juju refresh kfp-viewer --channel 2.15/stable
-   juju refresh kfp-viz --channel 2.15/stable
+   juju refresh kfp-api --channel 2.16/stable
+   juju refresh kfp-metadata-writer --channel 2.16/stable
+   juju refresh kfp-persistence --channel 2.16/stable
+   juju refresh kfp-profile-controller --channel 2.16/stable
+   juju refresh kfp-schedwf --channel 2.16/stable
+   juju refresh kfp-ui --channel 2.16/stable
+   juju refresh kfp-viewer --channel 2.16/stable
+   juju refresh kfp-viz --channel 2.16/stable
    juju refresh knative-eventing --channel 1.16/stable
    juju refresh knative-operator --channel 1.16/stable
    juju refresh knative-serving --channel 1.16/stable
-   juju refresh kserve-controller --channel 0.15/stable
-   juju refresh kubeflow-dashboard --channel 1.10/stable
-   juju refresh kubeflow-profiles --channel 1.10/stable
+   juju refresh kserve-controller --channel 0.17/stable
+   juju refresh kubeflow-dashboard --channel 2.0/stable
+   juju refresh kubeflow-profiles --channel 2.0/stable
    juju refresh kubeflow-roles --channel 1.10/stable
-   juju refresh kubeflow-volumes --channel 1.10/stable
+   juju refresh kubeflow-trainer --channel 2.1/stable
+   juju refresh kubeflow-volumes --channel 1.11/stable
    juju refresh metacontroller-operator --channel 4.11/stable
-   juju refresh mlmd --channel ckf-1.10/stable
    juju refresh minio --channel 1.10/stable
+   juju refresh mlmd --channel ckf-1.10/stable
    juju refresh oidc-gatekeeper --channel ckf-1.10/stable
-   juju refresh pvcviewer-operator --channel 1.10/stable
-   juju refresh tensorboard-controller --channel 1.10/stable
-   juju refresh tensorboards-web-app --channel 1.10/stable
+   juju refresh pvcviewer-operator --channel 1.11/stable
+   juju refresh resource-dispatcher --channel 2.0/stable
+   juju refresh tensorboard-controller --channel 1.11/stable
+   juju refresh tensorboards-web-app --channel 1.11/stable
    juju refresh training-operator --channel 1.9/stable
