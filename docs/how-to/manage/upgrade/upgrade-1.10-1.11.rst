@@ -81,9 +81,9 @@ Run each of the refresh commands separately and wait until the charm goes to ``A
 
 .. code-block:: bash
 
-    juju refresh istio-pilot --channel 1.25/stable
-    juju refresh istio-pilot --channel 1.26/stable
-    juju refresh istio-pilot --channel 1.27/stable
+    juju refresh istio-pilot --channel 1.25/edge
+    juju refresh istio-pilot --channel 1.26/edge
+    juju refresh istio-pilot --channel 1.27/edge
     juju refresh istio-pilot --channel 1.28/stable
 
 .. warning::
