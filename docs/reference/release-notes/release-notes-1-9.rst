@@ -55,7 +55,7 @@ Deprecated
 .. Customized links
 
 .. _98-1: https://github.com/canonical/pipelines-rocks/issues/98
-.. _98-2: https://github.com/canonical/kubeflow-rocks/issues/98
+.. _98-2: https://github.com/canonical/kubeflow-notebook-rocks/issues/98
 
 .. _99-1: https://github.com/canonical/pipelines-rocks/issues/99
-.. _99-2: https://github.com/canonical/kubeflow-rocks/issues/99
+.. _99-2: https://github.com/canonical/kubeflow-notebook-rocks/issues/99
