@@ -55,7 +55,7 @@ Envoy
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="envoy", charm="envoy"}``.
 
-See `Envoy logs source <https://github.com/kubeflow/pipelines/tree/master/third_party/metadata_envoy>`_ for more details. 
+See `Envoy logs source <https://github.com/kubeflow/pipelines/tree/2.4.1/third_party/metadata_envoy>`_ for more details. 
 Since this is a third-party application, you will only see the configuration of `envoyproxy <https://www.envoyproxy.io/>`_.
 
 ~~~~~~~~~~~~~~~~~~~
@@ -126,7 +126,7 @@ Kfp-metadata-writer
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="kfp-metadata-writer", charm="kfp-metadata-writer"}``.
 
-See `Kfp-metadata-writer logs source <https://github.com/kubeflow/pipelines/tree/master/backend/metadata_writer>`_ for more details.
+See `Kfp-metadata-writer logs source <https://github.com/kubeflow/pipelines/tree/2.4.1/backend/metadata_writer>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Kfp-persistence
@@ -184,7 +184,7 @@ Kfp-viz
 
 You can check its logs through the Grafana UI using the query ``{pebble_service="vis-server", charm="kfp-viz"}``.
 
-See `Kfp-viz logs source <https://github.com/kubeflow/pipelines/tree/master/backend/src/apiserver/visualization>`_ for more details.
+See `Kfp-viz logs source <https://github.com/kubeflow/pipelines/tree/2.4.1/backend/src/apiserver/visualization>`_ for more details.
 
 ~~~~~~~~~~~~~~~~~~~
 Knative-operator

@@ -23,7 +23,7 @@ Requirements
 .. note::
 
    The Istio HA configuration is only available in version ``1.22/*`` or above. 
-   To upgrade to a higher version, see `Istio instructions <https://discourse.charmhub.io/t/how-to-upgrade-kubeflow-from-1-8-to-1-9/14913#istio-6>`_.
+   To upgrade to a higher version, see the :ref:`Istio upgrade instructions <upgrade_1.8_1.9_istio>`.
 
 ---------------------------
 Configure High Availability

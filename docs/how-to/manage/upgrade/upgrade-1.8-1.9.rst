@@ -62,6 +62,8 @@ To upgrade charms, you should follow the steps below in the proposed order.
 
    Some charms may go to ``Blocked`` state during some steps of the upgrade process. Once the upgrade is completed, all charms should be green and in ``Active`` state.
 
+.. _upgrade_1.8_1.9_istio:
+
 ~~~~~~~~~~~~~~~~~~~
 Istio
 ~~~~~~~~~~~~~~~~~~~

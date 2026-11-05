@@ -16,7 +16,7 @@ Requirements
 
 * An active CKF deployment and access to the Kubeflow dashboard. See :ref:`Get started <get_started>` for more details.
 * A GPU compatible with the model downloaded from NGC. See `the model details <https://docs.nvidia.com/nim/large-language-models/1.1.0/support-matrix.html#meta-llama-3-8b-instruct>`_ for further information. This guide is tested using an NVIDIA A100 GPU.
-* An NVIDIA NGC API key. See `create an NVIDIA account <https://ngc.nvidia.com/signin>`_ and `create an API key <https://org.ngc.nvidia.com/setup/api-key>`_ for more details.
+* An NVIDIA NGC API key. See `create an NVIDIA account <https://ngc.nvidia.com/signin>`_ and `create an API key <https://docs.nvidia.com/ngc/latest/ngc-user-guide.html#generating-personal-api-key>`_ for more details.
 
 .. note::
    When creating an API key, ensure that ``NGC Catalog`` is selected from the Services Included dropdown.
