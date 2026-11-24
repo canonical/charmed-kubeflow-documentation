@@ -9,7 +9,7 @@ Upgrading the solution by more than one minor version at a time is not recommend
 .. warning::
     
     CKF 1.11 is compatible with Charmed MLflow 2.15 and Charmed MLflow 2.22.
-    If you have Charmed MLflow 2.1 deployed, upgrade it `either to 2.15 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v21-v215/>`_ or `even to 2.22 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v215-v222/#upgrade-mlflow>`_ before upgrading CKF.
+    If you have Charmed MLflow 2.1 deployed, upgrade it `either just to 2.15 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v21-v215/>`_ or even `also from 2.15 to 2.22 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v215-v222/#upgrade-mlflow>`_ before upgrading CKF.
 
 ---------------------
 Before the upgrade
