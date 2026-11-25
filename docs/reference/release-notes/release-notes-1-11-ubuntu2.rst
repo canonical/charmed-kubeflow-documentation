@@ -78,7 +78,11 @@ To upgrade your charms to the ``1.11-ubuntu2`` revisions from previous 1.11 or 1
 Upgrading from 1.10
 ~~~~~~~~~~~~~~~~~~~
 
-If you are upgrading directly from **Charmed Kubeflow 1.10**, ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the `official upgrade documentation <https://documentation.ubuntu.com/charmed-kubeflow/latest/how-to/manage/upgrade/upgrade-1.10-1.11/#istio>`_.
+If you are upgrading directly from **Charmed Kubeflow 1.10**:
+
+- Ensure you follow the official Istio upgrade procedure (upgrading Istio from version **1.24** to **1.28**) as described in the `official upgrade documentation <https://documentation.ubuntu.com/charmed-kubeflow/latest/how-to/manage/upgrade/upgrade-1.10-1.11/#istio>`_.
+
+- After the `mlflow-server` charm upgrade from a previous version than 2.22, the tracking server of MLflow is expected not to be able to start, because database migrations are to be run after the schema change that comes with the tracking server's upgrade, for the new version of the application to start successfully. While the newer Charmed MLflow 3 takes care of running database migrations for you on charm upgrades, Charmed MLflow 2 does not and you are expected to manually migrate the database. To achieve that, follow the final steps as in `the Charmed MLflow upgrade guide to version 2.22 <https://documentation.ubuntu.com/charmed-mlflow/how-to/manage/upgrade/migrate-v215-v222/#upgrade-mlflow>`_.
 
 Important notes & troubleshooting
 ---------------------------------
